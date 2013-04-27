@@ -1,0 +1,70 @@
+#debug-menu-target-Debug_Bar_PHP_Constants h2 a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+#debug-menu-target-Debug_Bar_PHP_Constants h3 {
+    font-family: georgia, times, serif;
+    font-size: 22px;
+    margin-top: 1.2em;
+}
+
+.debug-bar-constants {
+    width: 100%;
+    border-collapse: collapse;
+    cell-padding: 1em;
+    clear: both;
+}
+
+.debug-bar-constants td {
+    padding: 2px 5px;
+}
+
+.debug-bar-constants th {
+    padding: 0.7em 5px;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+}
+
+.debug-bar-constants tr:nth-child(2n+1) {
+    background-color: #E8E8E8;
+}
+
+/*
+|--------------------------------------------------------------------------
+| UItoTop jQuery Plugin 1.2
+| http://www.mattvarone.com/web-design/uitotop-jquery-plugin/
+|--------------------------------------------------------------------------
+*/
+
+#toTop {
+    display: none;
+    text-decoration: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    overflow: hidden;
+    width: 51px;
+    height: 51px;
+    border: none;
+    text-indent: 100%;
+    background: url(ui.totop.png) no-repeat left top;
+    z-index: 99001;
+}
+
+#toTopHover {
+    background: url(img/ui.totop.png) no-repeat left -51px;
+    width: 51px;
+    height: 51px;
+    display: block;
+    overflow: hidden;
+    float: left;
+    opacity: 0;
+    -moz-opacity: 0;
+    filter: alpha(opacity = 0);
+    z-index: 99001;
+}
+
+#toTop:active, #toTop:focus {
+    outline: none;
+}

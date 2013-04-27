@@ -1,0 +1,51 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Debug Bar Constants - a WordPress Plugin\n"
+"POT-Creation-Date: 2013-04-27 17:29+0100\n"
+"PO-Revision-Date: 2013-04-27 17:29+0100\n"
+"Last-Translator: EJ Reinders Folmer <poedit_nospam@adviesenzo.nl>\n"
+"Language-Team: Juliette Reinders Folmer <wp_dbc_plugin_nospam@@adviesenzo."
+"nl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: __;esc_html__;esc_html_e;esc_attr__;esc_attr_e;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: ../class-debug-bar-constants.php:31
+msgid "WP Constants"
+msgstr ""
+
+#: ../class-debug-bar-constants.php:55
+msgid "Constants within WP:"
+msgstr ""
+
+#: ../class-debug-bar-constants.php:58 ../class-debug-bar-constants.php:136
+msgid "Name"
+msgstr ""
+
+#: ../class-debug-bar-constants.php:59 ../class-debug-bar-constants.php:137
+msgid "Value"
+msgstr ""
+
+#: ../class-debug-bar-constants.php:87 ../class-debug-bar-constants.php:170
+msgid "No constants found... this is really weird..."
+msgstr ""
+
+#: ../class-debug-bar-constants.php:99
+msgid "PHP Constants"
+msgstr ""
+
+#: ../class-debug-bar-constants.php:133
+msgid "Constants:"
+msgstr ""
+
+#: ../debug-bar-constants.php:48
+#, php-format
+msgid ""
+"Debug Bar must be activated to use the Debug Bar Constants Plugin. <a href="
+"\"%s\">Visit your plugins page to activate</a>."
+msgstr ""
