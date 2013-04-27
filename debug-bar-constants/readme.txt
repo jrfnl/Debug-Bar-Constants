@@ -5,6 +5,7 @@ Tags: debugbar, debug-bar, Debug Bar, Constants, Debug Bar Constants
 Requires at least: 3.1
 Tested up to: 3.5.1
 Stable tag: 1.0
+Depends: debug-bar
 License: GPLv2
 
 Debug Bar Constants adds two new panels to the Debug Bar that display the defined WP and PHP constants for the current request.
