@@ -39,8 +39,7 @@ if( !function_exists('add_action') ) {
 /**
  * Show notice if debug-bar plugin not active
  */
-require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-if( !is_plugin_active( 'debug-bar/debug-bar.php' ) ) {
+if( is_admin() && !is_plugin_active( 'debug-bar/debug-bar.php' ) ) {
 	add_action( 'admin_notices', 'dbc_missing_parent_plugin' );
 	
 	function dbc_missing_parent_plugin() {
