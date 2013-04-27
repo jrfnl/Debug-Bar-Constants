@@ -39,14 +39,17 @@ if( !function_exists('add_action') ) {
 /**
  * Show notice if debug-bar plugin not active
  */
-if( is_admin() && !is_plugin_active( 'debug-bar/debug-bar.php' ) ) {
-	add_action( 'admin_notices', 'dbc_missing_parent_plugin' );
-	
-	function dbc_missing_parent_plugin() {
-		$activate = admin_url( 'plugins.php#debug-bar' );
-		$string = '<div class="error"><p>' . sprintf( __( 'Debug Bar must be activated to use the Debug Bar Constants Plugin. <a href="%s">Visit your plugins page to activate</a>.', 'debug-bar-constants' ), $activate ) . '</p></div>';
-		echo $string;
+add_action( 'admin_init', 'dbc_has_parent_plugin' );
+function dbc_has_parent_plugin() {
+	if( is_admin() && !class_exists( 'Debug_Bar' ) ) {
+		add_action( 'admin_notices', 'dbc_missing_parent_plugin' );
 	}
+}
+
+function dbc_missing_parent_plugin() {
+	$activate = admin_url( 'plugins.php#debug-bar' );
+	$string = '<div class="error"><p>' . sprintf( __( 'Debug Bar must be activated to use the Debug Bar Constants Plugin. <a href="%s">Visit your plugins page to activate</a>.', 'debug-bar-constants' ), $activate ) . '</p></div>';
+	echo $string;
 }
 
 
@@ -54,7 +57,7 @@ if( is_admin() && !is_plugin_active( 'debug-bar/debug-bar.php' ) ) {
 if( !function_exists( 'debug_bar_constants' ) ) {
 
 	// Low prio, no need for it to be high up in the list
-	add_filter( 'debug_bar_panels', 'debug_bar_constants_panel', 50 );
+	add_filter( 'debug_bar_panels', 'debug_bar_constants_panel', 12 );
 
     function debug_bar_constants_panel( $panels ) {
 		if( !class_exists( 'Debug_Bar_WP_Constants' ) && !class_exists( 'Debug_Bar_PHP_Constants' ) ) {
