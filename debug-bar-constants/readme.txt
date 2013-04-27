@@ -18,9 +18,15 @@ Debug Bar Constants adds two new panels to the Debug Bar that display the define
 *	PHP Contants
 
 = Important =
+
 This plugin requires the [Debug Bar](http://wordpress.org/extend/plugins/debug-bar/) plugin to be installed and activated.
 
-Also note that this plugin should be used solely for debugging and/or on a development environment and is not intended for use in a production site.
+Also note that this plugin should be used solely for debugging and/or on a development environment and is not intended for use on a production site.
+
+***********************************
+
+If you like this plugin, please [rate and/or review](http://wordpress.org/support/view/plugin-reviews/debug-bar-constants) it. If you have ideas on how to make the plugin even better or if you have found any bugs, please report these in the [Support Forum](http://wordpress.org/support/plugin/debug-bar-constants) or in the [GitHub repository](https://github.com/jrfnl/Debug-Bar-Constants/tree/master/debug-bar-constants).
+
 
 
 == Frequently Asked Questions ==
