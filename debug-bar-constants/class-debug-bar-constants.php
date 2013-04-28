@@ -174,9 +174,11 @@ if( ( !class_exists( 'Debug_Bar_WP_Constants' ) && !class_exists( 'Debug_Bar_PHP
 
 	} // End of class Debug_Bar_PHP_Constants
 
+} // end of if class_exists
 
 
-
+if( ( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel' ) ) {
+	
 	class debug_bar_pretty_output {
 
 		/**
