@@ -20,7 +20,7 @@ if( !function_exists( 'add_action' ) ) {
 }
 
 /**
- * This classes in this file extends the functionality provided by the parent plugin "Debug Bar".
+ * The classes in this file extend the functionality provided by the parent plugin "Debug Bar".
  */
 if( ( !class_exists( 'Debug_Bar_WP_Constants' ) && !class_exists( 'Debug_Bar_PHP_Constants' ) ) && class_exists( 'Debug_Bar_Panel' ) ) {
 
@@ -52,11 +52,11 @@ if( ( !class_exists( 'Debug_Bar_WP_Constants' ) && !class_exists( 'Debug_Bar_PHP
 			if( isset( $constants['user'] ) && ( is_array( $constants['user'] ) && count( $constants['user'] ) > 0 ) ) {
 
 				echo '
-		<h2><span>' . __( 'Constants within WP:', 'debug-bar-constants' ) . '</span>' . count( $constants['user'] ) . '</h2>
+		<h2><span>' . esc_html__( 'Constants within WP:', 'debug-bar-constants' ) . '</span>' . count( $constants['user'] ) . '</h2>
 		<table class="debug-bar-constants">
 			<tr>
-				<th>' . __( 'Name', 'debug-bar-constants' ) . '</th>
-				<th>' . __( 'Value', 'debug-bar-constants' ) . '</th>
+				<th>' . esc_html__( 'Name', 'debug-bar-constants' ) . '</th>
+				<th>' . esc_html__( 'Value', 'debug-bar-constants' ) . '</th>
 			</tr>';
 
 				ksort( $constants['user'] );
@@ -84,7 +84,7 @@ if( ( !class_exists( 'Debug_Bar_WP_Constants' ) && !class_exists( 'Debug_Bar_PHP
 
 			}
 			else {
-				echo '<p>' . __( 'No constants found... this is really weird...', 'debug-bar-constants' ) . '</p>';
+				echo '<p>' . esc_html__( 'No constants found... this is really weird...', 'debug-bar-constants' ) . '</p>';
 			}
 			unset( $constants, $pretty );
 		}
@@ -130,7 +130,7 @@ if( ( !class_exists( 'Debug_Bar_WP_Constants' ) && !class_exists( 'Debug_Bar_PHP
 					if( is_array( $set ) && count( $set ) > 0 ) {
 						
 						echo '
-		<h3 id="' . esc_attr( $category ) . '"><em>' . esc_html( ucfirst( $category ) ) . '</em> ' . __( 'Constants:', 'debug-bar-constants' ) . '</h3>
+		<h3 id="' . esc_attr( $category ) . '"><em>' . esc_html( ucfirst( $category ) ) . '</em> ' . esc_html__( 'Constants:', 'debug-bar-constants' ) . '</h3>
 		<table class="debug-bar-constants">
 			<tr>
 				<th>' . esc_html__( 'Name', 'debug-bar-constants' ) . '</th>
@@ -177,8 +177,8 @@ if( ( !class_exists( 'Debug_Bar_WP_Constants' ) && !class_exists( 'Debug_Bar_PHP
 } // end of if class_exists
 
 
-if( ( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel' ) ) {
-	
+if( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel' ) ) {
+
 	class debug_bar_pretty_output {
 
 		/**
@@ -321,19 +321,23 @@ if( ( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Pan
 			else {
 				$spacing = $space . '&nbsp;&nbsp;';
 			}
-			foreach( get_object_vars( $obj ) as $var => $val ) {
+			$ov = get_object_vars( $obj );
+			foreach( $ov as $var => $val ) {
 				if ( is_array( $val ) ) {
-					print $spacing . '<b><i>property</i></b>: ' . $var . '<b><i> (array)</i></b>';
+					print $spacing . '<b><i>property</i></b>: ' . $var . "<b><i> (array)</i></b>\n";
 					pr_var( $val, '' , $escape, $spacing, $short );
 				} else {
 					print $spacing . '<b><i>property</i></b>: ' . $var . ' = ';
 					pr_var( $val, '' , $escape, $spacing, $short );
 				}
 			}
+			unset( $ov, $var, $val );
 		
-			foreach( get_class_methods( $obj ) as $method ) {
-				print $spacing . '<b><i>method</i></b>: ' . $method . '<br />';
+			$om = get_class_methods( $obj );
+			foreach( $om as $method ) {
+				print $spacing . '<b><i>method</i></b>: ' . $method . "<br />\n";
 			}
+			unset( $om );
 			print $space . ')<br /><br />';
 		}
 

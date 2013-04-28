@@ -44,7 +44,7 @@ This plugin is only meant to be used for development purposes.
 
 == Changelog ==
 
-= 2013-04-30 / 1.0 by jrf =
+= 2013-04-28 / 1.0 by jrf =
 * Initial release
 
 
