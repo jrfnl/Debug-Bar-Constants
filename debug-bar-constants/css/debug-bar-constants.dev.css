@@ -7,6 +7,7 @@
     font-family: georgia, times, serif;
     font-size: 22px;
     margin-top: 1.2em;
+    clear: both;
 }
 
 .debug-bar-constants {

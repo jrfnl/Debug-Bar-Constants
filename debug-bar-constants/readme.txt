@@ -21,7 +21,7 @@ Debug Bar Constants adds two new panels to the Debug Bar that display the define
 
 This plugin requires the [Debug Bar](http://wordpress.org/extend/plugins/debug-bar/) plugin to be installed and activated.
 
-Also note that this plugin should be used solely for debugging and/or on a development environment and is not intended for use on a production site.
+Also note that this plugin should be used solely for debugging and/or in a development environment and is not intended for use on a production site.
 
 ***********************************
 
@@ -44,7 +44,7 @@ This plugin is only meant to be used for development purposes.
 
 == Changelog ==
 
-= 2013-04-28 / 1.0 by jrf =
+= 1.0 (2013-04-28) =
 * Initial release
 
 
