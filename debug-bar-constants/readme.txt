@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: debugbar, debug-bar, Debug Bar, Constants, Debug Bar Constants
 Requires at least: 3.1
 Tested up to: 3.5.1
-Stable tag: 1.0
+Stable tag: 1.0.1
 Depends: debug-bar
 License: GPLv2
 
@@ -43,6 +43,9 @@ This plugin is only meant to be used for development purposes.
 
 
 == Changelog ==
+
+= 1.0.1 (2013-04-28) =
+* Mini-CSS fix
 
 = 1.0 (2013-04-28) =
 * Initial release

@@ -35,7 +35,7 @@ if( ( !class_exists( 'Debug_Bar_WP_Constants' ) && !class_exists( 'Debug_Bar_PHP
 
 		public function enqueue_scripts() {
 			$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '.dev' : '' );
-			wp_enqueue_style( 'debug-bar-constants', plugins_url( 'css/debug-bar-constants' . $suffix . '.css', __FILE__ ), array(), '1.0' );
+			wp_enqueue_style( 'debug-bar-constants', plugins_url( 'css/debug-bar-constants' . $suffix . '.css', __FILE__ ), array(), '1.0.1' );
 			wp_enqueue_script( 'debug-bar-constants', plugins_url( 'js/jquery.ui.totop' . $suffix . '.js', __FILE__ ), array( 'jquery' ), '1.2dbc', true );
 			unset( $suffix );
 		}
@@ -102,7 +102,7 @@ if( ( !class_exists( 'Debug_Bar_WP_Constants' ) && !class_exists( 'Debug_Bar_PHP
 		
 		public function enqueue_scripts() {
 			$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '.dev' : '' );
-			wp_enqueue_style( 'debug-bar-constants', plugins_url( 'css/debug-bar-constants' . $suffix . '.css', __FILE__ ), array(), '1.0' );
+			wp_enqueue_style( 'debug-bar-constants', plugins_url( 'css/debug-bar-constants' . $suffix . '.css', __FILE__ ), array(), '1.0.1' );
 			wp_enqueue_script( 'debug-bar-constants', plugins_url( 'js/jquery.ui.totop' . $suffix . '.js', __FILE__ ), array( 'jquery' ), '1.2dbc', true );
 			unset( $suffix );
 		}
