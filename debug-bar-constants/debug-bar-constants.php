@@ -37,14 +37,20 @@ if( !function_exists('add_action') ) {
 }
 
 /**
- * Show notice if debug-bar plugin not active
+ * Show notice & de-activate itself if debug-bar plugin not active
  */
+add_action( 'admin_init', 'dbc_has_parent_plugin' );
+
 if( !function_exists( 'dbc_has_parent_plugin' ) && !function_exists( 'dbc_missing_parent_plugin' ) ) {
 
-	add_action( 'admin_init', 'dbc_has_parent_plugin' );
 	function dbc_has_parent_plugin() {
-		if( is_admin() && !class_exists( 'Debug_Bar' ) ) {
+		if( is_admin() && ( !class_exists( 'Debug_Bar' ) && current_user_can( 'activate_plugins' ) ) ) {
 			add_action( 'admin_notices', 'dbc_missing_parent_plugin' );
+
+			deactivate_plugins( plugin_basename( __FILE__ ) );
+	        if ( isset( $_GET['activate'] ) ) {
+			   unset( $_GET['activate'] );
+			}
 		}
 	}
 
@@ -56,12 +62,13 @@ if( !function_exists( 'dbc_has_parent_plugin' ) && !function_exists( 'dbc_missin
 }
 
 
-if( !function_exists( 'debug_bar_constants_panel' ) ) {
+
+if( !function_exists( 'debug_bar_constants_panels' ) ) {
 
 	// Low prio, no need for it to be high up in the list
-	add_filter( 'debug_bar_panels', 'debug_bar_constants_panel', 12 );
+	add_filter( 'debug_bar_panels', 'debug_bar_constants_panels', 12 );
 
-    function debug_bar_constants_panel( $panels ) {
+    function debug_bar_constants_panels( $panels ) {
 		if( !class_exists( 'Debug_Bar_WP_Constants' ) && !class_exists( 'Debug_Bar_PHP_Constants' ) ) {
 			require_once 'class-debug-bar-constants.php';
 		}
