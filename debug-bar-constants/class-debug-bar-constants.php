@@ -154,7 +154,7 @@ if( !class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Bar_
 					foreach( $constants as $class => $set ) {
 						$count = count( $set );
 						echo '
-			<h2><a href="#dbcwpc' . esc_attr( $class ) . '"><span>' . esc_html( $class ) . ':</span>' . $count . '</a></h2>';
+			<h2><a href="#dbcwpc-' . esc_attr( $class ) . '"><span>' . esc_html( $class ) . ':</span>' . $count . '</a></h2>';
 						unset( $count );
 					}
 					unset( $class, $set );
