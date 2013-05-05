@@ -101,7 +101,8 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 = 1.2 (2013-05-05) =
 * [New!] Added a panel for Class Constants
-* Moved more output rendering to the pretty-output class and applied a higher level of abstraction to the pretty-output class
+* [Fix] Some left over references to functions not in this plugin
+* Moved more output rendering to the pretty-output class and applied a higher level of abstraction
 
 = 1.1 (2013-04-30) / not released =
 * [New!] Added auto-deactivation if the Debug Bar plugin is not active
@@ -115,7 +116,9 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 
 == Upgrade Notice ==
-* New! panel for Class Constants, also some small bug-fixes
+
+= 1.2 =
+* New! panel for Class Constants. This release also fixes a number of bugs.
 
 = 1.0 =
 * Initial release
