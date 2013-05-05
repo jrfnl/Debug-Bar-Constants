@@ -102,6 +102,7 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 = 1.2 (2013-05-05) =
 * [New!] Added a panel for Class Constants
 * [Fix] Some left over references to functions not in this plugin
+* Headers for the PHP Constants now link to their PHP manual page
 * Moved more output rendering to the pretty-output class and applied a higher level of abstraction
 
 = 1.1 (2013-04-30) / not released =
