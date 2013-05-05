@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Debug Bar Constants - a WordPress Plugin\n"
-"POT-Creation-Date: 2013-04-27 17:29+0100\n"
-"PO-Revision-Date: 2013-04-28 05:15+0100\n"
+"POT-Creation-Date: 2013-05-05 22:52+0100\n"
+"PO-Revision-Date: 2013-05-05 22:54+0100\n"
 "Last-Translator: EJ Reinders Folmer <poedit_nospam@adviesenzo.nl>\n"
 "Language-Team: Juliette Reinders Folmer\n"
 "Language: Dutch\n"
@@ -15,35 +15,102 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../class-debug-bar-constants.php:31
-msgid "WP Constants"
-msgstr "WP Constants"
-
-#: ../class-debug-bar-constants.php:55
-msgid "Constants within WP:"
-msgstr "Constants binnen WP:"
-
-#: ../class-debug-bar-constants.php:58 ../class-debug-bar-constants.php:136
+#: ../class-debug-bar-constants.php:72
 msgid "Name"
 msgstr "Naam"
 
-#: ../class-debug-bar-constants.php:59 ../class-debug-bar-constants.php:137
+#: ../class-debug-bar-constants.php:73
+#: ../class-debug-bar-pretty-output.php:205
+#: ../class-debug-bar-pretty-output.php:240
 msgid "Value"
 msgstr "Waarde"
 
-#: ../class-debug-bar-constants.php:87 ../class-debug-bar-constants.php:170
+#: ../class-debug-bar-constants.php:91
+msgid "WP Constants"
+msgstr "WP Constants"
+
+#: ../class-debug-bar-constants.php:102
+msgid "Constants within WP:"
+msgstr "Constants binnen WP:"
+
+#: ../class-debug-bar-constants.php:106
 msgid "No constants found... this is really weird..."
-msgstr "Geen constants gevonden... dit is erg vreemd..."
+msgstr "Geen constants gevonden... dit is vreemd..."
 
-#: ../class-debug-bar-constants.php:99
-msgid "PHP Constants"
-msgstr "PHP Constants"
+#: ../class-debug-bar-constants.php:122
+msgid "WP Class Constants"
+msgstr "WP Class Constants"
 
-#: ../class-debug-bar-constants.php:133
+#: ../class-debug-bar-constants.php:162
+msgid ""
+"<strong>Please note</strong>: these may be both native WordPress classes as "
+"well as classes which may be declared by plugins or Themes.<br />You can use "
+"these constants in your code using <code>class_name::constant_name</code>."
+msgstr ""
+"<strong>Toelichting:</strong>: dit kunnen zowel de WordPress eigen classes "
+"zijn als ook de classes welke door plugins of themes gedeclareerd zijn.<br /"
+">Je kan deze constants in je eigen code gebruiken door middel van "
+"<code>class_name::constant_name</code>."
+
+#: ../class-debug-bar-constants.php:162
+#, php-format
+msgid "See the <a %s>FAQ</a> for more information."
+msgstr "Lees de <a %s>FAQ</a> voor meer informatie."
+
+#: ../class-debug-bar-constants.php:166 ../class-debug-bar-constants.php:210
 msgid "Constants:"
 msgstr "Constants:"
 
-#: ../debug-bar-constants.php:48
+#: ../class-debug-bar-constants.php:173
+msgid "No classes nor class constants found... this is kinda strange..."
+msgstr "Geen classes of class constants gevonden... dit is vreemd..."
+
+#: ../class-debug-bar-constants.php:189
+msgid "PHP Constants"
+msgstr "PHP Constants"
+
+#: ../class-debug-bar-constants.php:210
+#, php-format
+msgid "Visit the PHP manual page about the %s constants."
+msgstr "Bezoek de PHP handleiding pagina over de %s constants."
+
+#: ../class-debug-bar-constants.php:217
+msgid "No PHP constants found... this is really weird..."
+msgstr "Geen PHP constants gevonden... dit is vreemd..."
+
+#: ../class-debug-bar-pretty-output.php:85
+msgid "undetermined"
+msgstr "niet bepaald"
+
+#: ../class-debug-bar-pretty-output.php:143
+msgid "I haven&#39;t got a clue what this is: "
+msgstr "Geen idee wat dit is:"
+
+#: ../class-debug-bar-pretty-output.php:193
+msgid "Properties:"
+msgstr "Eigenschappen:"
+
+#: ../class-debug-bar-pretty-output.php:194
+msgid "Methods:"
+msgstr "Methoden:"
+
+#: ../class-debug-bar-pretty-output.php:202
+msgid "Object Properties:"
+msgstr "Object eigenschappen:"
+
+#: ../class-debug-bar-pretty-output.php:205
+msgid "Property"
+msgstr "Eigenschap"
+
+#: ../class-debug-bar-pretty-output.php:212
+msgid "Object Methods:"
+msgstr "Object Methoden:"
+
+#: ../class-debug-bar-pretty-output.php:239
+msgid "Key"
+msgstr "Sleutel"
+
+#: ../debug-bar-constants.php:59
 #, php-format
 msgid ""
 "Debug Bar must be activated to use the Debug Bar Constants Plugin. <a href="
@@ -51,6 +118,9 @@ msgid ""
 msgstr ""
 "Debug Bar moet geactiveerd zijn om de Debug Bar Constants Plugin te kunnen "
 "gebruiken. <a href=\"%s\">Ga naar de plugins pagina om deze te activeren</a>."
+
+#~ msgid "Unknown"
+#~ msgstr "Onbekend"
 
 #~ msgid "Nothing to display"
 #~ msgstr "Niets om weer te geven"

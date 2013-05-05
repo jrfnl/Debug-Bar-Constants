@@ -2,8 +2,8 @@
 /*
 Plugin Name: Debug Bar Constants
 Plugin URI: http://wordpress.org/extend/plugins/debug-bar-constants/
-Description: Debug Bar Constants adds a new panel to Debug Bar that displays all the defined constants for the current request. Requires "Debug Bar" plugin.
-Version: 1.0.1
+Description: Debug Bar Constants adds new panels to Debug Bar that display all the defined constants for the current request. Requires "Debug Bar" plugin.
+Version: 1.2
 Author: Juliette Reinders Folmer
 Author URI: http://www.adviesenzo.nl/
 Text Domain: debug-bar-constants
@@ -69,10 +69,11 @@ if( !function_exists( 'debug_bar_constants_panels' ) ) {
 	add_filter( 'debug_bar_panels', 'debug_bar_constants_panels', 12 );
 
     function debug_bar_constants_panels( $panels ) {
-		if( !class_exists( 'Debug_Bar_WP_Constants' ) && !class_exists( 'Debug_Bar_PHP_Constants' ) ) {
+		if( ( !class_exists( 'Debug_Bar_WP_Constants' ) && !class_exists( 'Debug_Bar_WP_Class_Constants' ) ) && !class_exists( 'Debug_Bar_PHP_Constants' ) ) {
 			require_once 'class-debug-bar-constants.php';
 		}
         $panels[] = new Debug_Bar_WP_Constants();
+        $panels[] = new Debug_Bar_WP_Class_Constants();
         $panels[] = new Debug_Bar_PHP_Constants();
         return $panels;
     }

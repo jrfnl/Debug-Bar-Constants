@@ -4,7 +4,7 @@
  *
  * @package WordPress\Plugins\Debug Bar Constants
  * @since 1.0
- * @version 1.0
+ * @version 1.2
  *
  * @author Juliette Reinders Folmer
  *
@@ -19,25 +19,76 @@ if( !function_exists( 'add_action' ) ) {
 		exit();
 }
 
+
+
 /**
  * The classes in this file extend the functionality provided by the parent plugin "Debug Bar".
  */
-if( ( !class_exists( 'Debug_Bar_WP_Constants' ) && !class_exists( 'Debug_Bar_PHP_Constants' ) ) && class_exists( 'Debug_Bar_Panel' ) ) {
+if( !class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' ) ) {
 
-    class Debug_Bar_WP_Constants extends Debug_Bar_Panel {
+	class Debug_Bar_Constants extends Debug_Bar_Panel {
+
+		const DBC_STYLES_VERSION = '1.2';
+		const DBC_SCRIPT_VERSION = '1.2dbc-a';
 		
-		public function init() {
-			load_plugin_textdomain( 'debug-bar-constants', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-			$this->title( __( 'WP Constants', 'debug-bar-constants' ) );
+		const DBC_NAME = 'debug-bar-constants';
+		
+		public function init( $title ) {
+			if( ( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel' ) ) || !class_exists( 'list_php_classes' ) ) {
+				require_once 'class-debug-bar-pretty-output.php';
+			}
+
+			load_plugin_textdomain( self::DBC_NAME, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+			$this->title( $title );
+			//debug_bar_enqueue_scripts
 			add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
 			add_action( 'admin_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
 		}
 
 		public function enqueue_scripts() {
 			$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '.dev' : '' );
-			wp_enqueue_style( 'debug-bar-constants', plugins_url( 'css/debug-bar-constants' . $suffix . '.css', __FILE__ ), array(), '1.0.1' );
-			wp_enqueue_script( 'debug-bar-constants', plugins_url( 'js/jquery.ui.totop' . $suffix . '.js', __FILE__ ), array( 'jquery' ), '1.2dbc', true );
+			wp_enqueue_style( self::DBC_NAME, plugins_url( 'css/debug-bar-constants' . $suffix . '.css', __FILE__ ), array(), self::DBC_STYLES_VERSION );
+			wp_enqueue_script( self::DBC_NAME, plugins_url( 'js/jquery.ui.totop' . $suffix . '.js', __FILE__ ), array( 'jquery' ), self::DBC_SCRIPT_VERSION, true );
 			unset( $suffix );
+		}
+
+		public function prerender() {
+			$this->set_visible( true );
+		}
+		
+		public function dbc_render_table( $array, $col1 = null, $col2 = null, $class = null ) {
+			
+			$context = self::DBC_NAME;
+
+			$classes = self::DBC_NAME;
+			if( !is_null( $class ) ) {
+				if( is_string( $class ) ) {
+					$classes .= ' ' . $class;
+				}
+				else if( is_array( $class ) && count( $class ) > 0 ) {
+					$classes = $classes . ' ' . implode( ' ', $class );
+				}
+			}
+			$col1 = ( !is_null( $col1 ) ? $col1 : __( 'Name', self::DBC_NAME ) );
+			$col2 = ( !is_null( $col2 ) ? $col2 : __( 'Value', self::DBC_NAME ) );
+
+			uksort( $array, 'strnatcasecmp' );
+			debug_bar_pretty_output::render_table( $array, $col1, $col2, $classes, $context );
+		}
+
+
+	} // End of class Debug_Bar_Constants
+
+} // End of if class_exists wrapper
+
+
+
+if( !class_exists( 'Debug_Bar_WP_Constants' ) && class_exists( 'Debug_Bar_Constants' ) ) {
+
+    class Debug_Bar_WP_Constants extends Debug_Bar_Constants {
+
+		public function init() {
+			parent::init( __( 'WP Constants', parent::DBC_NAME ) );
 		}
 
 		public function prerender() {
@@ -45,302 +96,129 @@ if( ( !class_exists( 'Debug_Bar_WP_Constants' ) && !class_exists( 'Debug_Bar_PHP
 		}
 
 		public function render() {
-			$pretty = new debug_bar_pretty_output();
-			
 			$constants = get_defined_constants( true );
-
 			if( isset( $constants['user'] ) && ( is_array( $constants['user'] ) && count( $constants['user'] ) > 0 ) ) {
-
 				echo '
-		<h2><span>' . esc_html__( 'Constants within WP:', 'debug-bar-constants' ) . '</span>' . count( $constants['user'] ) . '</h2>
-		<table class="debug-bar-constants">
-			<tr>
-				<th>' . esc_html__( 'Name', 'debug-bar-constants' ) . '</th>
-				<th>' . esc_html__( 'Value', 'debug-bar-constants' ) . '</th>
-			</tr>';
-
-				ksort( $constants['user'] );
-
-				foreach( $constants['user'] as $key => $value ) {
-
-					echo '
-			<tr>
-				<td>
-					<strong>' . esc_html( $key ) . '</strong>
-				</td>
-				<td>';
-
-					$pretty->output( $value, '', true );
-
-                    echo '
-				</td>
-			</tr>';
-				}
-				unset( $key, $value );
-
-				echo '
-		</table>
-';
-
+		<h2><span>' . esc_html__( 'Constants within WP:', parent::DBC_NAME ) . '</span>' . count( $constants['user'] ) . '</h2>';
+				$this->dbc_render_table( $constants['user'] );
 			}
-			else {
-				echo '<p>' . esc_html__( 'No constants found... this is really weird...', 'debug-bar-constants' ) . '</p>';
+			else { // should never happen
+				echo '<p>' . esc_html__( 'No constants found... this is really weird...', parent::DBC_NAME ) . '</p>';
 			}
-			unset( $constants, $pretty );
+			unset( $constants );
 		}
 
 	} // End of class Debug_Bar_WP_Constants
-	
-	
-	class Debug_Bar_PHP_Constants extends Debug_Bar_Panel {
+
+} // End of if class_exists wrapper
+
+
+
+if( !class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Bar_Constants' ) ) {
+
+	class Debug_Bar_WP_Class_Constants extends Debug_Bar_Constants {
 		
 		public function init() {
-			load_plugin_textdomain( 'debug-bar-constants', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-			$this->title( __( 'PHP Constants', 'debug-bar-constants' ) );
-			add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
-		}
-		
-		public function enqueue_scripts() {
-			$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '.dev' : '' );
-			wp_enqueue_style( 'debug-bar-constants', plugins_url( 'css/debug-bar-constants' . $suffix . '.css', __FILE__ ), array(), '1.0.1' );
-			wp_enqueue_script( 'debug-bar-constants', plugins_url( 'js/jquery.ui.totop' . $suffix . '.js', __FILE__ ), array( 'jquery' ), '1.2dbc', true );
-			unset( $suffix );
-		}
-		
-		public function prerender() {
-			$this->set_visible( true );
+			parent::init( __( 'WP Class Constants', parent::DBC_NAME ) );
 		}
 
 		public function render() {
-			$pretty = new debug_bar_pretty_output();
-			
+
+			$classes = get_declared_classes();
+			if( class_exists( 'list_php_classes' ) && property_exists( 'list_php_classes', 'PHP_classes') ) {
+				$classes = array_udiff( $classes, list_php_classes::$PHP_classes, 'strcasecmp' );
+			}
+
+			$constants = array();
+
+			if( is_array( $classes ) && count( $classes ) > 0 ) {
+
+				// Get the constants info first
+				foreach( $classes as $class ) {
+
+					$reflector = new ReflectionClass( $class );
+					$class_constants = $reflector->getConstants();
+
+					if( is_array( $class_constants ) && count( $class_constants ) > 0 ) {
+						$constants[$class] = $class_constants;
+					}
+					unset( $class_constants );
+				}
+				unset( $class, $reflector );
+
+				// Generate the output
+				if( is_array( $constants ) && count( $constants ) > 0 ) {
+
+					uksort( $constants, 'strnatcasecmp' );
+
+					foreach( $constants as $class => $set ) {
+						$count = count( $set );
+						echo '
+			<h2><a href="#dbcwpc' . esc_attr( $class ) . '"><span>' . esc_html( $class ) . ':</span>' . $count . '</a></h2>';
+						unset( $count );
+					}
+					unset( $class, $set );
+
+					echo '<p class="dbcwpc-info">' . __( '<strong>Please note</strong>: these may be both native WordPress classes as well as classes which may be declared by plugins or Themes.<br />You can use these constants in your code using <code>class_name::constant_name</code>.', parent::DBC_NAME ) . ' ' . sprintf( __( 'See the <a %s>FAQ</a> for more information.', parent::DBC_NAME ), 'href="http://wordpress.org/extend/plugins/debug-bar-constants/faq/" target="_blank"') . '.</p>';
+
+					foreach( $constants as $class => $set ) {
+						echo '
+			<h3 id="dbcwpc-' . esc_attr( $class ) . '"><em>' . esc_html( ucfirst( $class ) ) . '</em> ' . esc_html__( 'Constants:', parent::DBC_NAME ) . '</h3>';
+						$this->dbc_render_table( $set );
+					}
+					unset( $class, $set );
+				}
+			}
+			else { // should never happen
+				echo '<p>' . esc_html__( 'No classes nor class constants found... this is kinda strange...', parent::DBC_NAME ) . '</p>';
+			}
+			unset( $classes, $constants );
+		}
+
+	} // End of class Debug_Bar_WP_Class_Constants
+
+} // End of if class_exists wrapper
+
+
+
+if( !class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Constants' ) ) {
+
+	class Debug_Bar_PHP_Constants extends Debug_Bar_Constants {
+		
+		public function init() {
+			parent::init( __( 'PHP Constants', parent::DBC_NAME ) );
+		}
+
+		public function render() {
+
 			$constants = get_defined_constants( true );
 			unset( $constants['user'] );
 			
 			if( is_array( $constants ) && count( $constants ) > 0 ) {
-				ksort( $constants );
+
+				uksort( $constants, 'strnatcasecmp' );
 
 				foreach( $constants as $category => $set ) {
 					echo '
-		<h2><a href="#' . esc_attr( $category ) . '"><span>' . esc_html( $category ) . ':</span>' . count( $set ) . '</a></h2>';
+		<h2><a href="#dbcphp-' . esc_attr( $category ) . '"><span>' . esc_html( $category ) . ':</span>' . count( $set ) . '</a></h2>';
 				}
-				
+				unset( $category, $set );
+
 				foreach( $constants as $category => $set ) {
-					
 					if( is_array( $set ) && count( $set ) > 0 ) {
-						
 						echo '
-		<h3 id="' . esc_attr( $category ) . '"><em>' . esc_html( ucfirst( $category ) ) . '</em> ' . esc_html__( 'Constants:', 'debug-bar-constants' ) . '</h3>
-		<table class="debug-bar-constants">
-			<tr>
-				<th>' . esc_html__( 'Name', 'debug-bar-constants' ) . '</th>
-				<th>' . esc_html__( 'Value', 'debug-bar-constants' ) . '</th>
-			</tr>';
-
-						ksort( $set );
-
-//                	    $pretty->output( $set, '', true );
-
-						foreach( $set as $key => $value ) {
-
-							echo '
-			<tr>
-				<td>
-					<strong>' . esc_html( $key ) . '</strong>
-				</td>
-				<td>';
-
-							$pretty->output( $value, '', true );
-
-		                    echo '
-				</td>
-			</tr>';
-						}
-						unset( $key, $value );
-
-						echo '
-		</table>
-';
-
+		<h3 id="dbcphp-' . esc_attr( $category ) . '"><em><a href="http://php.net/' . $category . '.constants" target="_blank" title="' . esc_attr( sprintf( __('Visit the PHP manual page about the %s constants.', parent::DBC_NAME ), $category ) ) . '">' . esc_html( ucfirst( $category ) ) . '</a></em> ' . esc_html__( 'Constants:', parent::DBC_NAME ) . '</h3>';
+						$this->dbc_render_table( $set );
 					}
 				}
 				unset( $category, $set );
 			}
-			else {
-				echo '<p>' . esc_html__( 'No constants found... this is really weird...', 'debug-bar-constants' ) . '</p>';
+			else { // should never happen
+				echo '<p>' . esc_html__( 'No PHP constants found... this is really weird...', parent::DBC_NAME ) . '</p>';
 			}
-			unset( $constants, $pretty );
+			unset( $constants );
 		}
 
 	} // End of class Debug_Bar_PHP_Constants
 
-} // end of if class_exists
-
-
-if( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel' ) ) {
-
-	class debug_bar_pretty_output {
-
-		/**
-		 * A not-so-pretty method to show pretty output ;-)
-		 */
-		function output( $var, $title = '', $escape = false, $space = '', $short = false ) {
-
-			if( $space === '' ) { print '<div class="pr_var">'; }
-			if ( !empty( $title ) ) {
-				print '<h4 style="clear: both;">' . /*( $escape === true ? htmlentities(*/ $title /*, ENT_QUOTES ) : $title )*/ . "</h4>\n";
-			}
-		
-			if ( is_array( $var ) ) {
-				print 'Array: <br />' . $space . '(<br />';
-				if( $short !== true ) {
-					$spacing = $space . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-				}
-				else {
-					$spacing = $space . '&nbsp;&nbsp;';
-				}
-				foreach( $var as $key => $value ) {
-					print $spacing . '[' . ( $escape === true ? htmlentities( $key, ENT_QUOTES ): $key );
-					if( $short !== true ) {
-						print  ' ';
-						switch( true ) {
-							case ( is_string( $key ) ) :
-								print '<span style="color: #336600; background-color: transparent;"><b><i>(string)</i></b></span>';
-								break;
-							case ( is_int( $key ) ) :
-								print '<span style="color: #FF0000; background-color: transparent;"><b><i>(int)</i></b></span>';
-								break;
-							case ( is_float( $key ) ) :
-								print '<span style="color: #990033; background-color: transparent;"><b><i>(float)</i></b></span>';
-								break;
-							default:
-								print '(unknown)';
-								break;
-						}
-					}
-					print '] => ';
-					pr_var( $value, '', $escape, $spacing, $short );
-				}
-				print $space . ')<br />';
-			}
-			elseif ( is_string( $var ) ) {
-				print '<span style="color: #336600; background-color: transparent;">';
-				if( $short !== true ) {
-					print '<b><i>string['
-						. strlen( $var )
-					. ']</i></b> : ';
-				}
-				print '&lsquo;'
-					. ( $escape === true ? str_replace( '  ', ' &nbsp;', htmlentities( $var, ENT_QUOTES ) ) : str_replace( '  ', ' &nbsp;', $var ) )
-					. '&rsquo;</span><br />';
-			}
-			elseif ( is_bool( $var ) ) {
-				print '<span style="color: #000099; background-color: transparent;">';
-				if( $short !== true ) {
-					print '<b><i>bool</i></b> : '
-						. $var
-						. ' ( = ';
-				}
-				else {
-					print '<b><i>b</i></b> ';
-				}
-				print '<i>'
-					. ( ( $var === false ) ? '<span style="color: #FF0000; background-color: transparent;">false</span>' : ( ( $var === true ) ? '<span style="color: #336600; background-color: transparent;">true</span>' : 'undetermined' ) );
-				if( $short !== true ) {
-					print ' </i>)';
-				}
-				print '</span><br />';
-			}
-			elseif ( is_int( $var ) ) {
-				print '<span style="color: #FF0000; background-color: transparent;">';
-				if( $short !== true ) {
-					print '<b><i>int</i></b> : ';
-				}
-				print ( ( $var === 0 ) ? '<b>' . $var . '</b>' : $var )
-					. "</span><br />\n";
-			}
-			elseif ( is_float( $var ) ) {
-				print '<span style="color: #990033; background-color: transparent;">';
-				if( $short !== true ) {
-					print '<b><i>float</i></b> : ';
-				}
-				print $var
-					. '</span><br />';
-			}
-			elseif ( is_null( $var ) ) {
-				print '<span style="color: #666666; background-color: transparent;">';
-				if( $short !== true ) {
-					print '<b><i>';
-				}
-				print 'null';
-				if( $short !== true ) {
-					print '</i></b> : '
-					. $var
-					. ' ( = <i>NULL</i> )';
-				}
-				print '</span><br />';
-			}
-			elseif ( is_resource( $var ) ) {
-				print '<span style="color: #666666; background-color: transparent;">';
-				if( $short !== true ) {
-					print '<b><i>resource</i></b> : ';
-				}
-				print $var;
-				if( $short !== true ) {
-					print ' ( = <i>RESOURCE</i> )';
-				}
-				print '</span><br />';
-			}
-			else if ( is_object( $var ) ) {
-				print 'object: <br />' . $space . '(<br />';
-				if( $short !== true ) {
-					$spacing = $space . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-				}
-				else {
-					$spacing = $space . '&nbsp;&nbsp;';
-				}
-				object_info( $var, $escape, $spacing, $short );
-				print $space . ')<br /><br />';
-			}
-			else {
-				print 'I haven&#39;t got a clue what this is: ' . gettype( $var ) . '<br />';
-			}
-			if( $space === '' ) { print "</div>"; }
-		}
-
-
-
-		/**
-		 * @todo: get object properties to show the variable type on one line with the 'property'
-         */
-		public function object_info( $obj, $escape, $space, $short ) {
-			print $space . '<b><i>Class</i></b>: ' . get_class( $obj ) . ' (<br />';
-			if( $short !== true ) {
-				$spacing = $space . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-			}
-			else {
-				$spacing = $space . '&nbsp;&nbsp;';
-			}
-			$ov = get_object_vars( $obj );
-			foreach( $ov as $var => $val ) {
-				if ( is_array( $val ) ) {
-					print $spacing . '<b><i>property</i></b>: ' . $var . "<b><i> (array)</i></b>\n";
-					pr_var( $val, '' , $escape, $spacing, $short );
-				} else {
-					print $spacing . '<b><i>property</i></b>: ' . $var . ' = ';
-					pr_var( $val, '' , $escape, $spacing, $short );
-				}
-			}
-			unset( $ov, $var, $val );
-		
-			$om = get_class_methods( $obj );
-			foreach( $om as $method ) {
-				print $spacing . '<b><i>method</i></b>: ' . $method . "<br />\n";
-			}
-			unset( $om );
-			print $space . ')<br /><br />';
-		}
-
-	} // End of class debug_bar_pretty_output
-
-} // end of if class_exists
+} // End of if class_exists wrapper
