@@ -99,7 +99,7 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 == Changelog ==
 
-= 1.2 (2013-05-07) =
+= 1.2 (2013-05-05) =
 * [New!] Added a panel for Class Constants
 * Moved more output rendering to the pretty-output class and applied a higher level of abstraction to the pretty-output class
 
