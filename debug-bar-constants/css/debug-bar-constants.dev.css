@@ -50,7 +50,7 @@ p.dbcwpc-info {
 .debug-bar-table {
     width: 100%;
     border-collapse: collapse;
-    cell-padding: 1em;
+/*    cell-padding: 1em;*/
     clear: both;
 }
 
@@ -61,7 +61,7 @@ p.dbcwpc-info {
 
 .debug-bar-table th {
     font-weight: bold;
-    width 35%;
+    width: 35%;
     padding-left: 5px;
     padding-right: 2em;
 }

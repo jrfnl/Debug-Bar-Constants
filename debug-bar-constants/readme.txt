@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: debugbar, debug-bar, Debug Bar, Constants, Debug Bar Constants
 Requires at least: 3.1
 Tested up to: 3.5.1
-Stable tag: 1.2
+Stable tag: 1.2.1
 Depends: debug-bar
 License: GPLv2
 
@@ -98,6 +98,9 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 
 == Changelog ==
+
+= 1.2.1 (2013-05-27) =
+* Minor fix to comply with strict standards. Thanks [Azizur Rahman for reporting](http://wordpress.org/support/topic/declaration-of-debug_bar_constantsinit-should-be-compatible-with-debug_bar_p)
 
 = 1.2 (2013-05-05) =
 * [New!] Added a panel for Class Constants

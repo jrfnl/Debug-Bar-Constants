@@ -4,7 +4,7 @@
  *
  * @package WordPress\Plugins\Debug Bar Constants
  * @since 1.0
- * @version 1.2
+ * @version 1.2.1
  *
  * @author Juliette Reinders Folmer
  *
@@ -33,13 +33,13 @@ if( !class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' ) 
 		
 		const DBC_NAME = 'debug-bar-constants';
 		
-		public function init( $title ) {
+		public function init() {
 			if( ( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel' ) ) || !class_exists( 'list_php_classes' ) ) {
 				require_once 'class-debug-bar-pretty-output.php';
 			}
 
 			load_plugin_textdomain( self::DBC_NAME, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-			$this->title( $title );
+
 			//debug_bar_enqueue_scripts
 			add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
 			add_action( 'admin_enqueue_scripts', array( &$this, 'enqueue_scripts' ) );
@@ -88,7 +88,8 @@ if( !class_exists( 'Debug_Bar_WP_Constants' ) && class_exists( 'Debug_Bar_Consta
     class Debug_Bar_WP_Constants extends Debug_Bar_Constants {
 
 		public function init() {
-			parent::init( __( 'WP Constants', parent::DBC_NAME ) );
+			parent::init();
+			$this->title( __( 'WP Constants', parent::DBC_NAME ) );
 		}
 
 		public function prerender() {
@@ -119,7 +120,8 @@ if( !class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Bar_
 	class Debug_Bar_WP_Class_Constants extends Debug_Bar_Constants {
 		
 		public function init() {
-			parent::init( __( 'WP Class Constants', parent::DBC_NAME ) );
+			parent::init();
+			$this->title( __( 'WP Class Constants', parent::DBC_NAME ) );
 		}
 
 		public function render() {
@@ -186,7 +188,8 @@ if( !class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Const
 	class Debug_Bar_PHP_Constants extends Debug_Bar_Constants {
 		
 		public function init() {
-			parent::init( __( 'PHP Constants', parent::DBC_NAME ) );
+			parent::init();
+			$this->title( __( 'PHP Constants', parent::DBC_NAME ) );
 		}
 
 		public function render() {
