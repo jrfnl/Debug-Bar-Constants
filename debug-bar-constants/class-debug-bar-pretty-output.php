@@ -4,7 +4,7 @@
  *
  * @package WordPress\Plugins\Debug Bar Constants
  * @since 1.2
- * @version 1.2
+ * @version 1.2.1.1
  *
  * @author Juliette Reinders Folmer
  *
@@ -12,8 +12,10 @@
  * @license http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2
  */
 
-if( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel' ) ) {
-	
+if ( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel' ) ) {
+	/**
+	 * Class debug_bar_pretty_output
+	 */
 	class debug_bar_pretty_output {
 		
 		const CONTEXT = 'debug-bar-constants';
@@ -23,24 +25,26 @@ if( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel
 		 */
 		public static function output( $var, $title = '', $escape = false, $space = '', $short = false, $context = self::CONTEXT ) {
 
-			if( $space === '' ) { print '<div class="pr_var">'; }
+			if ( $space === '' ) {
+				print '<div class="pr_var">';
+			}
 			if ( !empty( $title ) ) {
 				print '<h4 style="clear: both;">' . ( $escape === true ? esc_html( $title ) : $title ) . "</h4>\n";
 			}
 
 			if ( is_array( $var ) ) {
 				print 'Array: <br />' . $space . '(<br />';
-				if( $short !== true ) {
+				if ( $short !== true ) {
 					$spacing = $space . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 				}
 				else {
 					$spacing = $space . '&nbsp;&nbsp;';
 				}
-				foreach( $var as $key => $value ) {
+				foreach ( $var as $key => $value ) {
 					print $spacing . '[' . ( $escape === true ? esc_html( $key ): $key );
-					if( $short !== true ) {
+					if ( $short !== true ) {
 						print  ' ';
-						switch( true ) {
+						switch ( true ) {
 							case ( is_string( $key ) ) :
 								print '<span style="color: #336600; background-color: transparent;"><b><i>(string)</i></b></span>';
 								break;
@@ -60,9 +64,9 @@ if( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel
 				}
 				print $space . ')<br />';
 			}
-			elseif ( is_string( $var ) ) {
+			else if ( is_string( $var ) ) {
 				print '<span style="color: #336600; background-color: transparent;">';
-				if( $short !== true ) {
+				if ( $short !== true ) {
 					print '<b><i>string['
 						. strlen( $var )
 					. ']</i></b> : ';
@@ -71,9 +75,9 @@ if( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel
 					. ( $escape === true ? str_replace( '  ', ' &nbsp;', esc_html( $var ) ) : str_replace( '  ', ' &nbsp;', $var ) )
 					. '&rsquo;</span><br />';
 			}
-			elseif ( is_bool( $var ) ) {
+			else if ( is_bool( $var ) ) {
 				print '<span style="color: #000099; background-color: transparent;">';
-				if( $short !== true ) {
+				if ( $short !== true ) {
 					print '<b><i>bool</i></b> : '
 						. $var
 						. ' ( = ';
@@ -83,54 +87,54 @@ if( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel
 				}
 				print '<i>'
 					. ( ( $var === false ) ? '<span style="color: #FF0000; background-color: transparent;">false</span>' : ( ( $var === true ) ? '<span style="color: #336600; background-color: transparent;">true</span>' : __( 'undetermined', $context ) ) );
-				if( $short !== true ) {
+				if ( $short !== true ) {
 					print ' </i>)';
 				}
 				print '</span><br />';
 			}
-			elseif ( is_int( $var ) ) {
+			else if ( is_int( $var ) ) {
 				print '<span style="color: #FF0000; background-color: transparent;">';
-				if( $short !== true ) {
+				if ( $short !== true ) {
 					print '<b><i>int</i></b> : ';
 				}
 				print ( ( $var === 0 ) ? '<b>' . $var . '</b>' : $var )
 					. "</span><br />\n";
 			}
-			elseif ( is_float( $var ) ) {
+			else if ( is_float( $var ) ) {
 				print '<span style="color: #990033; background-color: transparent;">';
-				if( $short !== true ) {
+				if ( $short !== true ) {
 					print '<b><i>float</i></b> : ';
 				}
 				print $var
 					. '</span><br />';
 			}
-			elseif ( is_null( $var ) ) {
+			else if ( is_null( $var ) ) {
 				print '<span style="color: #666666; background-color: transparent;">';
-				if( $short !== true ) {
+				if ( $short !== true ) {
 					print '<b><i>';
 				}
 				print 'null';
-				if( $short !== true ) {
+				if ( $short !== true ) {
 					print '</i></b> : '
 					. $var
 					. ' ( = <i>NULL</i> )';
 				}
 				print '</span><br />';
 			}
-			elseif ( is_resource( $var ) ) {
+			else if ( is_resource( $var ) ) {
 				print '<span style="color: #666666; background-color: transparent;">';
-				if( $short !== true ) {
+				if ( $short !== true ) {
 					print '<b><i>resource</i></b> : ';
 				}
 				print $var;
-				if( $short !== true ) {
+				if ( $short !== true ) {
 					print ' ( = <i>RESOURCE</i> )';
 				}
 				print '</span><br />';
 			}
 			else if ( is_object( $var ) ) {
 				print 'object: <br />' . $space . '(<br />';
-				if( $short !== true ) {
+				if ( $short !== true ) {
 					$spacing = $space . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 				}
 				else {
@@ -140,9 +144,11 @@ if( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel
 				print $space . ')<br /><br />';
 			}
 			else {
-				print __( 'I haven&#39;t got a clue what this is: ', $context ) . gettype( $var ) . '<br />';
+				print esc_html( __( 'I haven\'t got a clue what this is: ', $context ) ) . gettype( $var ) . '<br />';
 			}
-			if( $space === '' ) { print "</div>"; }
+			if ( $space === '' ) {
+				print '</div>';
+			}
 		}
 
 
@@ -153,14 +159,14 @@ if( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel
          */
 		public static function object_info( $obj, $escape, $space, $short, $context = self::CONTEXT ) {
 			print $space . '<b><i>Class</i></b>: ' . get_class( $obj ) . ' (<br />';
-			if( $short !== true ) {
+			if ( $short !== true ) {
 				$spacing = $space . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 			}
 			else {
 				$spacing = $space . '&nbsp;&nbsp;';
 			}
 			$ov = get_object_vars( $obj );
-			foreach( $ov as $var => $val ) {
+			foreach ( $ov as $var => $val ) {
 				if ( is_array( $val ) ) {
 					print $spacing . '<b><i>property</i></b>: ' . $var . "<b><i> (array)</i></b>\n";
 					self::output( $val, '' , $escape, $spacing, $short, $context );
@@ -172,7 +178,7 @@ if( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel
 			unset( $ov, $var, $val );
 		
 			$om = get_class_methods( $obj );
-			foreach( $om as $method ) {
+			foreach ( $om as $method ) {
 				print $spacing . '<b><i>method</i></b>: ' . $method . "<br />\n";
 			}
 			unset( $om );
@@ -186,36 +192,33 @@ if( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel
 		public static function ooutput( $obj, $context = self::CONTEXT, $is_sub = false ) {
 	
 			$properties = get_object_vars( $obj );
-			$methods = get_class_methods( $obj );
+			$methods    = get_class_methods( $obj );
 
-			if( $is_sub === false ) {
+			if ( $is_sub === false ) {
 				echo '
 		<h2><span>' . esc_html__( 'Properties:', $context ) . '</span>' . count( $properties ) . '</h2>
 		<h2><span>' . esc_html__( 'Methods:', $context ) . '</span>' . count( $methods ) . '</h2>';
 			}
 
 			// Properties
-			if( is_array( $properties ) && count( $properties ) > 0 ) {
-
+			if ( is_array( $properties ) && count( $properties ) > 0 ) {
 				$h = ( $is_sub === false ? 'h3' : 'h4' );
 				echo '
 		<' . $h . '>' . esc_html__( 'Object Properties:', $context ) . '</' . $h . '>';
 
 				uksort( $properties, 'strnatcasecmp' );
-                self::render_table( $properties, __( 'Property', $context ), __( 'Value', $context ), $context, $context );
+				self::render_table( $properties, __( 'Property', $context ), __( 'Value', $context ), $context, $context );
 			}
 
 			// Methods
-			if( is_array( $methods ) && count( $methods ) > 0 ) {
-
+			if ( is_array( $methods ) && count( $methods ) > 0 ) {
 				echo '
 		<h3>' . esc_html__( 'Object Methods:', $context ) . '</h3>
 		<ul class="' . $context . '">';
 
-
 				uksort( $methods, 'strnatcasecmp' );
 
-				foreach( $methods as $method ) {
+				foreach ( $methods as $method ) {
 					echo '<li>' . $method . '()</li>';
 				}
 				unset( $method );
@@ -228,11 +231,11 @@ if( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel
 		public static function render_table( $array, $col1, $col2, $class = null, $context = self::CONTEXT ) {
 
 			$classes = 'debug-bar-table';
-			if( !is_null( $class ) ) {
-				if( is_string( $class ) ) {
+			if ( !is_null( $class ) ) {
+				if ( is_string( $class ) ) {
 					$classes .= ' ' . $class;
 				}
-				else if( is_array( $class ) && count( $class ) > 0 ) {
+				else if ( is_array( $class ) && count( $class ) > 0 ) {
 					$classes = $classes . ' ' . implode( ' ', $class );
 				}
 			}
@@ -259,7 +262,7 @@ if( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel
 
 		public static function render_table_rows( $array, $context = self::CONTEXT ) {
 
-			foreach( $array as $key => $value ) {
+			foreach ( $array as $key => $value ) {
 				self::render_table_row( $key, $value, $context );
 			}
 			unset( $key, $value );
@@ -273,14 +276,14 @@ if( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel
 				</th>
 				<td>';
 
-            if( is_object( $value ) ) {
-                self::ooutput( $value, $context, true );
-            }
-            else {
-                self::output( $value, '', true, '', false, $context );
-            }
+			if ( is_object( $value ) ) {
+				self::ooutput( $value, $context, true );
+			}
+			else {
+				self::output( $value, '', true, '', false, $context );
+			}
 
-            echo '
+			echo '
 				</td>
 			</tr>';
 		}
@@ -291,16 +294,13 @@ if( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel
 		</table>
 ';
 		}
-
 	} // End of class debug_bar_pretty_output
-
 } // End of if class_exists wrapper
 
 
 
 
-if( !class_exists( 'debug_bar_list_php_classes' ) ) {
-
+if ( !class_exists( 'list_php_classes' ) ) {
 	/**
 	 * This class does nothing, just a way to keep the list of php classes out of the global namespace
 	 * You can retrieve the list by using the static variable list_php_classes::$PHP_classes
@@ -1004,7 +1004,5 @@ if( !class_exists( 'debug_bar_list_php_classes' ) ) {
 			'XSLTProcessor',
 
 		);
-
 	} // End of class debug_bar_list_php_classes
-
 } // End of if class_exists wrapper
