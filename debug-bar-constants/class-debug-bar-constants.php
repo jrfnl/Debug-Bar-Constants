@@ -34,7 +34,7 @@ if ( !class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' )
 		const DBC_NAME = 'debug-bar-constants';
 		
 		public function init() {
-			if ( ( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel' ) ) || !class_exists( 'debugBarListPHPClasses' ) ) {
+			if ( ( !class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Panel' ) ) || !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 				require_once 'class-debug-bar-pretty-output.php';
 			}
 
@@ -73,7 +73,7 @@ if ( !class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' )
 			$col2 = ( !is_null( $col2 ) ? $col2 : __( 'Value', self::DBC_NAME ) );
 
 			uksort( $array, 'strnatcasecmp' );
-			debug_bar_pretty_output::render_table( $array, $col1, $col2, $classes, $context );
+			Debug_Bar_Pretty_Output::render_table( $array, $col1, $col2, $classes, $context );
 		}
 	} // End of class Debug_Bar_Constants
 } // End of if class_exists wrapper
@@ -123,8 +123,8 @@ if ( !class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Bar
 		public function render() {
 
 			$classes = get_declared_classes();
-			if ( class_exists( 'list_php_classes' ) && property_exists( 'list_php_classes', 'PHP_classes' ) ) {
-				$classes = array_udiff( $classes, list_php_classes::$PHP_classes, 'strcasecmp' );
+			if ( class_exists( 'Debug_Bar_List_PHP_Classes' ) && property_exists( 'Debug_Bar_List_PHP_Classes', 'PHP_classes' ) ) {
+				$classes = array_udiff( $classes, Debug_Bar_List_PHP_Classes::$PHP_classes, 'strcasecmp' );
 			}
 
 			$constants = array();

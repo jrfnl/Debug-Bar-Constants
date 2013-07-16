@@ -12,11 +12,11 @@
  * @license http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2
  */
 
-if ( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Panel' ) ) {
+if ( !class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Panel' ) ) {
 	/**
-	 * Class debug_bar_pretty_output
+	 * Class Debug_Bar_Pretty_Output
 	 */
-	class debug_bar_pretty_output {
+	class Debug_Bar_Pretty_Output {
 		
 		const CONTEXT = 'debug-bar-constants';
 
@@ -144,7 +144,7 @@ if ( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Pane
 				print $space . ')<br /><br />';
 			}
 			else {
-				print esc_html( __( 'I haven\'t got a clue what this is: ', $context ) ) . gettype( $var ) . '<br />';
+				print esc_html__( 'I haven\'t got a clue what this is: ', $context ) . gettype( $var ) . '<br />';
 			}
 			if ( $space === '' ) {
 				print '</div>';
@@ -294,18 +294,18 @@ if ( !class_exists( 'debug_bar_pretty_output' ) && class_exists( 'Debug_Bar_Pane
 		</table>
 ';
 		}
-	} // End of class debug_bar_pretty_output
+	} // End of class Debug_Bar_Pretty_Output
 } // End of if class_exists wrapper
 
 
 
 
-if ( !class_exists( 'list_php_classes' ) ) {
+if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 	/**
 	 * This class does nothing, just a way to keep the list of php classes out of the global namespace
-	 * You can retrieve the list by using the static variable list_php_classes::$PHP_classes
+	 * You can retrieve the list by using the static variable Debug_Bar_List_PHP_Classes::$PHP_classes
 	 */
-	class list_php_classes {
+	class Debug_Bar_List_PHP_Classes {
 		
 		public static $PHP_classes = array(
 
@@ -1004,5 +1004,5 @@ if ( !class_exists( 'list_php_classes' ) ) {
 			'XSLTProcessor',
 
 		);
-	} // End of class debug_bar_list_php_classes
+	} // End of class Debug_Bar_List_PHP_Classes
 } // End of if class_exists wrapper
