@@ -17,11 +17,19 @@ if ( !class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Pane
 	 * Class Debug_Bar_Pretty_Output
 	 */
 	class Debug_Bar_Pretty_Output {
-		
+
 		const CONTEXT = 'debug-bar-constants';
+
 
 		/**
 		 * A not-so-pretty method to show pretty output ;-)
+		 *
+		 * @param   mixed   $var        Variable to show
+		 * @param   string  $title      (optional) Variable title
+		 * @param   bool    $escape     (optional) Whether to character escape the textual output
+		 * @param   string  $space      (internal) Indentation spacing
+		 * @param   bool    $short      (internal) Short or normal annotation
+		 * @param   string  $context    (internal) Output context
 		 */
 		public static function output( $var, $title = '', $escape = false, $space = '', $short = false, $context = self::CONTEXT ) {
 
@@ -152,12 +160,20 @@ if ( !class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Pane
 		}
 
 
-
 		/**
+		 * Gather and print pretty output about objects
+		 *
 		 * @todo: get object properties to show the variable type on one line with the 'property'
-         * @todo: get scope of methods and properties
-         */
+		 * @todo: get scope of methods and properties
+		 *
+		 * @param   object  $obj        Object to show
+		 * @param   bool    $escape     (internal) Whether to character escape the textual output
+		 * @param   string  $space      (internal) Indentation spacing
+		 * @param   bool    $short      (internal) Short or normal annotation
+		 * @param   string  $context    (internal) Output context
+		 */
 		public static function object_info( $obj, $escape, $space, $short, $context = self::CONTEXT ) {
+
 			print $space . '<b><i>Class</i></b>: ' . get_class( $obj ) . ' (<br />';
 			if ( $short !== true ) {
 				$spacing = $space . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -170,7 +186,8 @@ if ( !class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Pane
 				if ( is_array( $val ) ) {
 					print $spacing . '<b><i>property</i></b>: ' . $var . "<b><i> (array)</i></b>\n";
 					self::output( $val, '' , $escape, $spacing, $short, $context );
-				} else {
+				}
+				else {
 					print $spacing . '<b><i>property</i></b>: ' . $var . ' = ';
 					self::output( $val, '' , $escape, $spacing, $short, $context );
 				}
@@ -185,12 +202,17 @@ if ( !class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Pane
 			print $space . ')<br /><br />';
 		}
 
+
 		/**
 		 * Helper Function specific to the Debug bar plugin
 		 * Outputs properties in a table and methods in an unordered list
+		 *
+		 * @param   object  $obj        Object for which to show the properties and methods
+		 * @param   string  $context    (internal) Output context
+		 * @param   bool    $is_sub     (internal) Toplevel or nested object
 		 */
 		public static function ooutput( $obj, $context = self::CONTEXT, $is_sub = false ) {
-	
+
 			$properties = get_object_vars( $obj );
 			$methods    = get_class_methods( $obj );
 
@@ -201,7 +223,7 @@ if ( !class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Pane
 			}
 
 			// Properties
-			if ( is_array( $properties ) && count( $properties ) > 0 ) {
+			if ( is_array( $properties ) && !empty( $properties ) ) {
 				$h = ( $is_sub === false ? 'h3' : 'h4' );
 				echo '
 		<' . $h . '>' . esc_html__( 'Object Properties:', $context ) . '</' . $h . '>';
@@ -211,7 +233,7 @@ if ( !class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Pane
 			}
 
 			// Methods
-			if ( is_array( $methods ) && count( $methods ) > 0 ) {
+			if ( is_array( $methods ) && !empty( $methods ) ) {
 				echo '
 		<h3>' . esc_html__( 'Object Methods:', $context ) . '</h3>
 		<ul class="' . $context . '">';
@@ -224,18 +246,26 @@ if ( !class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Pane
 				unset( $method );
 				echo '</ul>';
 			}
-
-			unset( $properties, $methods );
 		}
 
+
+		/**
+		 * Render the table output
+		 *
+		 * @param   array           $array  Array to be shown in the table
+		 * @param   string          $col1   Label for the first table column
+		 * @param   string          $col2   Label for the second table column
+		 * @param   string|array    $class  One or more CSS classes to add to the table
+		 * @param   string          $context
+		 */
 		public static function render_table( $array, $col1, $col2, $class = null, $context = self::CONTEXT ) {
 
 			$classes = 'debug-bar-table';
-			if ( !is_null( $class ) ) {
-				if ( is_string( $class ) ) {
+			if ( isset( $class ) ) {
+				if ( is_string( $class ) && $class !== '' ) {
 					$classes .= ' ' . $class;
 				}
-				else if ( is_array( $class ) && count( $class ) > 0 ) {
+				else if ( is_array( $class ) && !empty( $class ) ) {
 					$classes = $classes . ' ' . implode( ' ', $class );
 				}
 			}
@@ -247,6 +277,14 @@ if ( !class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Pane
 			self::render_table_end();
 		}
 
+
+		/**
+		 * Generate the table header
+		 *
+		 * @param   string          $col1   Label for the first table column
+		 * @param   string          $col2   Label for the second table column
+		 * @param   string|array    $class  One or more CSS classes to add to the table
+		 */
 		public static function render_table_start( $col1, $col2, $class = null ) {
 
 			echo '
@@ -260,15 +298,28 @@ if ( !class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Pane
 			<tbody>';
 		}
 
+
+		/**
+		 * Generate table rows
+		 * @param   array           $array  Array to be shown in the table
+		 * @param   string          $context
+		 */
 		public static function render_table_rows( $array, $context = self::CONTEXT ) {
 
 			foreach ( $array as $key => $value ) {
 				self::render_table_row( $key, $value, $context );
 			}
-			unset( $key, $value );
 		}
 
+
+		/**
+		 * Generate individual table row
+		 * @param   mixed   $key    Item key to use a row label
+		 * @param   mixed   $value  Value to show
+		 * @param   string  $context
+		 */
 		public static function render_table_row( $key, $value, $context = self::CONTEXT ) {
+
 			echo '
 			<tr>
 				<th>
@@ -288,7 +339,12 @@ if ( !class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Pane
 			</tr>';
 		}
 
+
+		/**
+		 * Generate table closing
+		 */
 		public static function render_table_end() {
+
 			echo '
 			</tbody>
 		</table>
@@ -304,9 +360,10 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 	/**
 	 * This class does nothing, just a way to keep the list of php classes out of the global namespace
 	 * You can retrieve the list by using the static variable Debug_Bar_List_PHP_Classes::$PHP_classes
+	 * List last updated: 2013-05-05
 	 */
 	class Debug_Bar_List_PHP_Classes {
-		
+
 		public static $PHP_classes = array(
 
 			/* == "Core" == */
@@ -327,7 +384,7 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 			'ErrorException',
 
 
-			/* == Affecting PHP's Behaviour == */
+			/* == Affecting PHPs Behaviour == */
 			// APC
 			'APCIterator',
 
@@ -395,7 +452,7 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 					'MongoDB',
 					'MongoCollection',
 					'MongoCursor',
-					
+
 					// Mongo Types
 					'MongoId',
 					'MongoCode',
@@ -408,17 +465,17 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 					'MongoMinKey',
 					'MongoMaxKey',
 					'MongoTimestamp',
-					
+
 					// Mongo GridFS Classes
 					'MongoGridFS',
 					'MongoGridFSFile',
 					'MongoGridFSCursor',
-					
+
 					// Mongo Miscellaneous
 					'MongoLog',
 					'MongoPool',
 					'Mongo',
-					
+
 					// Mongo Exceptions
 					'MongoException',
 					'MongoResultException',
@@ -440,7 +497,7 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 					// mysqlnd_uh - Mysqlnd user handler plugin
 					'MysqlndUhConnection',
 					'MysqlndUhPreparedStatement',
-					
+
 				// OCI8 - Oracle OCI8
 				'OCI-Collection',
 				'OCI-Lob',
@@ -449,7 +506,7 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 				'SQLiteDatabase',  // Not easy to find in PHP docs
 				'SQLiteResult',  // Not easy to find  in PHP docs
 				'SQLiteUnbuffered',  // Not easy to find  in PHP docs
-				'SQLiteException',  // Not easy to find  in PHP docs
+				'SQLiteException',	// Not easy to find  in PHP docs
 
 				// SQLite3
 				'SQLite3',
@@ -612,14 +669,14 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 
 			// Judy - Judy Arrays
 			'Judy',
-			
+
 			// Lua
 			'Lua',
 			'LuaClosure',
 
 			// SPL - Standard PHP Library (SPL)
-			
-				// SPL Datastructures
+
+				// SPL Data structures
 				'SplDoublyLinkedList',
 				'SplStack',
 				'SplQueue',
@@ -629,7 +686,7 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 				'SplPriorityQueue',
 				'SplFixedArray',
 				'SplObjectStorage',
-				
+
 				// SPL Iterators
 				'AppendIterator',
 				'ArrayIterator',
@@ -655,7 +712,7 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 				'RecursiveRegexIterator',
 				'RecursiveTreeIterator',
 				'RegexIterator',
-				
+
 				'CachingRecursiveIterator', // Not in PHP docs - deprecated
 
 
@@ -666,7 +723,7 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 				'SeekableIterator',
 				'SplObserver',
 				'SplSubject',
-				
+
 				// SPL Exceptions
 				'BadFunctionCallException',
 				'BadMethodCallException',
@@ -686,12 +743,12 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 				'SplFileInfo',
 				'SplFileObject',
 				'SplTempFileObject',
-				
+
 				// SPL Miscellaneous Classes and Interfaces
 				'ArrayObject',
 				'SplObserver',
 				'SplSubject',
-				
+
 			// SPL Types - SPL Type Handling
 			'SplType',
 			'SplInt',
@@ -699,7 +756,7 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 			'SplEnum',
 			'SplBool',
 			'SplString',
-			
+
 			// Streams
 			'php_user_filter',
 			'streamWrapper',
@@ -707,11 +764,11 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 			// Tidy
 			'tidy',
 			'tidyNode',
-			
+
 			// V8js - V8 Javascript Engine Integration
 			'V8Js',
 			'V8JsException',
-			
+
 			// Yaf
 			'Yaf_Application',
 			'Yaf_Bootstrap_Abstract',
@@ -758,10 +815,10 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 			'AMQPExchange',
 			'AMQPQueue',
 			'AMQPEnvelope',
-			
+
 			// chdb - Constant hash database
 			'chdb',
-			
+
 			// Event
 			'Event',
 			'EventBase',
@@ -775,14 +832,14 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 			'EventListener',
 			'EventSslContext',
 			'EventUtil',
-			
+
 			// Gearman
 			'GearmanClient',
 			'GearmanJob',
 			'GearmanTask',
 			'GearmanWorker',
 			'GearmanException',
-			
+
 			// HTTP
 			'HttpDeflateStream',
 			'HttpInflateStream',
@@ -799,10 +856,10 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 			'hw_api_error',
 			'hw_api_object',
 			'hw_api_reason',
-			
+
 			// Memcache
 			'Memcache',
-			
+
 			// Memcached
 			'Memcached',
 
@@ -810,24 +867,24 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 			'RRDCreator',
 			'RRDGraph',
 			'RRDUpdater',
-			
+
 			// Simple Asynchronous Messaging
 			'SAMConnection',
 			'SAMMessage',
-			
+
 			// SNMP
 			'SNMP',
 			'SNMPException',
-			
+
 			// Stomp - Stomp Client
 			'Stomp',
 			'StompFrame',
 			'StompException',
-			
+
 			// SVM - Support Vector Machine
 			'SVM',
 			'SVMModel',
-			
+
 			// Varnish
 			'VarnishAdmin',
 			'VarnishStat',
@@ -854,10 +911,10 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 			'SolrClientException',
 			'SolrIllegalArgumentException',
 			'SolrIllegalOperationException',
-			
+
 			// Sphinx - Sphinx Client
 			'SphinxClient',
-			
+
 			// Swish Indexing
 			'Swish',
 			'SwishResult',
@@ -871,7 +928,7 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 			// Sessions - Session Handling
 			'SessionHandler',
 			'SessionHandlerInterface',
-	
+
 
 			/* == Text Processing == */
 
@@ -881,7 +938,7 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 			'QuickHashIntHash',
 			'QuickHashStringIntHash',
 			'QuickHashIntStringHash',
-			
+
 			// Reflection
 			'Reflection',
 			'ReflectionClass',
@@ -902,7 +959,7 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 			'OAuth',
 			'OAuthProvider',
 			'OAuthException',
-			
+
 			// SCA
 			'SCA',
 			'SCA_LocalProxy',
@@ -915,7 +972,7 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 			'SoapHeader',
 			'SoapParam',
 			'SoapVar',
-			
+
 
 			/* == Windows Only Extensions == */
 
@@ -968,7 +1025,7 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 
 			// libxml
 			'libXMLError',
-			
+
 			// Service Data Objects
 			'SDO_DAS_ChangeSummary',
 			'SDO_DAS_DataFactory',
@@ -982,10 +1039,10 @@ if ( !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
 			'SDO_Model_ReflectionDataObject',
 			'SDO_Model_Type',
 			'SDO_Sequence',
-			
+
 			// SDO Relational Data Access Service
 			'SDO_DAS_Relational',
-			
+
 			// SDO XML Data Access Service
 			'SDO_DAS_XML',
 			'SDO_DAS_XML_Document',
