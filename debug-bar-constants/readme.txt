@@ -3,8 +3,8 @@ Contributors: jrf
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=995SSNDTCVBJG
 Tags: debugbar, debug-bar, Debug Bar, Constants, Debug Bar Constants
 Requires at least: 3.1
-Tested up to: 3.5.1
-Stable tag: 1.2.1
+Tested up to: 3.6.1
+Stable tag: 1.2.1.1
 Depends: debug-bar
 License: GPLv2
 
@@ -16,7 +16,7 @@ Debug Bar Constants adds three new panels to the Debug Bar that display the defi
 
 *	WP Constants
 *	WP Class Constants
-*	PHP Contants
+*	PHP Constants
 
 = Important =
 
@@ -41,7 +41,7 @@ This plugin is only meant to be used for development purposes.
 [From PHP.net:](http://php.net/language.constants)
 > A constant is an identifier (name) for a simple value. As the name suggests, that value cannot change during the execution of the script. A constant is case-sensitive by default. By convention, constant identifiers are always uppercase.
 
-> Like superglobals, the scope of a constant is global. You can access constants anywhere in your script without regard to scope. For more information on scope, read the manual section on [variable scope](http://php.net/language.variables.scope).
+> Like super globals, the scope of a constant is global. You can access constants anywhere in your script without regard to scope. For more information on scope, read the manual section on [variable scope](http://php.net/language.variables.scope).
 
 
 = I don't see my constants in the WP Constants list. What gives ? =
@@ -67,7 +67,7 @@ It's good coding practice to avoid littering the global namespace with your own 
 
 = Why is it useful to have insight into the defined class constants ? =
 If your plugin/theme interacts with other plugins and/or themes, you may want to use their constants.
-Example: A plugin might have their version number saved as a class constant (good practice!). On your part, your plugin may have been set up to only work if the related plugin has been upgraded to version x. In that case, you may want to check other plugin's version number before your plugin interacts with it.
+Example: A plugin might have their version number saved as a class constant (good practice!). On your part, your plugin may have been set up to only work if the related plugin has been upgraded to version x. In that case, you may want to check other plugins version number before your plugin interacts with it.
 
 Don't forget to always check whether the class constant exists before you use it! It may not be available on all pages and surely not on all WP installs.
 `
@@ -98,6 +98,10 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 
 == Changelog ==
+
+= 1.2.1.1 (2013-##-##) =
+* Compliance with the [WordPress coding standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards)
+* Some minor code cleanup inspired by some suggestions by [Maik Penz](https://github.com/goatherd)
 
 = 1.2.1 (2013-05-27) =
 * Minor fix to comply with strict standards. Thanks [Azizur Rahman for reporting](http://wordpress.org/support/topic/declaration-of-debug_bar_constantsinit-should-be-compatible-with-debug_bar_p)
