@@ -37,7 +37,7 @@ if ( !function_exists( 'add_action' ) ) {
 }
 
 /**
- * Show notice & de-activate itself if debug-bar plugin not active
+ * Show admin notice & de-activate itself if debug-bar plugin not active
  */
 add_action( 'admin_init', 'dbc_has_parent_plugin' );
 
