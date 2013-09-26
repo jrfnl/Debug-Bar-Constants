@@ -47,33 +47,35 @@ p.dbcwpc-info {
 	clear: both;
 }
 
-.debug-bar-table {
+.debug-bar-constants {
     width: 100%;
     border-collapse: collapse;
 /*    cell-padding: 1em;*/
     clear: both;
+    line-height: 1.5;
+	font-size: 12px;
 }
 
-.debug-bar-table td {
+.debug-bar-constants td {
     padding: 2px 5px;
     width: 63%;
 }
 
-.debug-bar-table th {
+.debug-bar-constants th {
     font-weight: bold;
     width: 35%;
     padding-left: 5px;
     padding-right: 2em;
     text-align: left;
 }
-.debug-bar-table thead th {
+.debug-bar-constants thead th {
     padding: 0.7em 5px;
     border-bottom: 1px solid #ccc;
     width: auto;
     text-align: center;
 }
 
-.debug-bar-table tr:nth-child(2n+1) {
+.debug-bar-constants tr:nth-child(2n+1) {
     background-color: #E8E8E8;
 }
 
