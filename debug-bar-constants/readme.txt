@@ -99,7 +99,7 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 == Changelog ==
 
-= 1.2.1.1 (2013-##-##) =
+= 1.2.1.1 (2013-10-01) =
 * Compliance with the [WordPress coding standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards)
 * Some minor code cleanup inspired by some suggestions by [Maik Penz](https://github.com/goatherd)
 
