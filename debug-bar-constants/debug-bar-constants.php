@@ -47,6 +47,10 @@ if ( !function_exists( 'dbc_has_parent_plugin' ) && !function_exists( 'dbc_missi
 	 */
 	function dbc_has_parent_plugin() {
 		if ( is_admin() && ( !class_exists( 'Debug_Bar' ) && current_user_can( 'activate_plugins' ) ) ) {
+			/**
+			 * @todo debug - will throw notice of 'function not found' as this plugin will already
+			 * be deactivated when the admin notice is called
+			 */
 			add_action( 'admin_notices', 'dbc_missing_parent_plugin' );
 
 			deactivate_plugins( plugin_basename( __FILE__ ) );
