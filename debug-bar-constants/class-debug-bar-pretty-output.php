@@ -94,9 +94,9 @@ if ( !class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Pane
 					print '<b><i>b</i></b> ';
 				}
 				print '<i>'
-					. ( ( $var === false ) ? '<span style="color: #FF0000; background-color: transparent;">false</span>' : ( ( $var === true ) ? '<span style="color: #336600; background-color: transparent;">true</span>' : __( 'undetermined', $context ) ) );
+					. ( ( $var === false ) ? '<span style="color: #FF0000; background-color: transparent;">false</span>' : ( ( $var === true ) ? '<span style="color: #336600; background-color: transparent;">true</span>' : __( 'undetermined', $context ) ) ) . ' </i>';
 				if ( $short !== true ) {
-					print ' </i>)';
+					print ')';
 				}
 				print '</span><br />';
 			}
