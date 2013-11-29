@@ -209,7 +209,7 @@ if ( !class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Pane
 		 *
 		 * @param   object  $obj        Object for which to show the properties and methods
 		 * @param   string  $context    (internal) Output context
-		 * @param   bool    $is_sub     (internal) Toplevel or nested object
+		 * @param   bool    $is_sub     (internal) Top level or nested object
 		 */
 		public static function ooutput( $obj, $context = self::CONTEXT, $is_sub = false ) {
 
