@@ -102,6 +102,7 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 = 1.2.1.2 DEV =
 * Fixed minor HTML validation issue
 * Fixed auto-disable message display in case the Debug Bar Plugin is not activated
+* Changed style and script filenames to comply with current guidelines (.min)
 
 = 1.2.1.1 (2013-10-01) =
 * Compliance with the [WordPress coding standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards)
@@ -139,7 +140,7 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 == Installation ==
 
 1. Install Debug Bar if not already installed (http://wordpress.org/extend/plugins/debug-bar/)
-1. Extract the .zip file for this plugin and upload its contents to the `/wp-content/plugins/` directory. Alternately, you can install directly from the Plugin directory within your WordPress Install.
+1. Extract the .zip file for this plugin and upload its contents to the `/wp-content/plugins/` directory. Alternatively, you can install directly from the Plugin directory within your WordPress Install.
 1. Activate the plugin through the "Plugins" menu in WordPress.
 
 Don't use this plugin on a live site. This plugin is **only** for development purpose.

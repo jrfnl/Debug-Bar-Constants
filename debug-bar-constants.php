@@ -47,7 +47,7 @@ if ( !function_exists( 'dbc_has_parent_plugin' ) ) {
 	 */
 	function dbc_has_parent_plugin() {
 		if ( is_admin() && ( !class_exists( 'Debug_Bar' ) && current_user_can( 'activate_plugins' ) ) ) {
-			add_action( 'admin_notices', create_function( null, 'echo \'<div class="error"><p>\' . sprintf( __( \'Debug Bar must be activated to use the Debug Bar Constants Plugin. <a href="%s">Visit your plugins page to activate</a>.\', \'debug-bar-constants\' ), admin_url( \'plugins.php#debug-bar\' ) ) . \'</p></div>\';' ) );
+			add_action( 'admin_notices', create_function( null, 'echo \'<div class="error"><p>\' . sprintf( __( \'Activation failed: Debug Bar must be activated to use the <strong>Debug Bar Constants</strong> Plugin. <a href="%s">Visit your plugins page to activate</a>.\', \'debug-bar-constants\' ), admin_url( \'plugins.php#debug-bar\' ) ) . \'</p></div>\';' ) );
 
 			deactivate_plugins( plugin_basename( __FILE__ ) );
 			if ( isset( $_GET['activate'] ) ) {
