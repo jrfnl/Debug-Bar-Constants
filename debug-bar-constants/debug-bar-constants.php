@@ -3,7 +3,7 @@
 Plugin Name: Debug Bar Constants
 Plugin URI: http://wordpress.org/extend/plugins/debug-bar-constants/
 Description: Debug Bar Constants adds new panels to Debug Bar that display all the defined constants for the current request. Requires "Debug Bar" plugin.
-Version: 1.2.1.1
+Version: 1.2.1.2
 Author: Juliette Reinders Folmer
 Author URI: http://www.adviesenzo.nl/
 Text Domain: debug-bar-constants
@@ -41,32 +41,19 @@ if ( !function_exists( 'add_action' ) ) {
  */
 add_action( 'admin_init', 'dbc_has_parent_plugin' );
 
-if ( !function_exists( 'dbc_has_parent_plugin' ) && !function_exists( 'dbc_missing_parent_plugin' ) ) {
+if ( !function_exists( 'dbc_has_parent_plugin' ) ) {
 	/**
 	 * Check for parent plugin
 	 */
 	function dbc_has_parent_plugin() {
 		if ( is_admin() && ( !class_exists( 'Debug_Bar' ) && current_user_can( 'activate_plugins' ) ) ) {
-			/**
-			 * @todo debug - will throw notice of 'function not found' as this plugin will already
-			 * be deactivated when the admin notice is called
-			 */
-			add_action( 'admin_notices', 'dbc_missing_parent_plugin' );
+			add_action( 'admin_notices', create_function( null, 'echo \'<div class="error"><p>\' . sprintf( __( \'Debug Bar must be activated to use the Debug Bar Constants Plugin. <a href="%s">Visit your plugins page to activate</a>.\', \'debug-bar-constants\' ), admin_url( \'plugins.php#debug-bar\' ) ) . \'</p></div>\';' ) );
 
 			deactivate_plugins( plugin_basename( __FILE__ ) );
 			if ( isset( $_GET['activate'] ) ) {
 				unset( $_GET['activate'] );
 			}
 		}
-	}
-
-	/**
-	 * Show admin notice
-	 */
-	function dbc_missing_parent_plugin() {
-		$activate = admin_url( 'plugins.php#debug-bar' );
-		$string   = '<div class="error"><p>' . sprintf( __( 'Debug Bar must be activated to use the Debug Bar Constants Plugin. <a href="%s">Visit your plugins page to activate</a>.', 'debug-bar-constants' ), $activate ) . '</p></div>';
-		echo $string;
 	}
 }
 
