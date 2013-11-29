@@ -28,8 +28,8 @@ if ( !class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' )
 	// Base class
 	class Debug_Bar_Constants extends Debug_Bar_Panel {
 
-		const DBC_STYLES_VERSION = '1.2.1';
-		const DBC_SCRIPT_VERSION = '1.2dbc-a';
+		const DBC_STYLES_VERSION = '1.2.1.2';
+		const DBC_SCRIPT_VERSION = '1.2dbc-a-';
 
 		const DBC_NAME = 'debug-bar-constants';
 

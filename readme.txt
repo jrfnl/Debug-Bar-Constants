@@ -3,7 +3,7 @@ Contributors: jrf
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=995SSNDTCVBJG
 Tags: debugbar, debug-bar, Debug Bar, Constants, Debug Bar Constants
 Requires at least: 3.1
-Tested up to: 3.7.1
+Tested up to: 3.8-beta1
 Stable tag: 1.2.1.2
 Depends: debug-bar
 License: GPLv2
@@ -99,10 +99,11 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 == Changelog ==
 
-= 1.2.1.2 DEV =
+= 1.2.1.2 (2013-10-30) =
 * Fixed minor HTML validation issue
 * Fixed auto-disable message display in case the Debug Bar Plugin is not activated
 * Changed style and script filenames to comply with current guidelines (.min)
+* Tested with WP 3.8-beta1
 
 = 1.2.1.1 (2013-10-01) =
 * Compliance with the [WordPress coding standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards)
@@ -129,6 +130,9 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 
 == Upgrade Notice ==
+
+= 1.2.1.2 =
+* Small fixes, nothing exciting.
 
 = 1.2 =
 * New! panel for Class Constants. This release also fixes a number of bugs.
