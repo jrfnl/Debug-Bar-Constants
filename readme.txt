@@ -102,7 +102,7 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 = 1.2.1.2 (2013-10-30) =
 * Fixed minor HTML validation issue
 * Fixed auto-disable message display in case the Debug Bar Plugin is not activated
-* Changed style and script filenames to comply with current guidelines (.min)
+* Changed style and script file names to comply with current guidelines (.min)
 * Tested with WP 3.8-beta1
 
 = 1.2.1.1 (2013-10-01) =
