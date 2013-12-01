@@ -2,14 +2,14 @@
 /**
  * Debug Bar Constants - Debug Bar Panels
  *
- * @package WordPress\Plugins\Debug Bar Constants
- * @since 1.0
- * @version 1.2.1.2
+ * @package		WordPress\Plugins\Debug Bar Constants
+ * @author		Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>
+ * @link		https://github.com/jrfnl/Debug-Bar-Constants
+ * @since		1.0
+ * @version		1.2.1.2
  *
- * @author Juliette Reinders Folmer
- *
- * @copyright 2013 Juliette Reinders Folmer
- * @license http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2
+ * @copyright	2013 Juliette Reinders Folmer
+ * @license		http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
 
 // Avoid direct calls to this file

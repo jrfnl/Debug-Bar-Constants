@@ -2,14 +2,15 @@
 /**
  * Debug Bar Constants - Debug Bar Pretty Output
  *
- * @package WordPress\Plugins\Debug Bar Constants
- * @since 1.2
- * @version 1.2.1.2
+ * @package		WordPress\Plugins\Debug Bar Constants
+ * @subpackage	Pretty Output
+ * @author		Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>
+ * @link		https://github.com/jrfnl/Debug-Bar-Constants
+ * @since		1.2
+ * @version		1.2.1.2
  *
- * @author Juliette Reinders Folmer
- *
- * @copyright 2013 Juliette Reinders Folmer
- * @license http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2
+ * @copyright	2013 Juliette Reinders Folmer
+ * @license		http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
 
 if ( !class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Panel' ) ) {
@@ -319,9 +320,7 @@ if ( !class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Pane
 		public static function render_table_row( $key, $value, $context = self::CONTEXT ) {
 			echo '
 			<tr>
-				<th>
-					' . esc_html( $key ) . '
-				</th>
+				<th>' . esc_html( $key ) . '</th>
 				<td>';
 
 			if ( is_object( $value ) ) {
@@ -331,8 +330,7 @@ if ( !class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Pane
 				self::output( $value, '', true, '', false, $context );
 			}
 
-			echo '
-				</td>
+			echo '</td>
 			</tr>';
 		}
 
