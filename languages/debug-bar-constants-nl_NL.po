@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Debug Bar Constants - a WordPress Plugin\n"
-"POT-Creation-Date: 2013-09-16 00:10+0100\n"
-"PO-Revision-Date: 2013-09-16 00:11+0100\n"
+"POT-Creation-Date: 2013-12-02 07:12+0100\n"
+"PO-Revision-Date: 2013-12-02 07:14+0100\n"
 "Last-Translator: EJ Reinders Folmer <poedit_nospam@adviesenzo.nl>\n"
 "Language-Team: Juliette Reinders Folmer\n"
 "Language: Dutch\n"
@@ -20,28 +20,28 @@ msgid "Name"
 msgstr "Naam"
 
 #: ../class-debug-bar-constants.php:81
-#: ../class-debug-bar-pretty-output.php:232
-#: ../class-debug-bar-pretty-output.php:273
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:270
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:319
 msgid "Value"
 msgstr "Waarde"
 
-#: ../class-debug-bar-constants.php:97
+#: ../class-debug-bar-constants.php:104
 msgid "WP Constants"
 msgstr "WP Constants"
 
-#: ../class-debug-bar-constants.php:117
+#: ../class-debug-bar-constants.php:124
 msgid "Constants within WP:"
 msgstr "Constants binnen WP:"
 
-#: ../class-debug-bar-constants.php:122
+#: ../class-debug-bar-constants.php:129
 msgid "No constants found... this is really weird..."
 msgstr "Geen constants gevonden... dit is vreemd..."
 
-#: ../class-debug-bar-constants.php:136
+#: ../class-debug-bar-constants.php:143
 msgid "WP Class Constants"
 msgstr "WP Class Constants"
 
-#: ../class-debug-bar-constants.php:176
+#: ../class-debug-bar-constants.php:183
 msgid ""
 "<strong>Please note</strong>: these may be both native WordPress classes as "
 "well as classes which may be declared by plugins or Themes.<br />You can use "
@@ -52,75 +52,92 @@ msgstr ""
 ">Je kan deze constants in je eigen code gebruiken door middel van "
 "<code>class_name::constant_name</code>."
 
-#: ../class-debug-bar-constants.php:176
+#: ../class-debug-bar-constants.php:183
 #, php-format
 msgid "See the <a %s>FAQ</a> for more information."
 msgstr "Lees de <a %s>FAQ</a> voor meer informatie."
 
-#: ../class-debug-bar-constants.php:180 ../class-debug-bar-constants.php:225
+#: ../class-debug-bar-constants.php:187 ../class-debug-bar-constants.php:232
 msgid "Constants:"
 msgstr "Constants:"
 
-#: ../class-debug-bar-constants.php:188
+#: ../class-debug-bar-constants.php:195
 msgid "No classes nor class constants found... this is kinda strange..."
 msgstr "Geen classes of class constants gevonden... dit is vreemd..."
 
-#: ../class-debug-bar-constants.php:202
+#: ../class-debug-bar-constants.php:209
 msgid "PHP Constants"
 msgstr "PHP Constants"
 
-#: ../class-debug-bar-constants.php:225
+#: ../class-debug-bar-constants.php:232
 #, php-format
 msgid "Visit the PHP manual page about the %s constants."
 msgstr "Bezoek de PHP handleiding pagina over de %s constants."
 
-#: ../class-debug-bar-constants.php:233
+#: ../class-debug-bar-constants.php:240
 msgid "No PHP constants found... this is really weird..."
 msgstr "Geen PHP constants gevonden... dit is vreemd..."
 
-#: ../class-debug-bar-pretty-output.php:97
-msgid "undetermined"
-msgstr "niet bepaald"
-
-#: ../class-debug-bar-pretty-output.php:155
-msgid "I haven't got a clue what this is: "
-msgstr "Geen idee wat dit is:"
-
-#: ../class-debug-bar-pretty-output.php:221
-msgid "Properties:"
-msgstr "Eigenschappen:"
-
-#: ../class-debug-bar-pretty-output.php:222
-msgid "Methods:"
-msgstr "Methoden:"
-
-#: ../class-debug-bar-pretty-output.php:229
-msgid "Object Properties:"
-msgstr "Object eigenschappen:"
-
-#: ../class-debug-bar-pretty-output.php:232
-msgid "Property"
-msgstr "Eigenschap"
-
-#: ../class-debug-bar-pretty-output.php:238
-msgid "Object Methods:"
-msgstr "Object Methoden:"
-
-#: ../class-debug-bar-pretty-output.php:272
-msgid "Key"
-msgstr "Sleutel"
-
-#: ../debug-bar-constants.php:64
-#, php-format
-msgid ""
-"Debug Bar must be activated to use the Debug Bar Constants Plugin. <a href="
-"\"%s\">Visit your plugins page to activate</a>."
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:81
+msgid "unknown"
 msgstr ""
-"Debug Bar moet geactiveerd zijn om de Debug Bar Constants Plugin te kunnen "
-"gebruiken. <a href=\"%s\">Ga naar de plugins pagina om deze te activeren</a>."
 
-#~ msgid "Unknown"
-#~ msgstr "Onbekend"
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:115
+msgid "undetermined"
+msgstr ""
+
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:171
+msgid "I haven't got a clue what this is: "
+msgstr ""
+
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:254
+msgid "Properties:"
+msgstr ""
+
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:258
+msgid "Methods:"
+msgstr ""
+
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:266
+msgid "Object Properties:"
+msgstr ""
+
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:270
+msgid "Property"
+msgstr ""
+
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:277
+msgid "Object Methods:"
+msgstr ""
+
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:317
+msgid "Key"
+msgstr ""
+
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:435
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:454
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:471
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:489
+msgid "or even better: upgrade your Debug Bar plugins to their current version"
+msgstr ""
+
+#~ msgid ""
+#~ "Debug Bar must be activated to use the Debug Bar Constants Plugin. <a "
+#~ "href=\"%s\">Visit your plugins page to activate</a>."
+#~ msgstr ""
+#~ "Debug Bar moet geactiveerd zijn om de Debug Bar Constants Plugin te "
+#~ "kunnen gebruiken. <a href=\"%s\">Ga naar de plugins pagina om deze te "
+#~ "activeren</a>."
 
 #~ msgid "Nothing to display"
 #~ msgstr "Niets om weer te geven"

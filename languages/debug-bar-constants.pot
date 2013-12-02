@@ -1,16 +1,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Debug Bar Constants - a WordPress Plugin\n"
-"POT-Creation-Date: 2013-09-16 00:10+0100\n"
-"PO-Revision-Date: 2013-09-16 00:10+0100\n"
+"POT-Creation-Date: 2013-12-02 07:12+0100\n"
+"PO-Revision-Date: 2013-12-02 07:12+0100\n"
 "Last-Translator: EJ Reinders Folmer <poedit_nospam@adviesenzo.nl>\n"
 "Language-Team: Juliette Reinders Folmer <wp_dbc_plugin_nospam@adviesenzo."
 "nl>\n"
+"Language: English (en_US)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.7\n"
-"X-Poedit-KeywordsList: __;esc_html__;esc_html_e;esc_attr__;esc_attr_e;_e\n"
+"X-Poedit-KeywordsList: __;esc_html__;esc_html_e;esc_attr__;esc_attr_e;_e;_n;"
+"_x;_ex;_nx;esc_html_x;esc_attr_x;_n_noop;_nx_noop\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
@@ -20,95 +22,109 @@ msgid "Name"
 msgstr ""
 
 #: ../class-debug-bar-constants.php:81
-#: ../class-debug-bar-pretty-output.php:232
-#: ../class-debug-bar-pretty-output.php:273
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:270
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:319
 msgid "Value"
 msgstr ""
 
-#: ../class-debug-bar-constants.php:97
+#: ../class-debug-bar-constants.php:104
 msgid "WP Constants"
 msgstr ""
 
-#: ../class-debug-bar-constants.php:117
+#: ../class-debug-bar-constants.php:124
 msgid "Constants within WP:"
 msgstr ""
 
-#: ../class-debug-bar-constants.php:122
+#: ../class-debug-bar-constants.php:129
 msgid "No constants found... this is really weird..."
 msgstr ""
 
-#: ../class-debug-bar-constants.php:136
+#: ../class-debug-bar-constants.php:143
 msgid "WP Class Constants"
 msgstr ""
 
-#: ../class-debug-bar-constants.php:176
+#: ../class-debug-bar-constants.php:183
 msgid ""
 "<strong>Please note</strong>: these may be both native WordPress classes as "
 "well as classes which may be declared by plugins or Themes.<br />You can use "
 "these constants in your code using <code>class_name::constant_name</code>."
 msgstr ""
 
-#: ../class-debug-bar-constants.php:176
+#: ../class-debug-bar-constants.php:183
 #, php-format
 msgid "See the <a %s>FAQ</a> for more information."
 msgstr ""
 
-#: ../class-debug-bar-constants.php:180 ../class-debug-bar-constants.php:225
+#: ../class-debug-bar-constants.php:187 ../class-debug-bar-constants.php:232
 msgid "Constants:"
 msgstr ""
 
-#: ../class-debug-bar-constants.php:188
+#: ../class-debug-bar-constants.php:195
 msgid "No classes nor class constants found... this is kinda strange..."
 msgstr ""
 
-#: ../class-debug-bar-constants.php:202
+#: ../class-debug-bar-constants.php:209
 msgid "PHP Constants"
 msgstr ""
 
-#: ../class-debug-bar-constants.php:225
+#: ../class-debug-bar-constants.php:232
 #, php-format
 msgid "Visit the PHP manual page about the %s constants."
 msgstr ""
 
-#: ../class-debug-bar-constants.php:233
+#: ../class-debug-bar-constants.php:240
 msgid "No PHP constants found... this is really weird..."
 msgstr ""
 
-#: ../class-debug-bar-pretty-output.php:97
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:81
+msgid "unknown"
+msgstr ""
+
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:115
 msgid "undetermined"
 msgstr ""
 
-#: ../class-debug-bar-pretty-output.php:155
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:171
 msgid "I haven't got a clue what this is: "
 msgstr ""
 
-#: ../class-debug-bar-pretty-output.php:221
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:254
 msgid "Properties:"
 msgstr ""
 
-#: ../class-debug-bar-pretty-output.php:222
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:258
 msgid "Methods:"
 msgstr ""
 
-#: ../class-debug-bar-pretty-output.php:229
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:266
 msgid "Object Properties:"
 msgstr ""
 
-#: ../class-debug-bar-pretty-output.php:232
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:270
 msgid "Property"
 msgstr ""
 
-#: ../class-debug-bar-pretty-output.php:238
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:277
 msgid "Object Methods:"
 msgstr ""
 
-#: ../class-debug-bar-pretty-output.php:272
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:317
 msgid "Key"
 msgstr ""
 
-#: ../debug-bar-constants.php:64
-#, php-format
-msgid ""
-"Debug Bar must be activated to use the Debug Bar Constants Plugin. <a href="
-"\"%s\">Visit your plugins page to activate</a>."
+#. TRANSLATORS: no need to translate, unless you are translating the Debug Bar Pretty Output Helper
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:435
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:454
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:471
+#: ../inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php:489
+msgid "or even better: upgrade your Debug Bar plugins to their current version"
 msgstr ""

@@ -47,35 +47,41 @@ p.dbcwpc-info {
 	clear: both;
 }
 
-.debug-bar-constants {
+table.debug-bar-constants {
     width: 100%;
     border-collapse: collapse;
-/*    cell-padding: 1em;*/
+    cell-padding: 1em;
     clear: both;
     line-height: 1.5;
 	font-size: 12px;
 }
-
-.debug-bar-constants td {
-    padding: 2px 5px;
-    width: 63%;
-}
-
-.debug-bar-constants th {
-    font-weight: bold;
-    width: 35%;
-    padding-left: 5px;
-    padding-right: 2em;
-    text-align: left;
-}
-.debug-bar-constants thead th {
+table.debug-bar-constants thead th,
+table.debug-bar-constants tfoot th {
     padding: 0.7em 5px;
-    border-bottom: 1px solid #ccc;
     width: auto;
     text-align: center;
 }
+table.debug-bar-constants thead th {
+    border-bottom: 1px solid #ccc;
+}
+table.debug-bar-constants tfoot th {
+    border-top: 1px solid #ccc;
+}
 
-.debug-bar-constants tr:nth-child(2n+1) {
+
+table.debug-bar-constants th {
+    width: 35%;
+    font-weight: bold;
+	padding: 2px 2em 2px 5px;
+    vertical-align: top;
+    text-align: left;
+}
+table.debug-bar-constants td {
+    padding: 2px 5px;
+    width: 63%;
+    vertical-align: top;
+}
+table.debug-bar-constants tr:nth-child(2n+1) {
     background-color: #E8E8E8;
 }
 

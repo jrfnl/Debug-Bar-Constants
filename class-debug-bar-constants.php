@@ -66,8 +66,6 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' 
 		 */
 		public function dbc_render_table( $array, $col1 = null, $col2 = null, $class = null ) {
 	
-			$context = self::DBC_NAME;
-
 			$classes = self::DBC_NAME;
 			if ( isset( $class ) ) {
 				if ( is_string( $class ) && $class !== '' ) {
@@ -82,12 +80,12 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' 
 
 			uksort( $array, 'strnatcasecmp' );
 
-			if( defined( 'Debug_Bar_Pretty_Output::VERSION' ) ) {
+			if ( defined( 'Debug_Bar_Pretty_Output::VERSION' ) ) {
 				echo Debug_Bar_Pretty_Output::get_table( $array, $col1, $col2, $classes );
 			}
 			else {
 				// An old version of the pretty output class was loaded
-				Debug_Bar_Pretty_Output::render_table( $array, $col1, $col2, $classes, $context );
+				Debug_Bar_Pretty_Output::render_table( $array, $col1, $col2, $classes );
 			}
 		}
 	} // End of class Debug_Bar_Constants
