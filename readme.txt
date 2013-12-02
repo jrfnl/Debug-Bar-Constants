@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: debugbar, debug-bar, Debug Bar, Constants, Debug Bar Constants
 Requires at least: 3.1
 Tested up to: 3.8-beta1
-Stable tag: 1.2.1.2
+Stable tag: 1.3
 Depends: debug-bar
 License: GPLv2
 
@@ -99,6 +99,9 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 == Changelog ==
 
+= 1.3 (2013-12-02 ) =
+* Moved pretty print class to separate repository as several plugins are using it now.
+
 = 1.2.1.2 (2013-11-30) =
 * Fixed minor HTML validation issue
 * Fixed auto-disable message display in case the Debug Bar Plugin is not activated
@@ -130,6 +133,9 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 
 == Upgrade Notice ==
+
+= 1.3 =
+* Upgrade highly recommended - multi-plugin compatibility issue
 
 = 1.2.1.2 =
 * Small fixes, nothing exciting.

@@ -6,14 +6,14 @@
  * @author		Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>
  * @link		https://github.com/jrfnl/Debug-Bar-Constants
  * @since		1.0
- * @version		1.2.1.2
+ * @version		1.3
  *
  * @copyright	2013 Juliette Reinders Folmer
  * @license		http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
 
 // Avoid direct calls to this file
-if ( !function_exists( 'add_action' ) ) {
+if ( ! function_exists( 'add_action' ) ) {
 	header( 'Status: 403 Forbidden' );
 	header( 'HTTP/1.1 403 Forbidden' );
 	exit();
@@ -24,18 +24,18 @@ if ( !function_exists( 'add_action' ) ) {
 /**
  * The classes in this file extend the functionality provided by the parent plugin "Debug Bar".
  */
-if ( !class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' ) ) {
+if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' ) ) {
 	// Base class
 	class Debug_Bar_Constants extends Debug_Bar_Panel {
 
-		const DBC_STYLES_VERSION = '1.2.1.2';
+		const DBC_STYLES_VERSION = '1.3';
 		const DBC_SCRIPT_VERSION = '1.2dbc-a-';
 
 		const DBC_NAME = 'debug-bar-constants';
 
 		public function init() {
-			if ( ( !class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Panel' ) ) || !class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
-				require_once 'class-debug-bar-pretty-output.php';
+			if ( ( ! class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Panel' ) ) || ! class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
+				require_once plugin_dir_path( __FILE__ ) . 'inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php';
 			}
 
 			load_plugin_textdomain( self::DBC_NAME, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
@@ -73,7 +73,7 @@ if ( !class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' )
 				if ( is_string( $class ) && $class !== '' ) {
 					$classes .= ' ' . $class;
 				}
-				else if ( is_array( $class ) && !empty( $class ) ) {
+				else if ( is_array( $class ) && $class !== array() ) {
 					$classes = $classes . ' ' . implode( ' ', $class );
 				}
 			}
@@ -81,14 +81,21 @@ if ( !class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' )
 			$col2 = ( isset( $col2 ) ? $col2 : __( 'Value', self::DBC_NAME ) );
 
 			uksort( $array, 'strnatcasecmp' );
-			Debug_Bar_Pretty_Output::render_table( $array, $col1, $col2, $classes, $context );
+
+			if( defined( 'Debug_Bar_Pretty_Output::VERSION' ) ) {
+				echo Debug_Bar_Pretty_Output::get_table( $array, $col1, $col2, $classes );
+			}
+			else {
+				// An old version of the pretty output class was loaded
+				Debug_Bar_Pretty_Output::render_table( $array, $col1, $col2, $classes, $context );
+			}
 		}
 	} // End of class Debug_Bar_Constants
 } // End of if class_exists wrapper
 
 
 
-if ( !class_exists( 'Debug_Bar_WP_Constants' ) && class_exists( 'Debug_Bar_Constants' ) ) {
+if ( ! class_exists( 'Debug_Bar_WP_Constants' ) && class_exists( 'Debug_Bar_Constants' ) ) {
 	// Debug Bar WP Constants
 	class Debug_Bar_WP_Constants extends Debug_Bar_Constants {
 
@@ -112,7 +119,7 @@ if ( !class_exists( 'Debug_Bar_WP_Constants' ) && class_exists( 'Debug_Bar_Const
 		 */
 		public function render() {
 			$constants = get_defined_constants( true );
-			if ( isset( $constants['user'] ) && ( is_array( $constants['user'] ) && !empty( $constants['user'] ) ) ) {
+			if ( isset( $constants['user'] ) && ( is_array( $constants['user'] ) && $constants['user'] !== array() ) ) {
 				echo '
 		<h2><span>' . esc_html__( 'Constants within WP:', parent::DBC_NAME ) . '</span>' . count( $constants['user'] ) . '</h2>';
 				$this->dbc_render_table( $constants['user'] );
@@ -127,7 +134,7 @@ if ( !class_exists( 'Debug_Bar_WP_Constants' ) && class_exists( 'Debug_Bar_Const
 
 
 
-if ( !class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Bar_Constants' ) ) {
+if ( ! class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Bar_Constants' ) ) {
 	// Debug Bar WP Class Constants
 	class Debug_Bar_WP_Class_Constants extends Debug_Bar_Constants {
 
@@ -148,13 +155,13 @@ if ( !class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Bar
 
 			$constants = array();
 
-			if ( is_array( $classes ) && !empty( $classes ) ) {
+			if ( is_array( $classes ) && $classes !== array() ) {
 				// Get the constants info first
 				foreach ( $classes as $class ) {
 					$reflector = new ReflectionClass( $class );
 					$class_constants = $reflector->getConstants();
 
-					if ( is_array( $class_constants ) && !empty( $class_constants ) ) {
+					if ( is_array( $class_constants ) && $class_constants !== array() ) {
 						$constants[$class] = $class_constants;
 					}
 					unset( $class_constants, $reflector );
@@ -162,7 +169,7 @@ if ( !class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Bar
 				unset( $class );
 
 				// Generate the output
-				if ( is_array( $constants ) && !empty( $constants ) ) {
+				if ( is_array( $constants ) && $constants !== array() ) {
 					uksort( $constants, 'strnatcasecmp' );
 
 					foreach ( $constants as $class => $set ) {
@@ -193,7 +200,7 @@ if ( !class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Bar
 
 
 
-if ( !class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Constants' ) ) {
+if ( ! class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Constants' ) ) {
 	// Debug Bar PHP Constants
 	class Debug_Bar_PHP_Constants extends Debug_Bar_Constants {
 
@@ -210,7 +217,7 @@ if ( !class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Cons
 			$constants = get_defined_constants( true );
 			unset( $constants['user'] );
 			
-			if ( is_array( $constants ) && !empty( $constants ) ) {
+			if ( is_array( $constants ) && $constants !== array() ) {
 				uksort( $constants, 'strnatcasecmp' );
 
 				foreach ( $constants as $category => $set ) {
@@ -220,7 +227,7 @@ if ( !class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Cons
 				unset( $category, $set );
 
 				foreach ( $constants as $category => $set ) {
-					if ( is_array( $set ) && !empty( $set ) ) {
+					if ( is_array( $set ) && $set !== array() ) {
 						echo '
 		<h3 id="dbcphp-' . esc_attr( $category ) . '"><em><a href="http://php.net/' . $category . '.constants" target="_blank" title="' . esc_attr( sprintf( __( 'Visit the PHP manual page about the %s constants.', parent::DBC_NAME ), $category ) ) . '">' . esc_html( ucfirst( $category ) ) . '</a></em> ' . esc_html__( 'Constants:', parent::DBC_NAME ) . '</h3>';
 						$this->dbc_render_table( $set );
