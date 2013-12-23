@@ -3,7 +3,7 @@ Contributors: jrf
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=995SSNDTCVBJG
 Tags: debugbar, debug-bar, Debug Bar, Constants, Debug Bar Constants
 Requires at least: 3.1
-Tested up to: 3.8-beta1
+Tested up to: 3.8
 Stable tag: 1.3
 Depends: debug-bar
 License: GPLv2
@@ -99,7 +99,7 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 == Changelog ==
 
-= 1.3 (2013-12-02 ) =
+= 1.3 (2013-12-02) =
 * Moved pretty print class to separate repository as several plugins are using it now.
 
 = 1.2.1.2 (2013-11-30) =
@@ -153,7 +153,7 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 1. Extract the .zip file for this plugin and upload its contents to the `/wp-content/plugins/` directory. Alternatively, you can install directly from the Plugin directory within your WordPress Install.
 1. Activate the plugin through the "Plugins" menu in WordPress.
 
-Don't use this plugin on a live site. This plugin is **only** for development purpose.
+Don't use this plugin on a live site. This plugin is **only** intended to be used for development purposes.
 
 
 == Screenshots ==
