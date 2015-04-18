@@ -3,8 +3,8 @@ Contributors: jrf
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=995SSNDTCVBJG
 Tags: debugbar, debug-bar, Debug Bar, Constants, Debug Bar Constants
 Requires at least: 3.1
-Tested up to: 4.0
-Stable tag: 1.3.1
+Tested up to: 4.2
+Stable tag: 1.4
 Depends: Debug Bar
 License: GPLv2
 
@@ -99,6 +99,12 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 == Changelog ==
 
+= 1.4 (2015-04-18) =
+* Updated the pretty print class which now allows for limiting of the recursion depth.
+* Tested & found compatible WP 4.2
+* Minor tidying up
+* Updated language files
+
 = 1.3.1 (2014-09-05) =
 * Fix compatibility with the [Plugin Dependencies](http://wordpress.org/plugins/plugin-dependencies/) plugin
 * Tested & found compatible WP 4.0
@@ -137,6 +143,9 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 
 == Upgrade Notice ==
+
+= 1.4 =
+* Upgrade highly recommended - multi-plugin compatibility issue
 
 = 1.3 =
 * Upgrade highly recommended - multi-plugin compatibility issue
