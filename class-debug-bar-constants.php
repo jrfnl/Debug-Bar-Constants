@@ -205,7 +205,7 @@ if ( ! class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Ba
 					}
 					unset( $class, $set );
 
-					echo '<p class="dbcwpc-info">', wp_kses_post( __( '<strong>Please note</strong>: these may be both native WordPress classes as well as classes which may be declared by plugins or Themes.<br />You can use these constants in your code using <code>class_name::constant_name</code>.', parent::DBC_NAME ) ), ' ', wp_kses_post( sprintf( __( 'See the <a %s>FAQ</a> for more information.', parent::DBC_NAME ), 'href="http://wordpress.org/extend/plugins/debug-bar-constants/faq/" target="_blank"' ) ), '.</p>';
+					echo '<p class="dbcwpc-info">', wp_kses_post( __( '<strong>Please note</strong>: these may be both native WordPress classes as well as classes which may be declared by plugins or Themes.<br />You can use these constants in your code using <code>class_name::constant_name</code>.', parent::DBC_NAME ) ), ' ', wp_kses_post( sprintf( __( 'See the <a %s>FAQ</a> for more information.', parent::DBC_NAME ), 'href="http://wordpress.org/plugins/debug-bar-constants/faq/" target="_blank"' ) ), '.</p>';
 
 					foreach ( $constants as $class => $set ) {
 						echo '
