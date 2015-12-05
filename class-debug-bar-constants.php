@@ -103,8 +103,6 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' 
 				Debug_Bar_Pretty_Output::render_table( $array, $col1, $col2, $classes );
 			}
 		}
-
-
 	} // End of class Debug_Bar_Constants
 } // End of if class_exists wrapper
 
@@ -150,8 +148,6 @@ if ( ! class_exists( 'Debug_Bar_WP_Constants' ) && class_exists( 'Debug_Bar_Cons
 				echo '<p>', esc_html__( 'No constants found... this is really weird...', parent::DBC_NAME ), '</p>';
 			}
 		}
-
-
 	} // End of class Debug_Bar_WP_Constants
 } // End of if class_exists wrapper
 
@@ -224,8 +220,6 @@ if ( ! class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Ba
 				echo '<p>', esc_html__( 'No classes nor class constants found... this is kinda strange...', parent::DBC_NAME ), '</p>';
 			}
 		}
-
-
 	} // End of class Debug_Bar_WP_Class_Constants
 } // End of if class_exists wrapper
 
@@ -277,7 +271,5 @@ if ( ! class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Con
 				echo '<p>', esc_html__( 'No PHP constants found... this is really weird...', parent::DBC_NAME ), '</p>';
 			}
 		}
-
-
 	} // End of class Debug_Bar_PHP_Constants
 } // End of if class_exists wrapper
