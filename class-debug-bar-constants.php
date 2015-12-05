@@ -259,8 +259,45 @@ if ( ! class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Con
 
 				foreach ( $constants as $category => $set ) {
 					if ( is_array( $set ) && $set !== array() ) {
+
+						// Set url to correct page in the PHP manual for more info.
+						switch( $category ) {
+							case 'Core':
+								$url = 'http://php.net/reserved.constants';
+								break;
+
+							case 'date';
+								$url = 'http://php.net/datetime.constants';
+								break;
+
+							case 'gd';
+								$url = 'http://php.net/image.constants';
+								break;
+
+							case 'odbc';
+								$url = 'http://php.net/uodbc.constants';
+								break;
+
+							case 'standard';
+								$url = ''; // Definitions are all over, part of core.
+								break;
+
+							case 'tokenizer';
+								$url = 'http://php.net/tokens';
+								break;
+
+							case 'xdebug';
+								$url = 'http://xdebug.com/docs/';
+								break;
+
+							default:
+								$url = 'http://php.net/' . rawurlencode( $category ) . '.constants';
+								break;
+						}
+
+
 						echo '
-		<h3 id="dbcphp-', esc_attr( $category ), '"><em><a href="http://php.net/', rawurlencode( $category ), '.constants" target="_blank" title="', esc_attr( sprintf( __( 'Visit the PHP manual page about the %s constants.', parent::DBC_NAME ), $category ) ), '">', esc_html( ucfirst( $category ) ), '</a></em> ', esc_html__( 'Constants:', parent::DBC_NAME ), '</h3>';
+		<h3 id="dbcphp-', esc_attr( $category ), '"><em><a href="', esc_url( $url ), '" target="_blank" title="', esc_attr( sprintf( __( 'Visit the PHP manual page about the %s constants.', parent::DBC_NAME ), $category ) ), '">', esc_html( ucfirst( $category ) ), '</a></em> ', esc_html__( 'Constants:', parent::DBC_NAME ), '</h3>';
 						$this->dbc_render_table( $set );
 					}
 				}
