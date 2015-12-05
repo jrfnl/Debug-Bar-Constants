@@ -3,8 +3,8 @@ Contributors: jrf
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=995SSNDTCVBJG
 Tags: debugbar, debug-bar, Debug Bar, Constants, Debug Bar Constants
 Requires at least: 3.1
-Tested up to: 4.2
-Stable tag: 1.4
+Tested up to: 4.4
+Stable tag: 1.5
 Depends: Debug Bar
 License: GPLv2
 
@@ -99,56 +99,64 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 == Changelog ==
 
+= 1.5 (2015-12-05) =
+* Updated PHP Classes list for PHP7.
+* Fixed (some) links to PHP manual resulting in 404s.
+* Tested & found compatible WP 4.4.
+
 = 1.4 (2015-04-18) =
 * Updated the pretty print class which now allows for limiting of the recursion depth.
-* Tested & found compatible WP 4.2
-* Minor tidying up
-* Updated language files
+* Tested & found compatible WP 4.2.
+* Minor tidying up.
+* Updated language files.
 
 = 1.3.1 (2014-09-05) =
-* Fix compatibility with the [Plugin Dependencies](http://wordpress.org/plugins/plugin-dependencies/) plugin
-* Tested & found compatible WP 4.0
+* Fix compatibility with the [Plugin Dependencies](http://wordpress.org/plugins/plugin-dependencies/) plugin.
+* Tested & found compatible WP 4.0.
 
 = 1.3 (2013-12-02) =
 * Moved pretty print class to separate repository as several plugins are using it now.
 
 = 1.2.1.2 (2013-11-30) =
-* Fixed minor HTML validation issue
-* Fixed auto-disable message display in case the Debug Bar Plugin is not activated
-* Changed style and script file names to comply with current guidelines (.min)
-* Tested with WP 3.8-beta1
+* Fixed minor HTML validation issue.
+* Fixed auto-disable message display in case the Debug Bar Plugin is not activated.
+* Changed style and script file names to comply with current guidelines (.min).
+* Tested with WP 3.8-beta1.
 
 = 1.2.1.1 (2013-10-01) =
-* Compliance with the [WordPress coding standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards)
-* Some minor code cleanup inspired by some suggestions by [Maik Penz](https://github.com/goatherd)
+* Compliance with the [WordPress coding standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards).
+* Some minor code cleanup inspired by some suggestions by [Maik Penz](https://github.com/goatherd).
 
 = 1.2.1 (2013-05-27) =
-* Minor fix to comply with strict standards. Thanks [Azizur Rahman for reporting](http://wordpress.org/support/topic/declaration-of-debug_bar_constantsinit-should-be-compatible-with-debug_bar_p)
+* Minor fix to comply with strict standards. Thanks [Azizur Rahman for reporting](http://wordpress.org/support/topic/declaration-of-debug_bar_constantsinit-should-be-compatible-with-debug_bar_p).
 
 = 1.2 (2013-05-05) =
-* [New!] Added a panel for Class Constants
-* [Fix] Some left over references to functions not in this plugin
-* Headers for the PHP Constants now link to their PHP manual page
-* Moved more output rendering to the pretty-output class and applied a higher level of abstraction
+* [New!] Added a panel for Class Constants.
+* [Fix] Some left over references to functions not in this plugin.
+* Headers for the PHP Constants now link to their PHP manual page.
+* Moved more output rendering to the pretty-output class and applied a higher level of abstraction.
 
 = 1.1 (2013-04-30) / not released =
-* [New!] Added auto-deactivation if the Debug Bar plugin is not active
-* [Fix] Removed js debug alert (oops..)
-* [Fix] Adjusted the sorting to be case-insensitive
-* [Fix] Some small-HTML/CSS tweaks
-* Added object output helper method
+* [New!] Added auto-deactivation if the Debug Bar plugin is not active.
+* [Fix] Removed js debug alert (oops..).
+* [Fix] Adjusted the sorting to be case-insensitive.
+* [Fix] Some small-HTML/CSS tweaks.
+* Added object output helper method.
 
 = 1.0 (2013-04-28) =
-* Initial release
+* Initial release.
 
 
 == Upgrade Notice ==
 
+= 1.5 =
+* Updated PHP Classes list for PHP7.
+
 = 1.4 =
-* Upgrade highly recommended - multi-plugin compatibility issue
+* Upgrade highly recommended - multi-plugin compatibility issue.
 
 = 1.3 =
-* Upgrade highly recommended - multi-plugin compatibility issue
+* Upgrade highly recommended - multi-plugin compatibility issue.
 
 = 1.2.1.2 =
 * Small fixes, nothing exciting.
@@ -157,12 +165,12 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 * New! panel for Class Constants. This release also fixes a number of bugs.
 
 = 1.0 =
-* Initial release
+* Initial release.
 
 
 == Installation ==
 
-1. Install Debug Bar if not already installed (http://wordpress.org/extend/plugins/debug-bar/)
+1. Install Debug Bar if not already installed (http://wordpress.org/extend/plugins/debug-bar/).
 1. Extract the .zip file for this plugin and upload its contents to the `/wp-content/plugins/` directory. Alternatively, you can install directly from the Plugin directory within your WordPress Install.
 1. Activate the plugin through the "Plugins" menu in WordPress.
 

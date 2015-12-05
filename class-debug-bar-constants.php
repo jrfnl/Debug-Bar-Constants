@@ -6,7 +6,7 @@
  * @author      Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>
  * @link        https://github.com/jrfnl/Debug-Bar-Constants
  * @since       1.0
- * @version     1.4
+ * @version     1.5
  *
  * @copyright   2013-2014 Juliette Reinders Folmer
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
@@ -265,7 +265,7 @@ if ( ! class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Con
 					if ( is_array( $set ) && $set !== array() ) {
 
 						// Set url to correct page in the PHP manual for more info.
-						switch( $category ) {
+						switch ( $category ) {
 							case 'Core':
 								$url = 'http://php.net/reserved.constants';
 								break;
