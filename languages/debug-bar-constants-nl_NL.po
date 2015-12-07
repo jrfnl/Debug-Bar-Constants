@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Debug Bar Constants - a WordPress Plugin\n"
-"POT-Creation-Date: 2015-04-18 18:51+0100\n"
-"PO-Revision-Date: 2015-04-18 18:52+0100\n"
+"POT-Creation-Date: 2015-12-07 03:49+0100\n"
+"PO-Revision-Date: 2015-12-07 03:51+0100\n"
 "Last-Translator: Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>\n"
 "Language-Team: Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>\n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.5\n"
+"X-Generator: Poedit 1.8.5\n"
 "X-Poedit-KeywordsList: __;esc_html__;esc_html_e;esc_attr__;esc_attr_e;_e\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -17,31 +17,31 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: class-debug-bar-constants.php:93
+#: class-debug-bar-constants.php:97
 msgid "Name"
 msgstr "Naam"
 
-#: class-debug-bar-constants.php:94
+#: class-debug-bar-constants.php:98
 msgid "Value"
 msgstr "Waarde"
 
-#: class-debug-bar-constants.php:125
+#: class-debug-bar-constants.php:128
 msgid "WP Constants"
 msgstr "WP Constants"
 
-#: class-debug-bar-constants.php:145
+#: class-debug-bar-constants.php:148
 msgid "Constants within WP:"
 msgstr "Constants binnen WP:"
 
-#: class-debug-bar-constants.php:150
+#: class-debug-bar-constants.php:153
 msgid "No constants found... this is really weird..."
 msgstr "Geen constants gevonden... dit is vreemd..."
 
-#: class-debug-bar-constants.php:172
+#: class-debug-bar-constants.php:174
 msgid "WP Class Constants"
 msgstr "WP Class Constants"
 
-#: class-debug-bar-constants.php:212
+#: class-debug-bar-constants.php:214
 msgid ""
 "<strong>Please note</strong>: these may be both native WordPress classes as "
 "well as classes which may be declared by plugins or Themes.<br />You can use "
@@ -52,31 +52,56 @@ msgstr ""
 ">Je kan deze constants in je eigen code gebruiken door middel van "
 "<code>class_name::constant_name</code>."
 
-#: class-debug-bar-constants.php:212
+#: class-debug-bar-constants.php:214
 #, php-format
 msgid "See the <a %s>FAQ</a> for more information."
 msgstr "Lees de <a %s>FAQ</a> voor meer informatie."
 
-#: class-debug-bar-constants.php:216 class-debug-bar-constants.php:269
+#: class-debug-bar-constants.php:218 class-debug-bar-constants.php:306
 msgid "Constants:"
 msgstr "Constants:"
 
-#: class-debug-bar-constants.php:224
+#: class-debug-bar-constants.php:226
 msgid "No classes nor class constants found... this is kinda strange..."
 msgstr "Geen classes of class constants gevonden... dit is vreemd..."
 
-#: class-debug-bar-constants.php:246
+#: class-debug-bar-constants.php:247
 msgid "PHP Constants"
 msgstr "PHP Constants"
 
-#: class-debug-bar-constants.php:269
+#: class-debug-bar-constants.php:306
 #, php-format
 msgid "Visit the PHP manual page about the %s constants."
 msgstr "Bezoek de PHP handleiding pagina over de %s constants."
 
-#: class-debug-bar-constants.php:277
+#: class-debug-bar-constants.php:314
 msgid "No PHP constants found... this is really weird..."
 msgstr "Geen PHP constants gevonden... dit is vreemd..."
+
+#. Plugin Name of the plugin/theme
+msgid "Debug Bar Constants"
+msgstr "Debug Bar Constants"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/debug-bar-constants/"
+msgstr "http://wordpress.org/extend/plugins/debug-bar-constants/"
+
+#. Description of the plugin/theme
+msgid ""
+"Debug Bar Constants adds new panels to Debug Bar that display all the "
+"defined constants for the current request. Requires \"Debug Bar\" plugin."
+msgstr ""
+"Debug Bar Constants voegt nieuwe panelen toe aan Debug Bar welke inzicht "
+"geven in all gedefinieerde constants voor de huidige pagina. Vereist gebruik "
+"van de \"Debug Bar\" plugin."
+
+#. Author of the plugin/theme
+msgid "Juliette Reinders Folmer"
+msgstr "Juliette Reinders Folmer"
+
+#. Author URI of the plugin/theme
+msgid "http://www.adviesenzo.nl/"
+msgstr "http://www.adviesenzo.nl/"
 
 #~ msgid ""
 #~ "Debug Bar must be activated to use the Debug Bar Constants Plugin. <a "
