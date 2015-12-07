@@ -1,6 +1,6 @@
 <?php
 /**
- * Debug Bar Constants - Debug Bar Panels
+ * Debug Bar Constants - Debug Bar Panels.
  *
  * @package     WordPress\Plugins\Debug Bar Constants
  * @author      Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>
@@ -12,7 +12,7 @@
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
 
-// Avoid direct calls to this file
+// Avoid direct calls to this file.
 if ( ! function_exists( 'add_action' ) ) {
 	header( 'Status: 403 Forbidden' );
 	header( 'HTTP/1.1 403 Forbidden' );
@@ -20,13 +20,13 @@ if ( ! function_exists( 'add_action' ) ) {
 }
 
 
-
 /**
  * The classes in this file extend the functionality provided by the parent plugin "Debug Bar".
  */
 if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' ) ) {
+
 	/**
-	 * Base class
+	 * Base class.
 	 */
 	class Debug_Bar_Constants extends Debug_Bar_Panel {
 
@@ -37,7 +37,7 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' 
 
 
 		/**
-		 * Constructor
+		 * Constructor.
 		 */
 		public function init() {
 			if ( ! class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Panel' ) ) {
@@ -76,12 +76,12 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' 
 
 
 		/**
-		 * Helper method to render the output in a table
+		 * Helper method to render the output in a table.
 		 *
-		 * @param   array           $array  Array to be shown in the table
-		 * @param   string          $col1   Label for the first table column
-		 * @param   string          $col2   Label for the second table column
-		 * @param   string|array    $class  One or more CSS classes to add to the table
+		 * @param array             $array Array to be shown in the table.
+		 * @param string|null       $col1  Label for the first table column.
+		 * @param string|null       $col2  Label for the second table column.
+		 * @param string|array|null $class One or more CSS classes to add to the table.
 		 */
 		public function dbc_render_table( $array, $col1 = null, $col2 = null, $class = null ) {
 
@@ -100,27 +100,28 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' 
 			uksort( $array, 'strnatcasecmp' );
 
 			if ( defined( 'Debug_Bar_Pretty_Output::VERSION' ) ) {
-				echo Debug_Bar_Pretty_Output::get_table( $array, $col1, $col2, $classes ); // xss: ok
+				echo Debug_Bar_Pretty_Output::get_table( $array, $col1, $col2, $classes ); // WPCS: xss ok.
 			}
 			else {
-				// An old version of the pretty output class was loaded
+				// An old version of the pretty output class was loaded.
 				Debug_Bar_Pretty_Output::render_table( $array, $col1, $col2, $classes );
 			}
 		}
-	} // End of class Debug_Bar_Constants
-} // End of if class_exists wrapper
+	} // End of class Debug_Bar_Constants.
 
+} // End of if class_exists wrapper.
 
 
 if ( ! class_exists( 'Debug_Bar_WP_Constants' ) && class_exists( 'Debug_Bar_Constants' ) ) {
+
 	/**
-	 * Debug Bar WP Constants
+	 * Debug Bar WP Constants.
 	 */
 	class Debug_Bar_WP_Constants extends Debug_Bar_Constants {
 
 
 		/**
-		 * Constructor
+		 * Constructor.
 		 */
 		public function init() {
 			parent::init();
@@ -130,7 +131,7 @@ if ( ! class_exists( 'Debug_Bar_WP_Constants' ) && class_exists( 'Debug_Bar_Cons
 
 		/**
 		 * Limit visibility of the output to super admins on multi-site and
-		 * admins on non multi-site installations
+		 * admins on non multi-site installations.
 		 */
 		public function prerender() {
 			$this->set_visible( is_super_admin() );
@@ -138,7 +139,7 @@ if ( ! class_exists( 'Debug_Bar_WP_Constants' ) && class_exists( 'Debug_Bar_Cons
 
 
 		/**
-		 * Render the output
+		 * Render the output.
 		 */
 		public function render() {
 			$constants = get_defined_constants( true );
@@ -148,24 +149,25 @@ if ( ! class_exists( 'Debug_Bar_WP_Constants' ) && class_exists( 'Debug_Bar_Cons
 				$this->dbc_render_table( $constants['user'] );
 			}
 			else {
-				// should never happen
+				// Should never happen.
 				echo '<p>', esc_html__( 'No constants found... this is really weird...', parent::DBC_NAME ), '</p>';
 			}
 		}
-	} // End of class Debug_Bar_WP_Constants
-} // End of if class_exists wrapper
+	} // End of class Debug_Bar_WP_Constants.
 
+} // End of if class_exists wrapper.
 
 
 if ( ! class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Bar_Constants' ) ) {
+
 	/**
-	 * Debug Bar WP Class Constants
+	 * Debug Bar WP Class Constants.
 	 */
 	class Debug_Bar_WP_Class_Constants extends Debug_Bar_Constants {
 
 
 		/**
-		 * Constructor
+		 * Constructor.
 		 */
 		public function init() {
 			parent::init();
@@ -173,7 +175,7 @@ if ( ! class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Ba
 		}
 
 		/**
-		 * Render the output
+		 * Render the output.
 		 */
 		public function render() {
 
@@ -185,7 +187,7 @@ if ( ! class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Ba
 			$constants = array();
 
 			if ( is_array( $classes ) && $classes !== array() ) {
-				// Get the constants info first
+				// Get the constants info first.
 				foreach ( $classes as $class ) {
 					$reflector       = new ReflectionClass( $class );
 					$class_constants = $reflector->getConstants();
@@ -197,7 +199,7 @@ if ( ! class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Ba
 				}
 				unset( $class );
 
-				// Generate the output
+				// Generate the output.
 				if ( is_array( $constants ) && $constants !== array() ) {
 					uksort( $constants, 'strnatcasecmp' );
 
@@ -220,24 +222,25 @@ if ( ! class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Ba
 				}
 			}
 			else {
-				// should never happen
+				// Should never happen.
 				echo '<p>', esc_html__( 'No classes nor class constants found... this is kinda strange...', parent::DBC_NAME ), '</p>';
 			}
 		}
-	} // End of class Debug_Bar_WP_Class_Constants
-} // End of if class_exists wrapper
+	} // End of class Debug_Bar_WP_Class_Constants.
 
+} // End of if class_exists wrapper.
 
 
 if ( ! class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Constants' ) ) {
+
 	/**
-	 * Debug Bar PHP Constants
+	 * Debug Bar PHP Constants.
 	 */
 	class Debug_Bar_PHP_Constants extends Debug_Bar_Constants {
 
 
 		/**
-		 * Constructor
+		 * Constructor.
 		 */
 		public function init() {
 			parent::init();
@@ -245,7 +248,7 @@ if ( ! class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Con
 		}
 
 		/**
-		 * Render the output
+		 * Render the output.
 		 */
 		public function render() {
 
@@ -270,27 +273,27 @@ if ( ! class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Con
 								$url = 'http://php.net/reserved.constants';
 								break;
 
-							case 'date';
+							case 'date':
 								$url = 'http://php.net/datetime.constants';
 								break;
 
-							case 'gd';
+							case 'gd':
 								$url = 'http://php.net/image.constants';
 								break;
 
-							case 'odbc';
+							case 'odbc':
 								$url = 'http://php.net/uodbc.constants';
 								break;
 
-							case 'standard';
+							case 'standard':
 								$url = ''; // Definitions are all over, part of core.
 								break;
 
-							case 'tokenizer';
+							case 'tokenizer':
 								$url = 'http://php.net/tokens';
 								break;
 
-							case 'xdebug';
+							case 'xdebug':
 								$url = 'http://xdebug.com/docs/';
 								break;
 
@@ -298,7 +301,6 @@ if ( ! class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Con
 								$url = 'http://php.net/' . rawurlencode( $category ) . '.constants';
 								break;
 						}
-
 
 						echo '
 		<h3 id="dbcphp-', esc_attr( $category ), '"><em><a href="', esc_url( $url ), '" target="_blank" title="', esc_attr( sprintf( __( 'Visit the PHP manual page about the %s constants.', parent::DBC_NAME ), $category ) ), '">', esc_html( ucfirst( $category ) ), '</a></em> ', esc_html__( 'Constants:', parent::DBC_NAME ), '</h3>';
@@ -308,9 +310,10 @@ if ( ! class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Con
 				unset( $category, $set );
 			}
 			else {
-				// should never happen
+				// Should never happen.
 				echo '<p>', esc_html__( 'No PHP constants found... this is really weird...', parent::DBC_NAME ), '</p>';
 			}
 		}
-	} // End of class Debug_Bar_PHP_Constants
-} // End of if class_exists wrapper
+	} // End of class Debug_Bar_PHP_Constants.
+
+} // End of if class_exists wrapper.

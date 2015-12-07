@@ -1,6 +1,6 @@
 <?php
 /**
- * Debug Bar Constants, a WordPress plugin
+ * Debug Bar Constants, a WordPress plugin.
  *
  * @package     WordPress\Plugins\Debug Bar Constants
  * @author      Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>
@@ -23,7 +23,7 @@
  * Copyright:   2013-2014 Juliette Reinders Folmer
  */
 
-// Avoid direct calls to this file
+// Avoid direct calls to this file.
 if ( ! function_exists( 'add_action' ) ) {
 	header( 'Status: 403 Forbidden' );
 	header( 'HTTP/1.1 403 Forbidden' );
@@ -31,13 +31,13 @@ if ( ! function_exists( 'add_action' ) ) {
 }
 
 /**
- * Show admin notice & de-activate itself if debug-bar plugin not active
+ * Show admin notice & de-activate itself if debug-bar plugin not active.
  */
 add_action( 'admin_init', 'dbc_has_parent_plugin' );
 
 if ( ! function_exists( 'dbc_has_parent_plugin' ) ) {
 	/**
-	 * Check for parent plugin
+	 * Check for parent plugin.
 	 */
 	function dbc_has_parent_plugin() {
 		if ( is_admin() && ( ! class_exists( 'Debug_Bar' ) && current_user_can( 'activate_plugins' ) ) ) {
@@ -54,14 +54,15 @@ if ( ! function_exists( 'dbc_has_parent_plugin' ) ) {
 
 
 if ( ! function_exists( 'debug_bar_constants_panels' ) ) {
-	// Low priority, no need for it to be high up in the list
+	// Low priority, no need for it to be high up in the list.
 	add_filter( 'debug_bar_panels', 'debug_bar_constants_panels', 12 );
 
 	/**
-	 * Add the Debug Bar Constant panels to the Debug Bar
+	 * Add the Debug Bar Constant panels to the Debug Bar.
 	 *
-	 * @param   array   $panels     Existing debug bar panels
-	 * @return  array
+	 * @param array $panels Existing debug bar panels.
+	 *
+	 * @return array
 	 */
 	function debug_bar_constants_panels( $panels ) {
 		if ( ( ! class_exists( 'Debug_Bar_WP_Constants' ) && ! class_exists( 'Debug_Bar_WP_Class_Constants' ) ) && ! class_exists( 'Debug_Bar_PHP_Constants' ) ) {
