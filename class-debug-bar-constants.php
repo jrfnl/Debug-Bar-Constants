@@ -78,10 +78,10 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' 
 		/**
 		 * Helper method to render the output in a table.
 		 *
-		 * @param array        $array Array to be shown in the table.
-		 * @param string       $col1  Label for the first table column.
-		 * @param string       $col2  Label for the second table column.
-		 * @param string|array $class One or more CSS classes to add to the table.
+		 * @param array             $array Array to be shown in the table.
+		 * @param string|null       $col1  Label for the first table column.
+		 * @param string|null       $col2  Label for the second table column.
+		 * @param string|array|null $class One or more CSS classes to add to the table.
 		 */
 		public function dbc_render_table( $array, $col1 = null, $col2 = null, $class = null ) {
 
@@ -273,27 +273,27 @@ if ( ! class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Con
 								$url = 'http://php.net/reserved.constants';
 								break;
 
-							case 'date';
+							case 'date':
 								$url = 'http://php.net/datetime.constants';
 								break;
 
-							case 'gd';
+							case 'gd':
 								$url = 'http://php.net/image.constants';
 								break;
 
-							case 'odbc';
+							case 'odbc':
 								$url = 'http://php.net/uodbc.constants';
 								break;
 
-							case 'standard';
+							case 'standard':
 								$url = ''; // Definitions are all over, part of core.
 								break;
 
-							case 'tokenizer';
+							case 'tokenizer':
 								$url = 'http://php.net/tokens';
 								break;
 
-							case 'xdebug';
+							case 'xdebug':
 								$url = 'http://xdebug.com/docs/';
 								break;
 
@@ -301,7 +301,6 @@ if ( ! class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Con
 								$url = 'http://php.net/' . rawurlencode( $category ) . '.constants';
 								break;
 						}
-
 
 						echo '
 		<h3 id="dbcphp-', esc_attr( $category ), '"><em><a href="', esc_url( $url ), '" target="_blank" title="', esc_attr( sprintf( __( 'Visit the PHP manual page about the %s constants.', parent::DBC_NAME ), $category ) ), '">', esc_html( ucfirst( $category ) ), '</a></em> ', esc_html__( 'Constants:', parent::DBC_NAME ), '</h3>';
