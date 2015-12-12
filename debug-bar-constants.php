@@ -19,7 +19,7 @@
  * Author URI:  http://www.adviesenzo.nl/
  * Depends:     Debug Bar
  * Text Domain: debug-bar-constants
- * Domain Path: /languages/
+ * Domain Path: /languages
  * Copyright:   2013-2014 Juliette Reinders Folmer
  */
 
