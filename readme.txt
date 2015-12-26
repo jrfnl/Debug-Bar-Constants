@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: debugbar, debug-bar, Debug Bar, Constants, Debug Bar Constants
 Requires at least: 3.1
 Tested up to: 4.4
-Stable tag: 1.5.0.1
+Stable tag: 1.5.0.2
 Depends: Debug Bar
 License: GPLv2
 
@@ -98,6 +98,9 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 
 == Changelog ==
+
+= 1.5.0.2 (2015-12-26) =
+* Fix weird table layout on front-end in combination with Twenty-Sixteen theme.
 
 = 1.5.0.1 (2015-12-07) =
 * Fix typo.

@@ -54,6 +54,7 @@ table.debug-bar-constants {
     clear: both;
     line-height: 1.5;
 	font-size: 12px;
+	table-layout: auto;
 }
 table.debug-bar-constants thead th,
 table.debug-bar-constants tfoot th {
