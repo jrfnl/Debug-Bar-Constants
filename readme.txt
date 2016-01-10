@@ -99,8 +99,9 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 == Changelog ==
 
-= 1.5.0.2 (2015-12-26) =
+= 1.5.0.2 (2016-01-10) =
 * Fix weird table layout on front-end in combination with Twenty-Sixteen theme.
+* Leaner loading of text domains.
 
 = 1.5.0.1 (2015-12-07) =
 * Fix typo.
