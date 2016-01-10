@@ -1,8 +1,8 @@
 /* CSS for plugin: Debug Bar Constants */
 #debug-menu-target-Debug_Bar_PHP_Constants h2 a,
 #debug-menu-target-Debug_Bar_WP_Class_Constants h2 a {
-    text-decoration: none !important;
-    color: inherit !important;
+	text-decoration: none !important;
+	color: inherit !important;
 }
 
 #debug-menu-target-Debug_Bar_PHP_Constants h2:hover,
@@ -26,10 +26,10 @@
 
 #debug-menu-target-Debug_Bar_PHP_Constants h3,
 #debug-menu-target-Debug_Bar_WP_Class_Constants h3 {
-    font-family: georgia, times, serif;
-    font-size: 22px;
-    margin-top: 1.2em;
-    clear: both;
+	font-family: georgia, times, serif;
+	font-size: 22px;
+	margin-top: 1.2em;
+	clear: both;
 }
 
 
@@ -48,42 +48,42 @@ p.dbcwpc-info {
 }
 
 table.debug-bar-constants {
-    width: 100%;
-    border-collapse: collapse;
-    cell-padding: 1em;
-    clear: both;
-    line-height: 1.5;
+	width: 100%;
+	border-collapse: collapse;
+	cell-padding: 1em;
+	clear: both;
+	line-height: 1.5;
 	font-size: 12px;
 	table-layout: auto;
 }
 table.debug-bar-constants thead th,
 table.debug-bar-constants tfoot th {
-    padding: 0.7em 5px;
-    width: auto;
-    text-align: center;
+	padding: 0.7em 5px;
+	width: auto;
+	text-align: center;
 }
 table.debug-bar-constants thead th {
-    border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
 }
 table.debug-bar-constants tfoot th {
-    border-top: 1px solid #ccc;
+	border-top: 1px solid #ccc;
 }
 
 
 table.debug-bar-constants th {
-    width: 35%;
-    font-weight: bold;
+	width: 35%;
+	font-weight: bold;
 	padding: 2px 2em 2px 5px;
-    vertical-align: top;
-    text-align: left;
+	vertical-align: top;
+	text-align: left;
 }
 table.debug-bar-constants td {
-    padding: 2px 5px;
-    width: 63%;
-    vertical-align: top;
+	padding: 2px 5px;
+	width: 63%;
+	vertical-align: top;
 }
 table.debug-bar-constants tr:nth-child(2n+1) {
-    background-color: #E8E8E8;
+	background-color: #E8E8E8;
 }
 
 /*
@@ -94,33 +94,33 @@ table.debug-bar-constants tr:nth-child(2n+1) {
 */
 
 #toTop {
-    display: none;
-    text-decoration: none;
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    overflow: hidden;
-    width: 51px;
-    height: 51px;
-    border: none;
-    text-indent: 100%;
-    background: url(../images/ui.totop.png) no-repeat left top;
-    z-index: 99001;
+	display: none;
+	text-decoration: none;
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	overflow: hidden;
+	width: 51px;
+	height: 51px;
+	border: none;
+	text-indent: 100%;
+	background: url(../images/ui.totop.png) no-repeat left top;
+	z-index: 99001;
 }
 
 #toTopHover {
-    background: url(../images/ui.totop.png) no-repeat left -51px;
-    width: 51px;
-    height: 51px;
-    display: block;
-    overflow: hidden;
-    float: left;
-    opacity: 0;
-    -moz-opacity: 0;
-    filter: alpha(opacity = 0);
-    z-index: 99001;
+	background: url(../images/ui.totop.png) no-repeat left -51px;
+	width: 51px;
+	height: 51px;
+	display: block;
+	overflow: hidden;
+	float: left;
+	opacity: 0;
+	-moz-opacity: 0;
+	filter: alpha(opacity = 0);
+	z-index: 99001;
 }
 
 #toTop:active, #toTop:focus {
-    outline: none;
+	outline: none;
 }
