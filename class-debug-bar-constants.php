@@ -6,9 +6,9 @@
  * @author      Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>
  * @link        https://github.com/jrfnl/Debug-Bar-Constants
  * @since       1.0
- * @version     1.5.0.2
+ * @version     1.5.0.3
  *
- * @copyright   2013-2014 Juliette Reinders Folmer
+ * @copyright   2013-2016 Juliette Reinders Folmer
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
 
@@ -30,7 +30,7 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' 
 	 */
 	class Debug_Bar_Constants extends Debug_Bar_Panel {
 
-		const DBC_STYLES_VERSION = '1.5.0.2';
+		const DBC_STYLES_VERSION = '1.5.0.3';
 		const DBC_SCRIPT_VERSION = '1.2dbc-a-';
 
 		const DBC_NAME = 'debug-bar-constants';
