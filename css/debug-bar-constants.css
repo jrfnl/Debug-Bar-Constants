@@ -47,6 +47,12 @@ p.dbcwpc-info {
 	clear: both;
 }
 
+table.debug-bar-constants,
+table.debug-bar-constants th,
+table.debug-bar-constants td {
+	border: 0px none;
+}
+
 table.debug-bar-constants {
 	width: 100%;
 	border-collapse: collapse;
@@ -68,7 +74,6 @@ table.debug-bar-constants thead th {
 table.debug-bar-constants tfoot th {
 	border-top: 1px solid #ccc;
 }
-
 
 table.debug-bar-constants th {
 	width: 35%;
