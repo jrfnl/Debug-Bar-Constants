@@ -101,6 +101,7 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 = 1.5.0.3 (2016-01-13) =
 * Fix very minor layout inconsistency in combination with Twenty-Sixteen theme.
+* Updated the pretty print class to v1.5.2.
 
 = 1.5.0.2 (2016-01-10) =
 * Fix weird table layout on front-end in combination with Twenty-Sixteen theme.
@@ -115,7 +116,7 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 * Tested & found compatible WP 4.4.
 
 = 1.4 (2015-04-18) =
-* Updated the pretty print class which now allows for limiting of the recursion depth.
+* Updated the pretty print class to v1.5.0 which now allows for limiting of the recursion depth.
 * Tested & found compatible WP 4.2.
 * Minor tidying up.
 * Updated language files.
