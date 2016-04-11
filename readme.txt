@@ -3,8 +3,8 @@ Contributors: jrf
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=995SSNDTCVBJG
 Tags: debugbar, debug-bar, Debug Bar, Constants, Debug Bar Constants
 Requires at least: 3.1
-Tested up to: 4.4
-Stable tag: 1.5.0.3
+Tested up to: 4.5
+Stable tag: 1.5.1
 Depends: Debug Bar
 License: GPLv2
 
@@ -99,6 +99,10 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 == Changelog ==
 
+= 1.5.1 (2016-04-12) =
+* Hard-coded the text domains for compatibility with [GlotPress](https://translate.wordpress.org/projects/wp-plugins/debug-bar-constants).
+* Tested & found compatible WP 4.5.
+
 = 1.5.0.3 (2016-01-13) =
 * Fix very minor layout inconsistency in combination with Twenty-Sixteen theme.
 * Updated the pretty print class to v1.5.2.
@@ -113,17 +117,17 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 = 1.5 (2015-12-05) =
 * Updated PHP Classes list for PHP7.
 * Fixed (some) links to PHP manual resulting in 404s.
-* Tested & found compatible WP 4.4.
+* Tested & found compatible with WP 4.4.
 
 = 1.4 (2015-04-18) =
 * Updated the pretty print class to v1.5.0 which now allows for limiting of the recursion depth.
-* Tested & found compatible WP 4.2.
+* Tested & found compatible with WP 4.2.
 * Minor tidying up.
 * Updated language files.
 
 = 1.3.1 (2014-09-05) =
 * Fix compatibility with the [Plugin Dependencies](http://wordpress.org/plugins/plugin-dependencies/) plugin.
-* Tested & found compatible WP 4.0.
+* Tested & found compatible with WP 4.0.
 
 = 1.3 (2013-12-02) =
 * Moved pretty print class to separate repository as several plugins are using it now.
