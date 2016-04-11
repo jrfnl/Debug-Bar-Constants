@@ -92,7 +92,7 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' 
 				if ( is_string( $class ) && $class !== '' ) {
 					$classes .= ' ' . $class;
 				}
-				else if ( is_array( $class ) && $class !== array() ) {
+				elseif ( is_array( $class ) && $class !== array() ) {
 					$classes = $classes . ' ' . implode( ' ', $class );
 				}
 			}

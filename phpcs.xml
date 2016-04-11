@@ -13,7 +13,17 @@
 
 		<!-- Demanding Yoda conditions is stupid. -->
 		<exclude name="WordPress.PHP.YodaConditions"/>
+		
+	</rule>
 
+	<!-- Add `PHP_Classes` to the whitelist for non-snakecase variable names. -->
+	<rule ref="WordPress.NamingConventions.ValidVariableName">
+	    <properties>
+	        <property name="customVariablesWhitelist" value="PHP_classes" type="array" />
+	    </properties>
+
+		<!-- TEMPORARY! Exclude a file until WPCS/PR #558 has been merged. -->
+		<exclude-pattern>class-debug-bar-constants.php</exclude-pattern>
 	</rule>
 
 
