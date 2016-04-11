@@ -272,39 +272,8 @@ if ( ! class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Con
 					if ( is_array( $set ) && $set !== array() ) {
 
 						// Set url to correct page in the PHP manual for more info.
-						switch ( $category ) {
-							case 'Core':
-								$url = 'http://php.net/reserved.constants';
-								break;
+						$url = $this->get_php_manual_url( $category );
 
-							case 'date':
-								$url = 'http://php.net/datetime.constants';
-								break;
-
-							case 'gd':
-								$url = 'http://php.net/image.constants';
-								break;
-
-							case 'odbc':
-								$url = 'http://php.net/uodbc.constants';
-								break;
-
-							case 'standard':
-								$url = ''; // Definitions are all over, part of core.
-								break;
-
-							case 'tokenizer':
-								$url = 'http://php.net/tokens';
-								break;
-
-							case 'xdebug':
-								$url = 'http://xdebug.com/docs/';
-								break;
-
-							default:
-								$url = 'http://php.net/' . rawurlencode( $category ) . '.constants';
-								break;
-						}
 						/* TRANSLATORS: %s = the name of a PHP extension. */
 						$title_attr = sprintf( __( 'Visit the PHP manual page about the %s constants.', 'debug-bar-constants' ), $category );
 
@@ -319,6 +288,54 @@ if ( ! class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Con
 				// Should never happen.
 				echo '<p>', esc_html__( 'No PHP constants found... this is really weird...', 'debug-bar-constants' ), '</p>';
 			}
+		}
+
+
+		/**
+		 * Retrieve the PHP manual URL for the constants page of a specific PHP extension.
+		 *
+		 * Works round some of the peculiarities of the PHP.net URL scheme.
+		 *
+		 * @param string $category The PHP Extension for which to retrieve the URL.
+		 *
+		 * @return string URL
+		 */
+		protected function get_php_manual_url( $category ) {
+			switch ( $category ) {
+				case 'Core':
+					$url = 'http://php.net/reserved.constants';
+					break;
+
+				case 'date':
+					$url = 'http://php.net/datetime.constants';
+					break;
+
+				case 'gd':
+					$url = 'http://php.net/image.constants';
+					break;
+
+				case 'odbc':
+					$url = 'http://php.net/uodbc.constants';
+					break;
+
+				case 'standard':
+					$url = ''; // Definitions are all over, part of core.
+					break;
+
+				case 'tokenizer':
+					$url = 'http://php.net/tokens';
+					break;
+
+				case 'xdebug':
+					$url = 'http://xdebug.com/docs/';
+					break;
+
+				default:
+					$url = 'http://php.net/' . rawurlencode( $category ) . '.constants';
+					break;
+			}
+
+			return $url;
 		}
 	} // End of class Debug_Bar_PHP_Constants.
 
