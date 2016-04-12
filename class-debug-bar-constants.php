@@ -48,12 +48,31 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' 
 				require_once plugin_dir_path( __FILE__ ) . 'inc/debug-bar-pretty-output/class-debug-bar-list-php-classes.php';
 			}
 
-			if ( ! is_textdomain_loaded( 'debug-bar-constants' ) ) {
-				load_plugin_textdomain( 'debug-bar-constants', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-			}
+			$this->load_textdomain( self::DBC_NAME );
 
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+		}
+
+
+		/**
+		 * Load the plugin text strings.
+		 *
+		 * Compatible with use of the plugin in the must-use plugins directory.
+		 *
+		 * @param string $domain Text domain to load.
+		 */
+		protected function load_textdomain( $domain ) {
+			if ( is_textdomain_loaded( $domain ) ) {
+				return;
+			}
+
+			$lang_path = dirname( plugin_basename( __FILE__ ) ) . '/languages';
+			if ( false === strpos( __FILE__, basename( WPMU_PLUGIN_DIR ) ) ) {
+				load_plugin_textdomain( $domain, false, $lang_path );
+			} else {
+				load_muplugin_textdomain( $domain, $lang_path );
+			}
 		}
 
 
