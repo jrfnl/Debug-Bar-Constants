@@ -5,15 +5,18 @@
 	<exclude-pattern>*/inc/debug-bar-pretty-output/*</exclude-pattern>
 
 	<rule ref="WordPress">
-		<exclude name="WordPress.VIP" />
-		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines" />
-
 		<!-- else on new line is perfectly fine -->
 		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseBrace" />
+	</rule>
 
-		<!-- Demanding Yoda conditions is stupid. -->
-		<exclude name="WordPress.PHP.YodaConditions"/>
+	<!-- Add `PHP_Classes` to the whitelist for non-snakecase variable names. -->
+	<rule ref="WordPress.NamingConventions.ValidVariableName">
+	    <properties>
+	        <property name="customVariablesWhitelist" value="PHP_classes" type="array" />
+	    </properties>
 
+		<!-- TEMPORARY! Exclude a file until WPCS/PR #558 has been merged. -->
+		<exclude-pattern>class-debug-bar-constants.php</exclude-pattern>
 	</rule>
 
 

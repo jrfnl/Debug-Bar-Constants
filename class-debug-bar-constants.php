@@ -89,10 +89,10 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' 
 
 			$classes = self::DBC_NAME;
 			if ( isset( $class ) ) {
-				if ( is_string( $class ) && $class !== '' ) {
+				if ( is_string( $class ) && '' !== $class ) {
 					$classes .= ' ' . $class;
 				}
-				else if ( is_array( $class ) && $class !== array() ) {
+				elseif ( ! empty( $class ) && is_array( $class ) ) {
 					$classes = $classes . ' ' . implode( ' ', $class );
 				}
 			}
@@ -145,7 +145,7 @@ if ( ! class_exists( 'Debug_Bar_WP_Constants' ) && class_exists( 'Debug_Bar_Cons
 		 */
 		public function render() {
 			$constants = get_defined_constants( true );
-			if ( isset( $constants['user'] ) && ( is_array( $constants['user'] ) && $constants['user'] !== array() ) ) {
+			if ( isset( $constants['user'] ) && ( ! empty( $constants['user'] ) && is_array( $constants['user'] ) ) ) {
 				echo '
 		<h2><span>', esc_html__( 'Constants within WP:', 'debug-bar-constants' ), '</span>', absint( count( $constants['user'] ) ), '</h2>';
 				$this->dbc_render_table( $constants['user'] );
@@ -188,13 +188,13 @@ if ( ! class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Ba
 
 			$constants = array();
 
-			if ( is_array( $classes ) && $classes !== array() ) {
+			if ( ! empty( $classes ) && is_array( $classes ) ) {
 				// Get the constants info first.
 				foreach ( $classes as $class ) {
 					$reflector       = new ReflectionClass( $class );
 					$class_constants = $reflector->getConstants();
 
-					if ( is_array( $class_constants ) && $class_constants !== array() ) {
+					if ( ! empty( $class_constants ) && is_array( $class_constants ) ) {
 						$constants[ $class ] = $class_constants;
 					}
 					unset( $class_constants, $reflector );
@@ -202,7 +202,7 @@ if ( ! class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Ba
 				unset( $class );
 
 				// Generate the output.
-				if ( is_array( $constants ) && $constants !== array() ) {
+				if ( ! empty( $constants ) && is_array( $constants ) ) {
 					uksort( $constants, 'strnatcasecmp' );
 
 					foreach ( $constants as $class => $set ) {
@@ -259,7 +259,7 @@ if ( ! class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Con
 			$constants = get_defined_constants( true );
 			unset( $constants['user'] );
 
-			if ( is_array( $constants ) && $constants !== array() ) {
+			if ( ! empty( $constants ) && is_array( $constants ) ) {
 				uksort( $constants, 'strnatcasecmp' );
 
 				foreach ( $constants as $category => $set ) {
@@ -269,7 +269,7 @@ if ( ! class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Con
 				unset( $category, $set );
 
 				foreach ( $constants as $category => $set ) {
-					if ( is_array( $set ) && $set !== array() ) {
+					if ( ! empty( $set ) && is_array( $set ) ) {
 
 						// Set url to correct page in the PHP manual for more info.
 						$url = $this->get_php_manual_url( $category );
