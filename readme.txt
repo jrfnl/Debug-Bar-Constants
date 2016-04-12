@@ -20,13 +20,13 @@ Debug Bar Constants adds three new panels to the Debug Bar that display the defi
 
 = Important =
 
-This plugin requires the [Debug Bar](http://wordpress.org/extend/plugins/debug-bar/) plugin to be installed and activated.
+This plugin requires the [Debug Bar](https://wordpress.org/plugins/debug-bar/) plugin to be installed and activated.
 
 Also note that this plugin should be used solely for debugging and/or in a development environment and is not intended for use on a production site.
 
 ***********************************
 
-If you like this plugin, please [rate and/or review](http://wordpress.org/support/view/plugin-reviews/debug-bar-constants) it. If you have ideas on how to make the plugin even better or if you have found any bugs, please report these in the [Support Forum](http://wordpress.org/support/plugin/debug-bar-constants) or in the [GitHub repository](https://github.com/jrfnl/Debug-Bar-Constants/issues).
+If you like this plugin, please [rate and/or review](https://wordpress.org/support/view/plugin-reviews/debug-bar-constants) it. If you have ideas on how to make the plugin even better or if you have found any bugs, please report these in the [Support Forum](https://wordpress.org/support/plugin/debug-bar-constants) or in the [GitHub repository](https://github.com/jrfnl/Debug-Bar-Constants/issues).
 
 
 
@@ -129,7 +129,7 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 * Updated language files.
 
 = 1.3.1 (2014-09-05) =
-* Fix compatibility with the [Plugin Dependencies](http://wordpress.org/plugins/plugin-dependencies/) plugin.
+* Fix compatibility with the [Plugin Dependencies](https://wordpress.org/plugins/plugin-dependencies/) plugin.
 * Tested & found compatible with WP 4.0.
 
 = 1.3 (2013-12-02) =
@@ -146,7 +146,7 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 * Some minor code cleanup inspired by some suggestions by [Maik Penz](https://github.com/goatherd).
 
 = 1.2.1 (2013-05-27) =
-* Minor fix to comply with strict standards. Thanks [Azizur Rahman for reporting](http://wordpress.org/support/topic/declaration-of-debug_bar_constantsinit-should-be-compatible-with-debug_bar_p).
+* Minor fix to comply with strict standards. Thanks [Azizur Rahman for reporting](https://wordpress.org/support/topic/declaration-of-debug_bar_constantsinit-should-be-compatible-with-debug_bar_p).
 
 = 1.2 (2013-05-05) =
 * [New!] Added a panel for Class Constants.
@@ -188,7 +188,7 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 == Installation ==
 
-1. Install Debug Bar if not already installed (http://wordpress.org/extend/plugins/debug-bar/).
+1. Install Debug Bar if not already installed (https://wordpress.org/plugins/debug-bar/).
 1. Extract the .zip file for this plugin and upload its contents to the `/wp-content/plugins/` directory. Alternatively, you can install directly from the Plugin directory within your WordPress Install.
 1. Activate the plugin through the "Plugins" menu in WordPress.
 

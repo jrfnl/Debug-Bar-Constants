@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Debug Bar Constants - a WordPress Plugin\n"
-"POT-Creation-Date: 2016-04-12 02:19+0200\n"
-"PO-Revision-Date: 2016-04-12 02:21+0200\n"
+"POT-Creation-Date: 2016-04-12 04:12+0200\n"
+"PO-Revision-Date: 2016-04-12 04:12+0200\n"
 "Last-Translator: Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>\n"
 "Language-Team: Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>\n"
 "Language: nl_NL\n"
@@ -85,8 +85,8 @@ msgid "Debug Bar Constants"
 msgstr "Debug Bar Constants"
 
 #. Plugin URI of the plugin/theme
-msgid "http://wordpress.org/extend/plugins/debug-bar-constants/"
-msgstr "http://wordpress.org/extend/plugins/debug-bar-constants/"
+msgid "https://wordpress.org/plugins/debug-bar-constants/"
+msgstr "https://wordpress.org/plugins/debug-bar-constants/"
 
 #. Description of the plugin/theme
 msgid ""
