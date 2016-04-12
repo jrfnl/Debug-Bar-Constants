@@ -12,7 +12,7 @@
  *
  * @wordpress-plugin
  * Plugin Name: Debug Bar Constants
- * Plugin URI:  http://wordpress.org/extend/plugins/debug-bar-constants/
+ * Plugin URI:  https://wordpress.org/plugins/debug-bar-constants/
  * Description: Debug Bar Constants adds new panels to Debug Bar that display all the defined constants for the current request. Requires "Debug Bar" plugin.
  * Version:     1.6.0
  * Author:      Juliette Reinders Folmer
