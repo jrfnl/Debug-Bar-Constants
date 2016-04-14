@@ -6,7 +6,7 @@
  * @author      Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>
  * @link        https://github.com/jrfnl/Debug-Bar-Constants
  * @since       1.0
- * @version     1.6.0
+ * @version     1.6.1
  *
  * @copyright   2013-2016 Juliette Reinders Folmer
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
@@ -35,6 +35,13 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' 
 
 		const DBC_NAME = 'debug-bar-constants';
 
+		/**
+		 * Whether or not an attempt has been made to load the textdomain.
+		 * If so, no need to try again.
+		 *
+		 * @var bool
+		 */
+		private static $textdomain_loaded = false;
 
 		/**
 		 * Constructor.
@@ -63,7 +70,7 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' 
 		 * @param string $domain Text domain to load.
 		 */
 		protected function load_textdomain( $domain ) {
-			if ( is_textdomain_loaded( $domain ) ) {
+			if ( is_textdomain_loaded( $domain ) || self::$textdomain_loaded ) {
 				return;
 			}
 
@@ -73,6 +80,7 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' 
 			} else {
 				load_muplugin_textdomain( $domain, $lang_path );
 			}
+			self::$textdomain_loaded = true;
 		}
 
 
