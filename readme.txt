@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: debugbar, debug-bar, Debug Bar, Constants, Debug Bar Constants
 Requires at least: 3.1
 Tested up to: 4.5
-Stable tag: 1.6.0
+Stable tag: 1.6.1
 Depends: Debug Bar
 License: GPLv2
 
@@ -98,6 +98,9 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 
 == Changelog ==
+
+= 1.6.1 (2016-04-15) =
+* Get the leaner loading of text domains right (at last).
 
 = 1.6.0 (2016-04-12) =
 * Hard-coded the text domains for compatibility with [GlotPress](https://translate.wordpress.org/projects/wp-plugins/debug-bar-constants).
