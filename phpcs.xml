@@ -4,19 +4,19 @@
 
 	<exclude-pattern>*/inc/debug-bar-pretty-output/*</exclude-pattern>
 
-	<rule ref="WordPress">
-		<!-- else on new line is perfectly fine -->
-		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseBrace" />
-	</rule>
+	<!-- ##### PHP cross-version compatibility ##### -->
+	<config name="testVersion" value="5.2-99.0"/>
+	<rule ref="PHPCompatibility"/>
+
+
+	<!-- ##### WordPress sniffs #####-->
+	<rule ref="WordPress" />
 
 	<!-- Add `PHP_Classes` to the whitelist for non-snakecase variable names. -->
 	<rule ref="WordPress.NamingConventions.ValidVariableName">
 	    <properties>
 	        <property name="customVariablesWhitelist" value="PHP_classes" type="array" />
 	    </properties>
-
-		<!-- TEMPORARY! Exclude a file until WPCS/PR #558 has been merged. -->
-		<exclude-pattern>class-debug-bar-constants.php</exclude-pattern>
 	</rule>
 
 
