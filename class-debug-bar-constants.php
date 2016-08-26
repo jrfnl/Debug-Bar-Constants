@@ -118,8 +118,7 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' 
 			if ( isset( $class ) ) {
 				if ( is_string( $class ) && '' !== $class ) {
 					$classes .= ' ' . $class;
-				}
-				elseif ( ! empty( $class ) && is_array( $class ) ) {
+				} elseif ( ! empty( $class ) && is_array( $class ) ) {
 					$classes = $classes . ' ' . implode( ' ', $class );
 				}
 			}
@@ -130,8 +129,8 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' 
 
 			if ( defined( 'Debug_Bar_Pretty_Output::VERSION' ) ) {
 				echo Debug_Bar_Pretty_Output::get_table( $array, $col1, $col2, $classes ); // WPCS: xss ok.
-			}
-			else {
+
+			} else {
 				// An old version of the pretty output class was loaded.
 				Debug_Bar_Pretty_Output::render_table( $array, $col1, $col2, $classes );
 			}
@@ -176,8 +175,8 @@ if ( ! class_exists( 'Debug_Bar_WP_Constants' ) && class_exists( 'Debug_Bar_Cons
 				echo '
 		<h2><span>', esc_html__( 'Constants within WP:', 'debug-bar-constants' ), '</span>', absint( count( $constants['user'] ) ), '</h2>';
 				$this->dbc_render_table( $constants['user'] );
-			}
-			else {
+
+			} else {
 				// Should never happen.
 				echo '<p>', esc_html__( 'No constants found... this is really weird...', 'debug-bar-constants' ), '</p>';
 			}
@@ -251,8 +250,7 @@ if ( ! class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Ba
 					}
 					unset( $class, $set );
 				}
-			}
-			else {
+			} else {
 				// Should never happen.
 				echo '<p>', esc_html__( 'No classes nor class constants found... this is kinda strange...', 'debug-bar-constants' ), '</p>';
 			}
@@ -310,8 +308,8 @@ if ( ! class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Con
 					}
 				}
 				unset( $category, $set, $title_attr );
-			}
-			else {
+
+			} else {
 				// Should never happen.
 				echo '<p>', esc_html__( 'No PHP constants found... this is really weird...', 'debug-bar-constants' ), '</p>';
 			}
