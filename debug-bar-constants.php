@@ -48,10 +48,14 @@ if ( ! function_exists( 'dbc_has_parent_plugin' ) ) {
 			deactivate_plugins( $file, false, is_network_admin() );
 
 			// Add to recently active plugins list.
+			$insert = array(
+				$file => time(),
+			);
+
 			if ( ! is_network_admin() ) {
-				update_option( 'recently_activated', ( array( $file => time() ) + (array) get_option( 'recently_activated' ) ) );
+				update_option( 'recently_activated', ( $insert + (array) get_option( 'recently_activated' ) ) );
 			} else {
-				update_site_option( 'recently_activated', ( array( $file => time() ) + (array) get_site_option( 'recently_activated' ) ) );
+				update_site_option( 'recently_activated', ( $insert + (array) get_site_option( 'recently_activated' ) ) );
 			}
 
 			// Prevent trying again on page reload.
@@ -76,9 +80,11 @@ if ( ! function_exists( 'debug_bar_constants_panels' ) ) {
 	 * @return array
 	 */
 	function debug_bar_constants_panels( $panels ) {
-		if ( ( ! class_exists( 'Debug_Bar_WP_Constants' ) && ! class_exists( 'Debug_Bar_WP_Class_Constants' ) ) && ! class_exists( 'Debug_Bar_PHP_Constants' ) ) {
-			require_once 'class-debug-bar-constants.php';
-		}
+		require_once 'class-debug-bar-constants.php';
+		require_once 'class-debug-bar-php-constants.php';
+		require_once 'class-debug-bar-wp-constants.php';
+		require_once 'class-debug-bar-wp-class-constants.php';
+
 		$panels[] = new Debug_Bar_WP_Constants();
 		$panels[] = new Debug_Bar_WP_Class_Constants();
 		$panels[] = new Debug_Bar_PHP_Constants();
