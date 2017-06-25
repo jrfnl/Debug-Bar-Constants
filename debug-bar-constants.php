@@ -76,9 +76,11 @@ if ( ! function_exists( 'debug_bar_constants_panels' ) ) {
 	 * @return array
 	 */
 	function debug_bar_constants_panels( $panels ) {
-		if ( ( ! class_exists( 'Debug_Bar_WP_Constants' ) && ! class_exists( 'Debug_Bar_WP_Class_Constants' ) ) && ! class_exists( 'Debug_Bar_PHP_Constants' ) ) {
-			require_once 'class-debug-bar-constants.php';
-		}
+		require_once 'class-debug-bar-constants.php';
+		require_once 'class-debug-bar-php-constants.php';
+		require_once 'class-debug-bar-wp-constants.php';
+		require_once 'class-debug-bar-wp-class-constants.php';
+
 		$panels[] = new Debug_Bar_WP_Constants();
 		$panels[] = new Debug_Bar_WP_Class_Constants();
 		$panels[] = new Debug_Bar_PHP_Constants();
