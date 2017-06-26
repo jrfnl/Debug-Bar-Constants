@@ -99,6 +99,9 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 == Changelog ==
 
+= Trunk (xxxx-xx-xx) =
+* Defer to just in time loading of translations for WP > 4.5.
+
 = 1.6.1 (2016-04-15) =
 * Get the leaner loading of text domains right (at last).
 
