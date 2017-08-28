@@ -18,12 +18,12 @@ if ( ! function_exists( 'add_action' ) ) {
 }
 
 
-if ( ! class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Bar_Constants' ) ) {
+if ( ! class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Bar_Constants_Panel' ) ) {
 
 	/**
 	 * Debug Bar WP Class Constants.
 	 */
-	class Debug_Bar_WP_Class_Constants extends Debug_Bar_Constants {
+	class Debug_Bar_WP_Class_Constants extends Debug_Bar_Constants_Panel {
 
 
 		/**
