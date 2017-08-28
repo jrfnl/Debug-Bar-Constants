@@ -67,27 +67,20 @@ if ( ! function_exists( 'dbc_has_parent_plugin' ) ) {
 }
 
 
+if ( ! function_exists( 'debug_bar_constants_init' ) ) {
 
-if ( ! function_exists( 'debug_bar_constants_panels' ) ) {
-	// Low priority, no need for it to be high up in the list.
-	add_filter( 'debug_bar_panels', 'debug_bar_constants_panels', 12 );
+	// wp_installing() function was introduced in WP 4.4.
+	if ( ( function_exists( 'wp_installing' ) && wp_installing() === false ) || ( ! function_exists( 'wp_installing' ) && ( ! defined( 'WP_INSTALLING' ) || WP_INSTALLING === false ) ) ) {
+		add_action( 'plugins_loaded', 'debug_bar_constants_init' );
+	}
 
 	/**
-	 * Add the Debug Bar Constant panels to the Debug Bar.
+	 * Initialize the class.
 	 *
-	 * @param array $panels Existing debug bar panels.
-	 *
-	 * @return array
+	 * @return void
 	 */
-	function debug_bar_constants_panels( $panels ) {
-		require_once 'class-debug-bar-constants.php';
-		require_once 'class-debug-bar-php-constants.php';
-		require_once 'class-debug-bar-wp-constants.php';
-		require_once 'class-debug-bar-wp-class-constants.php';
-
-		$panels[] = new Debug_Bar_WP_Constants();
-		$panels[] = new Debug_Bar_WP_Class_Constants();
-		$panels[] = new Debug_Bar_PHP_Constants();
-		return $panels;
+	function debug_bar_constants_init() {
+		include_once plugin_dir_path( __FILE__ ) . 'class-debug-bar-constants.php';
+		$debug_bar_constants = new Debug_Bar_Constants();
 	}
 }

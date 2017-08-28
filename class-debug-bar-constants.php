@@ -1,6 +1,6 @@
 <?php
 /**
- * Debug Bar Constants - Base class for a Debug Bar Constants Debug Bar Panel.
+ * Debug Bar Constants.
  *
  * @package     WordPress\Plugins\Debug Bar Constants
  * @author      Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>
@@ -18,12 +18,12 @@ if ( ! function_exists( 'add_action' ) ) {
 }
 
 
-if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' ) ) {
+if ( ! class_exists( 'Debug_Bar_Constants' ) ) {
 
 	/**
-	 * Base class.
+	 * Plugin controller.
 	 */
-	class Debug_Bar_Constants extends Debug_Bar_Panel {
+	class Debug_Bar_Constants {
 
 		const DBC_STYLES_VERSION = '1.7.0';
 		const DBC_SCRIPT_VERSION = '1.7.0';
@@ -38,22 +38,74 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' 
 		 */
 		private static $textdomain_loaded = false;
 
+
 		/**
 		 * Constructor.
 		 */
-		public function init() {
-			if ( ! class_exists( 'Debug_Bar_Pretty_Output' ) && class_exists( 'Debug_Bar_Panel' ) ) {
-				require_once plugin_dir_path( __FILE__ ) . 'inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php';
-			}
+		public function __construct() {
+			spl_autoload_register( array( $this, 'auto_load' ) );
 
-			if ( ! class_exists( 'Debug_Bar_List_PHP_Classes' ) ) {
-				require_once plugin_dir_path( __FILE__ ) . 'inc/debug-bar-pretty-output/class-debug-bar-list-php-classes.php';
-			}
-
-			$this->load_textdomain( self::DBC_NAME );
+			add_action( 'init', array( $this, 'init' ) );
 
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+
+			// Low priority, no need for it to be high up in the list.
+			add_filter( 'debug_bar_panels', array( $this, 'add_panels' ), 12 );
+		}
+
+
+		/**
+		 * Auto load our class files.
+		 *
+		 * @param string $class Class name.
+		 *
+		 * @return void
+		 */
+		public function auto_load( $class ) {
+			static $classes = null;
+
+			if ( null === $classes ) {
+				$classes = array(
+					'debug_bar_constants_panel'    => 'class-debug-bar-constants-panel.php',
+					'debug_bar_wp_constants'       => 'class-debug-bar-wp-constants.php',
+					'debug_bar_wp_class_constants' => 'class-debug-bar-wp-class-constants.php',
+					'debug_bar_php_constants'      => 'class-debug-bar-php-constants.php',
+
+					'debug_bar_pretty_output'      => 'inc/debug-bar-pretty-output/class-debug-bar-pretty-output.php',
+					'debug_bar_list_php_classes'   => 'inc/debug-bar-pretty-output/class-debug-bar-list-php-classes.php',
+				);
+			}
+
+			$cn = strtolower( $class );
+
+			if ( isset( $classes[ $cn ] ) ) {
+				include_once plugin_dir_path( __FILE__ ) . $classes[ $cn ];
+			}
+		}
+
+
+		/**
+		 * Add actions which are needed for both front-end and back-end functionality.
+		 *
+		 * @return void
+		 */
+		public function init() {
+			/*
+			 *  Load plugin text strings.
+			 * @see http://geertdedeckere.be/article/loading-wordpress-language-files-the-right-way
+			 *
+			 * If you'll be hosting your plugin at wordpress.org and using the translations as
+			 * provided via GlotPress (translate.wordpress.org), you can simplify this to the
+			 * below and you can remove the local `load_textdomain()` function as well:
+			 *
+			 * `load_plugin_textdomain( 'demo-quotes-plugin' );`
+			 *
+			 * The net effect of this will be that WP will ignore translations included with the
+			 * plugin and will look in the `wp-content/languages/plugins/` folder for translations
+			 * instead.
+			 */
+			$this->load_textdomain( self::DBC_NAME );
 		}
 
 
@@ -105,46 +157,19 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) && class_exists( 'Debug_Bar_Panel' 
 
 
 		/**
-		 * Should the tab be visible ?
-		 * You can set conditions here so something will for instance only show on the front- or the
-		 * back-end.
-		 */
-		public function prerender() {
-			$this->set_visible( true );
-		}
-
-
-		/**
-		 * Helper method to render the output in a table.
+		 * Add the Debug Bar Constant panels to the Debug Bar.
 		 *
-		 * @param array             $array Array to be shown in the table.
-		 * @param string|null       $col1  Label for the first table column.
-		 * @param string|null       $col2  Label for the second table column.
-		 * @param string|array|null $class One or more CSS classes to add to the table.
+		 * @param array $panels Existing debug bar panels.
+		 *
+		 * @return array
 		 */
-		public function dbc_render_table( $array, $col1 = null, $col2 = null, $class = null ) {
-
-			$classes = self::DBC_NAME;
-			if ( isset( $class ) ) {
-				if ( is_string( $class ) && '' !== $class ) {
-					$classes .= ' ' . $class;
-				} elseif ( ! empty( $class ) && is_array( $class ) ) {
-					$classes = $classes . ' ' . implode( ' ', $class );
-				}
-			}
-			$col1 = ( isset( $col1 ) ? $col1 : __( 'Name', 'debug-bar-constants' ) );
-			$col2 = ( isset( $col2 ) ? $col2 : __( 'Value', 'debug-bar-constants' ) );
-
-			uksort( $array, 'strnatcasecmp' );
-
-			if ( defined( 'Debug_Bar_Pretty_Output::VERSION' ) ) {
-				echo Debug_Bar_Pretty_Output::get_table( $array, $col1, $col2, $classes ); // WPCS: xss ok.
-
-			} else {
-				// An old version of the pretty output class was loaded.
-				Debug_Bar_Pretty_Output::render_table( $array, $col1, $col2, $classes );
-			}
+		public function add_panels( $panels ) {
+			$panels[] = new Debug_Bar_WP_Constants();
+			$panels[] = new Debug_Bar_WP_Class_Constants();
+			$panels[] = new Debug_Bar_PHP_Constants();
+			return $panels;
 		}
+
 	} // End of class Debug_Bar_Constants.
 
 } // End of if class_exists wrapper.
