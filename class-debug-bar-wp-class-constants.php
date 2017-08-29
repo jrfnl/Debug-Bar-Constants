@@ -30,7 +30,6 @@ if ( ! class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Ba
 		 * Constructor.
 		 */
 		public function init() {
-			parent::init();
 			$this->title( __( 'WP Class Constants', 'debug-bar-constants' ) );
 		}
 
