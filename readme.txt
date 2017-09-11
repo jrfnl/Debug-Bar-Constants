@@ -100,7 +100,9 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 
 == Changelog ==
 
-= 1.7.0 (2017-07-10) =
+= 1.7.0 =
+_Release date: 2017-07-10_
+
 * Improved usability of the admin notice in case the Debug Bar plugin is not active.
 * The plugin will now add itself to the list of "recently active" plugins if it self-deactivates bcause the Debug Bar plugin is not active.
 * Defer to just in time loading of translations for WP > 4.5.
@@ -109,72 +111,102 @@ Have you read what it says in the beautifully red bar at the top of your plugins
 * The minimum supported WP version is now 3.4, in line with the 0.9 version of the Debug Bar.
 * Tested & found compatible WP 4.8.
 
-= 1.6.1 (2016-04-15) =
+= 1.6.1 =
+_Release date: 2016-04-15_
+
 * Get the leaner loading of text domains right (at last).
 
-= 1.6.0 (2016-04-12) =
+= 1.6.0 =
+_Release date: 2016-04-12_
+
 * Hard-coded the text domains for compatibility with [GlotPress](https://translate.wordpress.org/projects/wp-plugins/debug-bar-constants).
 * Make loading of text-domain compatible with use of the plugin in the `must-use` plugins directory.
 * Updated the pretty print class to v1.6.0.
 * Minor housekeeping.
 * Tested & found compatible WP 4.5.
 
-= 1.5.0.3 (2016-01-13) =
+= 1.5.0.3 =
+_Release date: 2016-01-13_
+
 * Fix very minor layout inconsistency in combination with Twenty-Sixteen theme.
 * Updated the pretty print class to v1.5.2.
 
-= 1.5.0.2 (2016-01-10) =
+= 1.5.0.2 =
+_Release date: 2016-01-10_
+
 * Fix weird table layout on front-end in combination with Twenty-Sixteen theme.
 * Leaner loading of text domains.
 
-= 1.5.0.1 (2015-12-07) =
+= 1.5.0.1 =
+_Release date: 2015-12-07_
+
 * Fix typo.
 
-= 1.5 (2015-12-05) =
+= 1.5 =
+_Release date: 2015-12-05_
+
 * Updated PHP Classes list for PHP7.
 * Fixed (some) links to PHP manual resulting in 404s.
 * Tested & found compatible with WP 4.4.
 
-= 1.4 (2015-04-18) =
+= 1.4 =
+_Release date: 2015-04-18_
+
 * Updated the pretty print class to v1.5.0 which now allows for limiting of the recursion depth.
 * Tested & found compatible with WP 4.2.
 * Minor tidying up.
 * Updated language files.
 
-= 1.3.1 (2014-09-05) =
+= 1.3.1 =
+_Release date: 2014-09-05_
+
 * Fix compatibility with the [Plugin Dependencies](https://wordpress.org/plugins/plugin-dependencies/) plugin.
 * Tested & found compatible with WP 4.0.
 
-= 1.3 (2013-12-02) =
+= 1.3 =
+_Release date: 2013-12-02_
+
 * Moved pretty print class to separate repository as several plugins are using it now.
 
-= 1.2.1.2 (2013-11-30) =
+= 1.2.1.2 =
+_Release date: 2013-11-30_
+
 * Fixed minor HTML validation issue.
 * Fixed auto-disable message display in case the Debug Bar Plugin is not activated.
 * Changed style and script file names to comply with current guidelines (.min).
 * Tested with WP 3.8-beta1.
 
-= 1.2.1.1 (2013-10-01) =
+= 1.2.1.1 =
+_Release date: 2013-10-01_
+
 * Compliance with the [WordPress coding standards](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards).
 * Some minor code cleanup inspired by some suggestions by [Maik Penz](https://github.com/goatherd).
 
-= 1.2.1 (2013-05-27) =
+= 1.2.1 =
+_Release date: 2013-05-27_
+
 * Minor fix to comply with strict standards. Thanks [Azizur Rahman for reporting](https://wordpress.org/support/topic/declaration-of-debug_bar_constantsinit-should-be-compatible-with-debug_bar_p).
 
-= 1.2 (2013-05-05) =
+= 1.2 =
+_Release date: 2013-05-05_
+
 * [New!] Added a panel for Class Constants.
 * [Fix] Some left over references to functions not in this plugin.
 * Headers for the PHP Constants now link to their PHP manual page.
 * Moved more output rendering to the pretty-output class and applied a higher level of abstraction.
 
-= 1.1 (2013-04-30) / not released =
+= 1.1 =
+_Release date: 2013-04-30 / not released_
+
 * [New!] Added auto-deactivation if the Debug Bar plugin is not active.
 * [Fix] Removed js debug alert (oops..).
 * [Fix] Adjusted the sorting to be case-insensitive.
 * [Fix] Some small-HTML/CSS tweaks.
 * Added object output helper method.
 
-= 1.0 (2013-04-28) =
+= 1.0 =
+_Release date: 2013-04-28_
+
 * Initial release.
 
 
