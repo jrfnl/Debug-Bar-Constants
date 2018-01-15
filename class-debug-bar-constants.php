@@ -25,7 +25,18 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) ) {
 	 */
 	class Debug_Bar_Constants {
 
+		/**
+		 * Plugin version nr for use with enqueuing styles.
+		 *
+		 * @var string
+		 */
 		const DBC_STYLES_VERSION = '1.7.0';
+
+		/**
+		 * Plugin version nr for use with enqueuing scripts.
+		 *
+		 * @var string
+		 */
 		const DBC_SCRIPT_VERSION = '1.7.0';
 
 
@@ -78,8 +89,19 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) ) {
 		 */
 		public function enqueue_scripts() {
 			$suffix = ( ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min' );
-			wp_enqueue_style( Debug_Bar_Constants_Init::DBC_NAME, plugins_url( 'css/' . Debug_Bar_Constants_Init::DBC_NAME . $suffix . '.css', __FILE__ ), array( 'debug-bar' ), self::DBC_STYLES_VERSION );
-			wp_enqueue_script( Debug_Bar_Constants_Init::DBC_NAME, plugins_url( 'js/jquery.ui.totop' . $suffix . '.js', __FILE__ ), array( 'jquery' ), self::DBC_SCRIPT_VERSION, true );
+			wp_enqueue_style(
+				Debug_Bar_Constants_Init::DBC_NAME,
+				plugins_url( 'css/' . Debug_Bar_Constants_Init::DBC_NAME . $suffix . '.css', __FILE__ ),
+				array( 'debug-bar' ),
+				self::DBC_STYLES_VERSION
+			);
+			wp_enqueue_script(
+				Debug_Bar_Constants_Init::DBC_NAME,
+				plugins_url( 'js/jquery.ui.totop' . $suffix . '.js', __FILE__ ),
+				array( 'jquery' ),
+				self::DBC_SCRIPT_VERSION,
+				true
+			);
 		}
 
 

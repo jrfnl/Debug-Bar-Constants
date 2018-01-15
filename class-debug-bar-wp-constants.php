@@ -50,7 +50,7 @@ if ( ! class_exists( 'Debug_Bar_WP_Constants' ) && class_exists( 'Debug_Bar_Cons
 			$constants = get_defined_constants( true );
 			if ( isset( $constants['user'] ) && ( ! empty( $constants['user'] ) && is_array( $constants['user'] ) ) ) {
 				echo '
-		<h2><span>', esc_html__( 'Constants within WP:', 'debug-bar-constants' ), '</span>', absint( count( $constants['user'] ) ), '</h2>';
+		<h2><span>', esc_html__( 'Constants within WP:', 'debug-bar-constants' ), '</span>', (int) count( $constants['user'] ), '</h2>';
 				$this->dbc_render_table( $constants['user'] );
 
 			} else {
