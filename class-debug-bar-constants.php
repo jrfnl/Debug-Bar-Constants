@@ -6,7 +6,7 @@
  * @author      Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>
  * @link        https://github.com/jrfnl/Debug-Bar-Constants
  *
- * @copyright   2013-2017 Juliette Reinders Folmer
+ * @copyright   2013-2018 Juliette Reinders Folmer
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
 
@@ -30,14 +30,14 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) ) {
 		 *
 		 * @var string
 		 */
-		const DBC_STYLES_VERSION = '1.7.0';
+		const DBC_STYLES_VERSION = '2.0.0';
 
 		/**
 		 * Plugin version nr for use with enqueuing scripts.
 		 *
 		 * @var string
 		 */
-		const DBC_SCRIPT_VERSION = '1.7.0';
+		const DBC_SCRIPT_VERSION = '2.0.0';
 
 
 		/**

@@ -5,22 +5,22 @@
  * @package     WordPress\Plugins\Debug Bar Constants
  * @author      Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>
  * @link        https://github.com/jrfnl/Debug-Bar-Constants
- * @version     1.7.0
+ * @version     2.0.0
  *
- * @copyright   2013-2017 Juliette Reinders Folmer
+ * @copyright   2013-2018 Juliette Reinders Folmer
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  *
  * @wordpress-plugin
  * Plugin Name: Debug Bar Constants
  * Plugin URI:  https://wordpress.org/plugins/debug-bar-constants/
  * Description: Debug Bar Constants adds new panels to Debug Bar that display all the defined constants for the current request. Requires "Debug Bar" plugin.
- * Version:     1.7.0
+ * Version:     2.0.0
  * Author:      Juliette Reinders Folmer
  * Author URI:  http://www.adviesenzo.nl/
  * Depends:     Debug Bar
  * Text Domain: debug-bar-constants
  * Domain Path: /languages
- * Copyright:   2013-2017 Juliette Reinders Folmer
+ * Copyright:   2013-2018 Juliette Reinders Folmer
  */
 
 // Avoid direct calls to this file.
