@@ -30,57 +30,90 @@ if ( ! function_exists( 'add_action' ) ) {
 	exit();
 }
 
-/**
- * Show admin notice & de-activate itself if debug-bar plugin not active.
- */
-add_action( 'admin_init', 'dbc_has_parent_plugin' );
+if ( ! class_exists( 'Debug_Bar_Constants_Init' ) ) {
 
-if ( ! function_exists( 'dbc_has_parent_plugin' ) ) {
 	/**
-	 * Check for parent plugin.
+	 * Initialize plugin.
 	 */
-	function dbc_has_parent_plugin() {
-		$file = plugin_basename( __FILE__ );
+	class Debug_Bar_Constants_Init {
 
-		if ( is_admin() && ( ! class_exists( 'Debug_Bar' ) && current_user_can( 'activate_plugins' ) ) && is_plugin_active( $file ) ) {
-			add_action( 'admin_notices', create_function( null, 'echo \'<div class="error"><p>\', sprintf( __( \'Activation failed: Debug Bar must be activated to use the <strong>Debug Bar Constants</strong> Plugin. %sVisit your plugins page to install & activate.\', \'debug-bar-constants\' ), \'<a href="\' . admin_url( \'plugin-install.php?tab=search&s=debug+bar\' ) . \'">\' ), \'</a></p></div>\';' ) );
+		/**
+		 * Initialize the plugin.
+		 *
+		 * @return void
+		 */
+		public static function init() {
+			/*
+			 * Initialize the main class.
+			 *
+			 * @internal The wp_installing() function was introduced in WP 4.4.
+			 */
+			if ( ( function_exists( 'wp_installing' ) && wp_installing() === false )
+				|| ( ! function_exists( 'wp_installing' )
+					&& ( ! defined( 'WP_INSTALLING' ) || WP_INSTALLING === false ) )
+			) {
+				include_once plugin_dir_path( __FILE__ ) . 'class-debug-bar-constants.php';
+				$GLOBALS['debug_bar_constants'] = new Debug_Bar_Constants();
+			}
 
-			deactivate_plugins( $file, false, is_network_admin() );
+			// Show admin notice & de-activate itself if debug-bar plugin not active.
+			add_action( 'admin_init', array( __CLASS__, 'has_debug_bar' ) );
+		}
 
-			// Add to recently active plugins list.
-			$insert = array(
-				$file => time(),
+
+		/**
+		 * Check for the Debug Bar plugin being installed & active.
+		 *
+		 * @return void
+		 */
+		public static function has_debug_bar() {
+			$file = plugin_basename( __FILE__ );
+
+			if ( is_admin()
+				&& ( ! class_exists( 'Debug_Bar' ) && current_user_can( 'activate_plugins' ) )
+				&& is_plugin_active( $file )
+			) {
+				add_action( 'admin_notices', array( __CLASS__, 'display_admin_notice' ) );
+
+				deactivate_plugins( $file, false, is_network_admin() );
+
+				// Add to recently active plugins list.
+				$insert = array(
+					$file => time(),
+				);
+
+				if ( ! is_network_admin() ) {
+					update_option( 'recently_activated', ( $insert + (array) get_option( 'recently_activated' ) ) );
+				} else {
+					update_site_option( 'recently_activated', ( $insert + (array) get_site_option( 'recently_activated' ) ) );
+				}
+
+				// Prevent trying to activate again on page reload.
+				if ( isset( $_GET['activate'] ) ) {
+					unset( $_GET['activate'] );
+				}
+			}
+		}
+
+
+		/**
+		 * Display admin notice about activation failure when dependency not found.
+		 *
+		 * @return void
+		 */
+		public static function display_admin_notice() {
+			echo '<div class="error"><p>';
+			printf(
+				/* translators: 1: strong open tag; 2: strong close tag; 3: link to plugin installation page; 4: link close tag. */
+				esc_html__( 'Activation failed: Debug Bar must be activated to use the %1$sDebug Bar Constants%2$s Plugin. %3$sVisit your plugins page to install & activate%4$s.', 'debug-bar-constants' ),
+				'<strong>',
+				'</strong>',
+				'<a href="' . esc_url( admin_url( 'plugin-install.php?tab=search&s=debug+bar' ) ) . '">',
+				'</a>'
 			);
-
-			if ( ! is_network_admin() ) {
-				update_option( 'recently_activated', ( $insert + (array) get_option( 'recently_activated' ) ) );
-			} else {
-				update_site_option( 'recently_activated', ( $insert + (array) get_site_option( 'recently_activated' ) ) );
-			}
-
-			// Prevent trying again on page reload.
-			if ( isset( $_GET['activate'] ) ) {
-				unset( $_GET['activate'] );
-			}
+			echo '</p></div>';
 		}
 	}
 }
 
-
-if ( ! function_exists( 'debug_bar_constants_init' ) ) {
-
-	// wp_installing() function was introduced in WP 4.4.
-	if ( ( function_exists( 'wp_installing' ) && wp_installing() === false ) || ( ! function_exists( 'wp_installing' ) && ( ! defined( 'WP_INSTALLING' ) || WP_INSTALLING === false ) ) ) {
-		add_action( 'plugins_loaded', 'debug_bar_constants_init' );
-	}
-
-	/**
-	 * Initialize the class.
-	 *
-	 * @return void
-	 */
-	function debug_bar_constants_init() {
-		include_once plugin_dir_path( __FILE__ ) . 'class-debug-bar-constants.php';
-		$debug_bar_constants = new Debug_Bar_Constants();
-	}
-}
+add_action( 'plugins_loaded', array( 'Debug_Bar_Constants_Init', 'init' ) );
