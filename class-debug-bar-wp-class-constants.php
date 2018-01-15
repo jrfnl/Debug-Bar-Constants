@@ -70,9 +70,27 @@ if ( ! class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Ba
 					}
 					unset( $class, $set );
 
-					echo '<p class="dbcwpc-info">', wp_kses_post( __( '<strong>Please note</strong>: these may be both native WordPress classes as well as classes which may be declared by plugins or themes.<br />You can use these constants in your code using <code>class_name::constant_name</code>.', 'debug-bar-constants' ) ), ' ',
-					/* TRANSLATORS: %s = the "href" element for the link. */
-					wp_kses_post( sprintf( __( 'See the <a %s>FAQ</a> for more information.', 'debug-bar-constants' ), 'href="https://wordpress.org/plugins/debug-bar-constants/faq/" target="_blank"' ) ), '.</p>';
+					echo '<p class="dbcwpc-info">';
+					printf(
+						/* TRANSLATORS: 1: <strong> open tag; 2: close tag. */
+						esc_html__( '%1$sPlease note%2$s: these may be both native WordPress classes as well as classes which may be declared by plugins or themes.', 'debug-bar-constants' ),
+						'<strong>',
+						'</strong>'
+					);
+					echo '<br/>';
+					printf(
+						/* TRANSLATORS: 1: interpolates to "<code>class_name::constant_name</code>". */
+						esc_html__( 'You can use these constants in your code using %1$s.', 'debug-bar-constants' ),
+						'<code>class_name::constant_name</code>'
+					);
+					echo ' ';
+					printf(
+						/* TRANSLATORS: 1: link open tag; 2: link close tag. */
+						esc_html__( 'See the %1$sFAQ%2$s for more information.', 'debug-bar-constants' ),
+						'<a href="https://wordpress.org/plugins/debug-bar-constants/faq/" target="_blank">',
+						'</a>'
+					);
+					echo '</p>';
 
 					foreach ( $constants as $class => $set ) {
 						echo '
