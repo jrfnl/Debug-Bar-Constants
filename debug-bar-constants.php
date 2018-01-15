@@ -38,6 +38,14 @@ if ( ! class_exists( 'Debug_Bar_Constants_Init' ) ) {
 	class Debug_Bar_Constants_Init {
 
 		/**
+		 * Plugin name for use with text-domains and CSS classes.
+		 *
+		 * @var string
+		 */
+		const DBC_NAME = 'debug-bar-constants';
+
+
+		/**
 		 * Initialize the plugin.
 		 *
 		 * @return void
@@ -58,6 +66,44 @@ if ( ! class_exists( 'Debug_Bar_Constants_Init' ) ) {
 
 			// Show admin notice & de-activate itself if debug-bar plugin not active.
 			add_action( 'admin_init', array( __CLASS__, 'has_debug_bar' ) );
+
+			add_action( 'init', array( __CLASS__, 'load_textdomain' ) );
+		}
+
+
+		/**
+		 * Load the plugin text strings.
+		 *
+		 * Compatible with use of the plugin in the must-use plugins directory.
+		 *
+		 * {@internal No longer needed since WP 4.6, though the language loading in
+		 * WP 4.6 only looks at the `wp-content/languages/` directory and disregards
+		 * any translations which may be included with the plugin.
+		 * This is acceptable for plugins hosted on org, especially if the plugin
+		 * is new and never shipped with it's own translations, but not when the plugin
+		 * is hosted elsewhere.
+		 * Can be removed if/when the minimum required version for this plugin is ever
+		 * upped to 4.6. The `languages` directory can be removed in that case too.
+		 * See: {@link https://core.trac.wordpress.org/ticket/34213} and
+		 * {@link https://core.trac.wordpress.org/ticket/34114} }}
+		 */
+		protected function load_textdomain() {
+			$domain = self::DBC_NAME;
+
+			if ( function_exists( '_load_textdomain_just_in_time' ) ) {
+				return;
+			}
+
+			if ( is_textdomain_loaded( $domain ) ) {
+				return;
+			}
+
+			$lang_path = dirname( plugin_basename( __FILE__ ) ) . '/languages';
+			if ( false === strpos( __FILE__, basename( WPMU_PLUGIN_DIR ) ) ) {
+				load_plugin_textdomain( $domain, false, $lang_path );
+			} else {
+				load_muplugin_textdomain( $domain, $lang_path );
+			}
 		}
 
 

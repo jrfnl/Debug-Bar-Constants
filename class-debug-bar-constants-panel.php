@@ -45,7 +45,7 @@ if ( ! class_exists( 'Debug_Bar_Constants_Panel' ) && class_exists( 'Debug_Bar_P
 		 */
 		public function dbc_render_table( $array, $col1 = null, $col2 = null, $class = null ) {
 
-			$classes = Debug_Bar_Constants::DBC_NAME;
+			$classes = Debug_Bar_Constants_Init::DBC_NAME;
 			if ( isset( $class ) ) {
 				if ( is_string( $class ) && '' !== $class ) {
 					$classes .= ' ' . $class;
