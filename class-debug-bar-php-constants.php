@@ -60,7 +60,16 @@ if ( ! class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Con
 						$title_attr = sprintf( __( 'Visit the PHP manual page about the %s constants.', 'debug-bar-constants' ), $category );
 
 						echo '
-		<h3 id="dbcphp-', esc_attr( $category ), '"><em><a href="', esc_url( $url ), '" target="_blank" title="', esc_attr( $title_attr ), '">', esc_html( ucfirst( $category ) ), '</a></em> ', esc_html__( 'Constants:', 'debug-bar-constants' ), '</h3>';
+		<h3 id="dbcphp-', esc_attr( $category ), '"><em>';
+
+						if ( ! empty( $url ) ) {
+							echo '<a href="', esc_url( $url ), '" target="_blank" title="', esc_attr( $title_attr ), '">', esc_html( ucfirst( $category ) ), '</a>';
+						} else {
+							echo esc_html( ucfirst( $category ) );
+						}
+
+						echo '</em> ', esc_html__( 'Constants:', 'debug-bar-constants' ), '</h3>';
+
 						$this->dbc_render_table( $set );
 					}
 				}
@@ -83,8 +92,10 @@ if ( ! class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Con
 		 * @return string URL
 		 */
 		protected function get_php_manual_url( $category ) {
+			$category = strtolower( $category );
+
 			switch ( $category ) {
-				case 'Core':
+				case 'core':
 					$url = 'http://php.net/reserved.constants';
 					break;
 
