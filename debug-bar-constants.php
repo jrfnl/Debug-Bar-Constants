@@ -87,7 +87,7 @@ if ( ! class_exists( 'Debug_Bar_Constants_Init' ) ) {
 		 * See: {@link https://core.trac.wordpress.org/ticket/34213} and
 		 * {@link https://core.trac.wordpress.org/ticket/34114} }}
 		 */
-		protected function load_textdomain() {
+		public static function load_textdomain() {
 			$domain = self::DBC_NAME;
 
 			if ( function_exists( '_load_textdomain_just_in_time' ) ) {
