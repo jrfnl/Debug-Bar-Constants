@@ -46,7 +46,7 @@ if ( ! class_exists( 'Debug_Bar_PHP_Constants' ) && class_exists( 'Debug_Bar_Con
 
 				foreach ( $constants as $category => $set ) {
 					echo '
-		<h2><a href="#dbcphp-', esc_attr( $category ), '"><span>', esc_html( $category ), ':</span>', absint( count( $set ) ), '</a></h2>';
+		<h2><a href="#dbcphp-', esc_attr( $category ), '"><span>', esc_html( $category ), ':</span>', (int) count( $set ), '</a></h2>';
 				}
 				unset( $category, $set );
 

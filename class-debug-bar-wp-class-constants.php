@@ -6,7 +6,7 @@
  * @author      Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>
  * @link        https://github.com/jrfnl/Debug-Bar-Constants
  *
- * @copyright   2013-2017 Juliette Reinders Folmer
+ * @copyright   2013-2018 Juliette Reinders Folmer
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
 
@@ -65,7 +65,7 @@ if ( ! class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Ba
 					foreach ( $constants as $class => $set ) {
 						$count = count( $set );
 						echo '
-			<h2><a href="#dbcwpc-', esc_attr( $class ), '"><span>', esc_html( $class ), ':</span>', absint( $count ), '</a></h2>';
+			<h2><a href="#dbcwpc-', esc_attr( $class ), '"><span>', esc_html( $class ), ':</span>', (int) $count, '</a></h2>';
 						unset( $count );
 					}
 					unset( $class, $set );

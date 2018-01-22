@@ -6,7 +6,7 @@
  * @author      Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>
  * @link        https://github.com/jrfnl/Debug-Bar-Constants
  *
- * @copyright   2013-2017 Juliette Reinders Folmer
+ * @copyright   2013-2018 Juliette Reinders Folmer
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
 
@@ -25,8 +25,19 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) ) {
 	 */
 	class Debug_Bar_Constants {
 
-		const DBC_STYLES_VERSION = '1.7.0';
-		const DBC_SCRIPT_VERSION = '1.7.0';
+		/**
+		 * Plugin version nr for use with enqueuing styles.
+		 *
+		 * @var string
+		 */
+		const DBC_STYLES_VERSION = '2.0.0';
+
+		/**
+		 * Plugin version nr for use with enqueuing scripts.
+		 *
+		 * @var string
+		 */
+		const DBC_SCRIPT_VERSION = '2.0.0';
 
 
 		/**
@@ -78,8 +89,19 @@ if ( ! class_exists( 'Debug_Bar_Constants' ) ) {
 		 */
 		public function enqueue_scripts() {
 			$suffix = ( ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min' );
-			wp_enqueue_style( Debug_Bar_Constants_Init::DBC_NAME, plugins_url( 'css/' . Debug_Bar_Constants_Init::DBC_NAME . $suffix . '.css', __FILE__ ), array( 'debug-bar' ), self::DBC_STYLES_VERSION );
-			wp_enqueue_script( Debug_Bar_Constants_Init::DBC_NAME, plugins_url( 'js/jquery.ui.totop' . $suffix . '.js', __FILE__ ), array( 'jquery' ), self::DBC_SCRIPT_VERSION, true );
+			wp_enqueue_style(
+				Debug_Bar_Constants_Init::DBC_NAME,
+				plugins_url( 'css/' . Debug_Bar_Constants_Init::DBC_NAME . $suffix . '.css', __FILE__ ),
+				array( 'debug-bar' ),
+				self::DBC_STYLES_VERSION
+			);
+			wp_enqueue_script(
+				Debug_Bar_Constants_Init::DBC_NAME,
+				plugins_url( 'js/jquery.ui.totop' . $suffix . '.js', __FILE__ ),
+				array( 'jquery' ),
+				self::DBC_SCRIPT_VERSION,
+				true
+			);
 		}
 
 
