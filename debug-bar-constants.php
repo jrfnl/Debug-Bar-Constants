@@ -7,7 +7,7 @@
  * @link        https://github.com/jrfnl/Debug-Bar-Constants
  * @version     2.0.0
  *
- * @copyright   2013-2018 Juliette Reinders Folmer
+ * @copyright   2013-2020 Juliette Reinders Folmer
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  *
  * @wordpress-plugin
@@ -20,7 +20,7 @@
  * Depends:     Debug Bar
  * Text Domain: debug-bar-constants
  * Domain Path: /languages
- * Copyright:   2013-2018 Juliette Reinders Folmer
+ * Copyright:   2013-2020 Juliette Reinders Folmer
  */
 
 // Avoid direct calls to this file.
@@ -135,9 +135,11 @@ if ( ! class_exists( 'Debug_Bar_Constants_Init' ) ) {
 				}
 
 				// Prevent trying to activate again on page reload.
+				// phpcs:disable WordPress.Security.NonceVerification.Recommended
 				if ( isset( $_GET['activate'] ) ) {
 					unset( $_GET['activate'] );
 				}
+				// phpcs:enable
 			}
 		}
 

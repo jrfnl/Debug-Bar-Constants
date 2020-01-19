@@ -6,7 +6,7 @@
  * @author      Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>
  * @link        https://github.com/jrfnl/Debug-Bar-Constants
  *
- * @copyright   2013-2018 Juliette Reinders Folmer
+ * @copyright   2013-2020 Juliette Reinders Folmer
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
 
@@ -104,6 +104,6 @@ if ( ! class_exists( 'Debug_Bar_WP_Class_Constants' ) && class_exists( 'Debug_Ba
 				echo '<p>', esc_html__( 'No classes nor class constants found... this is kinda strange...', 'debug-bar-constants' ), '</p>';
 			}
 		}
-	} // End of class Debug_Bar_WP_Class_Constants.
+	}
 
-} // End of if class_exists wrapper.
+}

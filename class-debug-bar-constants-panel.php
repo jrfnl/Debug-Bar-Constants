@@ -6,7 +6,7 @@
  * @author      Juliette Reinders Folmer <wpplugins_nospam@adviesenzo.nl>
  * @link        https://github.com/jrfnl/Debug-Bar-Constants
  *
- * @copyright   2013-2018 Juliette Reinders Folmer
+ * @copyright   2013-2020 Juliette Reinders Folmer
  * @license     http://creativecommons.org/licenses/GPL/2.0/ GNU General Public License, version 2 or higher
  */
 
@@ -59,13 +59,14 @@ if ( ! class_exists( 'Debug_Bar_Constants_Panel' ) && class_exists( 'Debug_Bar_P
 			uksort( $array, 'strnatcasecmp' );
 
 			if ( defined( 'Debug_Bar_Pretty_Output::VERSION' ) ) {
-				echo Debug_Bar_Pretty_Output::get_table( $array, $col1, $col2, $classes ); // WPCS: xss ok.
+				// phpcs:ignore WordPress.Security.EscapeOutput
+				echo Debug_Bar_Pretty_Output::get_table( $array, $col1, $col2, $classes );
 
 			} else {
 				// An old version of the pretty output class was loaded.
 				Debug_Bar_Pretty_Output::render_table( $array, $col1, $col2, $classes );
 			}
 		}
-	} // End of class Debug_Bar_Constants_Panel.
+	}
 
-} // End of if class_exists wrapper.
+}
