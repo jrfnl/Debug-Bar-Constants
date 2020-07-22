@@ -57,7 +57,8 @@ before_install:
 # All commands must exit with code 0 on success. Anything else is considered failure.
 script:
     # Search for PHP syntax errors.
-    - find -L . -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
+    - find -L . -path ./vendor -prune -o -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
+
     # Check code against the WordPress Coding Standards and for PHP cross-version compatibility.
     # @link https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
     # @link https://github.com/wimg/phpcompatibility
